@@ -422,6 +422,7 @@ const THREAD_DRIVE_OPTIONS: Array<{ value: ThreadDrive; label: MessageKey }> = [
   { value: "torx", label: "thread.driveTorx" },
   { value: "phillips", label: "thread.drivePhillips" },
   { value: "slot", label: "thread.driveSlot" },
+  { value: "robertson", label: "thread.driveRobertson" },
   { value: "none", label: "thread.driveNone" },
 ];
 const DRIVE_SIZE_HINT: Record<Exclude<ThreadDrive, "none">, MessageKey> = {
@@ -429,6 +430,7 @@ const DRIVE_SIZE_HINT: Record<Exclude<ThreadDrive, "none">, MessageKey> = {
   torx: "prop.driveSizeTorx",
   phillips: "prop.driveSizePhillips",
   slot: "prop.driveSizeSlot",
+  robertson: "prop.driveSizeRobertson",
 };
 const THREAD_PROFILE_OPTIONS: Array<{ value: ThreadProfile; label: MessageKey }> = [
   { value: "v", label: "thread.profileV" },
@@ -6691,7 +6693,7 @@ function ThreadHeadPreview({ head }: { head: ThreadHead }) {
 /** Der Antrieb von oben, so wie man in den Kopf schaut. */
 function ThreadDrivePreview({ drive }: { drive: ThreadDrive }) {
   const common = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinejoin: "round" as const, "aria-hidden": true };
-  const recess = drive === "none" ? null : threadDriveOutline(drive, drive === "phillips" ? 14 : drive === "slot" ? 16 : 12);
+  const recess = drive === "none" ? null : threadDriveOutline(drive, drive === "phillips" ? 14 : drive === "slot" ? 16 : drive === "robertson" ? 10 : 12);
   const points = recess ? threadDriveOutlinePoints(recess).map(([x, z]) => `${(12 + x).toFixed(2)},${(12 - z).toFixed(2)}`).join(" ") : "";
   return (
     <svg {...common}>

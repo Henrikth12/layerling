@@ -6,7 +6,7 @@ import type { MessageKey } from "@/lib/messages.en";
 
 export const DEFAULT_THREAD_ROLE: ThreadRole = "rod";
 export const DEFAULT_THREAD_HEAD: ThreadHead = "cylinder";
-export const THREAD_DRIVES: readonly ThreadDrive[] = ["hex", "torx", "phillips", "slot", "none"];
+export const THREAD_DRIVES: readonly ThreadDrive[] = ["hex", "torx", "phillips", "slot", "robertson", "none"];
 export const DEFAULT_THREAD_HAND: ThreadHand = "right";
 export const DEFAULT_THREAD_PROFILE: ThreadProfile = "v";
 export const DEFAULT_THREAD_DIAMETER = 6;
@@ -727,16 +727,32 @@ const TORX_LOBE_PER_SIZE = 0.08;
 const PHILLIPS_ARM_PER_SIZE = 0.25;
 /** Slot: its width over its length - wide enough for a coin on the larger sizes (#1052). */
 const SLOT_WIDTH_PER_SIZE = 0.2;
+/**
+ * Robertson (square, as in Canada): the square across flats of #00 to #4 and
+ * the largest screw diameter each takes - #00 on #2 (2.18 mm), #0 on #4, #1 on
+ * #7, #2 on #10, #3 on 1/4", #4 on 3/8". A screw between two takes the bit of
+ * the nearer one, so M3 gets #0, M4 and M5 #2, M6 #3, M8 #4.
+ */
+const ROBERTSON_SIZES: ReadonlyArray<{ upTo: number; square: number }> = [
+  { upTo: 2.35, square: 1.3 },
+  { upTo: 3.0, square: 1.79 },
+  { upTo: 3.99, square: 2.3 },
+  { upTo: 5.16, square: 2.84 },
+  { upTo: 7.14, square: 3.36 },
+  { upTo: Number.POSITIVE_INFINITY, square: 4.83 },
+];
 
 /**
  * The size a drive is given by: hex socket across flats, Torx outer
- * diameter, Phillips span of the cross, slot length. The defaults follow the
- * hex socket of the size: T20 on M4 measures 3.86 mm where its socket is
- * 3 mm, PH2 on M4 about 4 mm. A slot runs as far across the head as it
- * may: asked for more than any head holds, it is cut back to the limit.
+ * diameter, Phillips span of the cross, slot length, Robertson square across
+ * flats. The defaults follow the hex socket of the size: T20 on M4 measures
+ * 3.86 mm where its socket is 3 mm, PH2 on M4 about 4 mm; Robertson follows
+ * its own sizes. A slot runs as far across the head as it may: asked for
+ * more than any head holds, it is cut back to the limit.
  */
 export function defaultThreadDriveSize(settings: DriveShape) {
   if (settings.drive === "slot") return Number.POSITIVE_INFINITY;
+  if (settings.drive === "robertson") return ROBERTSON_SIZES.find((size) => settings.diameter <= size.upTo)!.square;
   const socket = threadSizeSpec(settings.diameter, settings.pitch).socket;
   if (settings.drive === "torx") return socket * 1.11;
   if (settings.drive === "phillips") return socket * 1.3;
@@ -749,6 +765,7 @@ export function threadDriveRadius(drive: ThreadDrive, size: number) {
   if (drive === "torx") return size / 2;
   if (drive === "phillips") return Math.hypot(size / 2, (size * PHILLIPS_ARM_PER_SIZE) / 2);
   if (drive === "slot") return Math.hypot(size / 2, (size * SLOT_WIDTH_PER_SIZE) / 2);
+  if (drive === "robertson") return size / Math.SQRT2;
   return 0;
 }
 
@@ -799,6 +816,11 @@ export function threadDriveOutline(drive: ThreadDrive, size: number): ThreadDriv
     const half = size / 2;
     const width = (size * SLOT_WIDTH_PER_SIZE) / 2;
     return { start: [half, 0], edges: [[half, width], [-half, width], [-half, -width], [half, -width], [half, 0]].map((to) => ({ to: to as DrivePoint })) };
+  }
+  if (drive === "robertson") {
+    // A square, its sides along x and y; the taper of a real socket is left out, a straight one holds the bit as well.
+    const half = size / 2;
+    return { start: [half, 0], edges: [[half, half], [-half, half], [-half, -half], [half, -half], [half, 0]].map((to) => ({ to: to as DrivePoint })) };
   }
   if (drive === "phillips") {
     const reach = size / 2;
