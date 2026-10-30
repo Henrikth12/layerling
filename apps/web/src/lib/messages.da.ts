@@ -1642,7 +1642,7 @@ export const MESSAGES_DA: Partial<Record<MessageKey, string>> = {
   "welcome.moreVaseTitle": "Vaser og krukker",
   "welcome.moreVaseBody": "en egen form til vaser, krukker og lykter: kropsform, tværsnit, drejning, mønstre, drænhuller, en under-skål og et låg – solid til slicerens vasemodus eller hul.",
   "welcome.moreOffsetTitle": "Forskydning og udskæring",
-  "welcome.moreOffsetBody": "forstørr eller formindsk et eksakt legeme med en bestemt afstand, så der bliver spillerum i en pasning, eller skær én del ud af et andet med et spillerum hele vejen rundt, i ét skridt.",
+  "welcome.moreOffsetBody": "forstørr eller formindsk et eksakt legeme med en bestemt afstand, hele vejen rundt eller kun til siderne, så der bliver spillerum i en pasning, eller skær én del ud af et andet med et spillerum hele vejen rundt, i ét skridt.",
   "guide.select.holePattern": "Hulmønster (værktøjsbjælke-knappen ved siden af Mønster, højreklik på en form, eller Ctrl+K): klik en flad flade, indstil så hulform, størrelse, afstand, arrangement, margen og dybde. Hullerne vises som forhåndsvisning; \"Opret\" tilføjer dem som huller grupperet med formen. Opdel frigør dem igen.",
   "scalePercent.errorTooSmall": "\"{name}\" ville blive mindre end 0,01 mm.",
   "scalePercent.errorTooLarge": "\"{name}\" ville blive større end dens form tillader. Sæt en højere \"Brugerdefineret størrelsesgrænse\" for den under Form-standarder i indstillingerne, eller vælg en mindre procent.",

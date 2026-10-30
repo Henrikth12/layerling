@@ -1293,7 +1293,7 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "welcome.moreVaseTitle": "Vázy a květináče",
   "welcome.moreVaseBody": "samostatný tvar pro vázy, květináče a stínidla: tvar těla, průřez, zkroucení, vzory, odtokové otvory, podmiska a víko - plný pro režim vázy ve sliceru nebo dutý.",
   "welcome.moreOffsetTitle": "Odsazení a vyříznutí",
-  "welcome.moreOffsetBody": "zvětšete nebo zmenšete přesné těleso o zadanou vzdálenost, třeba kvůli vůli lisovaného spoje, nebo v jednom kroku vyřízněte jeden díl z druhého s vůlí po celém obvodu.",
+  "welcome.moreOffsetBody": "zvětšete nebo zmenšete přesné těleso o zadanou vzdálenost, dokola nebo jen do stran, třeba kvůli vůli lisovaného spoje, nebo v jednom kroku vyřízněte jeden díl z druhého s vůlí po celém obvodu.",
   "guide.select.holePattern": "Rastr otvorů otevřete vedle Opakování, pravým tlačítkem na tělese nebo přes Ctrl+K. Klikněte na rovnou plochu a nastavte tvar, velikost, rozteč, uspořádání, okraj a hloubku. „Vytvořit“ přidá náhled jako odečítací tělesa sloučená s modelem. Rozdělením sloučení je opět uvolníte.",
   "guide.select.faceTool": "Plochu otevřete vedle Rastru otvorů, pravým tlačítkem na tělese nebo přes Ctrl+K. Klikněte na rovnou plochu, zvolte Ven nebo Dovnitř a nastavte odsazení od okraje, poloměr rohů a hloubku. Přidá se těleso z náčrtu sloučené s tělesem.",
   "scalePercent.errorTooSmall": "„{name}“ by mělo rozměr menší než 0,01 mm.",

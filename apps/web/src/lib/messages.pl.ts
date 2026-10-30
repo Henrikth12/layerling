@@ -1175,7 +1175,7 @@ export const MESSAGES_PL: Partial<Record<MessageKey, string>> = {
   "welcome.moreVaseTitle": "Wazony i doniczki",
   "welcome.moreVaseBody": "osobny kształt do wazonów, doniczek i abażurów: forma bryły, przekrój, skręt, wzory, otwory odpływowe, podstawka i pokrywka, pełny do trybu wazy w slicerze albo pusty w środku.",
   "welcome.moreOffsetTitle": "Odsunięcie i wycięcie",
-  "welcome.moreOffsetBody": "powiększ lub pomniejsz dokładną bryłę o zadaną odległość, na przykład dla luzu pasowania wciskanego, albo wytnij jedną część z drugiej z luzem dookoła, jednym krokiem.",
+  "welcome.moreOffsetBody": "powiększ lub pomniejsz dokładną bryłę o zadaną odległość, dookoła albo tylko na boki, na przykład dla luzu pasowania wciskanego, albo wytnij jedną część z drugiej z luzem dookoła, jednym krokiem.",
   "guide.select.holePattern": "Wzór otworów (przycisk na pasku obok Szyk, prawy klik na bryle albo Ctrl+K): kliknij płaską ścianę, potem ustaw kształt otworu, rozmiar, rozstaw, układ, margines i głębokość. Otwory widać jako podgląd, „Utwórz” dodaje je jako otwory zgrupowane z bryłą. Rozgrupuj znów je uwalnia.",
   "guide.select.faceTool": "Ściana (przycisk na pasku obok Wzoru otworów, prawy klik na bryle albo Ctrl+K): kliknij płaską ścianę, wybierz na zewnątrz albo do środka, potem ustaw odsunięcie od krawędzi, promień narożników i głębokość. Dodaje bryłę ze szkicu, zgrupowaną z bryłą.",
   "scalePercent.errorTooSmall": "„{name}” stałby się mniejszy niż 0,01 mm.",

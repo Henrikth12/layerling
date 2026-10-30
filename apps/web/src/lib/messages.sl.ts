@@ -3717,7 +3717,7 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "welcome.moreVaseTitle": "Vaze in lonci",
   "welcome.moreVaseBody": "lastna oblika za vaze, lonce in senčnike: oblika telesa, prerez, zasuk, vzorci, odtočne luknje, podstavek in pokrov - polna za način vaze v rezalniku ali votla.",
   "welcome.moreOffsetTitle": "Odmik in izrez",
-  "welcome.moreOffsetBody": "natančno telo povečaj ali pomanjšaj za določeno razdaljo, za zračnost tesnega naleganja, ali v enem koraku izreži en del iz drugega z zračnostjo naokoli.",
+  "welcome.moreOffsetBody": "natančno telo povečaj ali pomanjšaj za določeno razdaljo, naokoli ali le ob straneh, za zračnost tesnega naleganja, ali v enem koraku izreži en del iz drugega z zračnostjo naokoli.",
   "guide.select.holePattern": "Polje lukenj (gumb v orodni vrstici ob Polju, desni klik na telo ali Ctrl+K): klikni ravno ploskev, nato nastavi obliko, velikost, razmik, razporeditev, rob in globino luknje. Luknje se prikažejo kot predogled; »Ustvari« jih doda kot luknje, združene s telesom. Razdruži jih spet osvobodi.",
   "guide.select.faceTool": "Ploskev (gumb v orodni vrstici ob Polju lukenj, desni klik na telo ali Ctrl+K): klikni ravno ploskev, izberi navzven ali navznoter, nato nastavi odmik od roba, polmer vogalov in globino. Doda se telo iz skice, združeno v skupino s telesom.",
   "status.editingFeature": "{label} preklicano: robovi in vrednost so spet nastavljeni. Spremeni ju in znova uveljavi.",

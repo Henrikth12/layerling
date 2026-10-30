@@ -1173,7 +1173,7 @@ export const MESSAGES_NL: Record<MessageKey, string> = {
   "welcome.moreVaseTitle": "Vazen en potten",
   "welcome.moreVaseBody": "een eigen vorm voor vazen, potten en lampenkappen: lichaamsvorm, doorsnede, draaiing, patronen, afvoergaten, een schotel en een deksel - massief voor de vaasmodus van de slicer of hol.",
   "welcome.moreOffsetTitle": "Verschuiven en uitsnijden",
-  "welcome.moreOffsetBody": "een exact lichaam een vaste afstand laten groeien of krimpen, voor de speling van een klemmende passing, of een onderdeel in één stap met speling rondom uit een ander snijden.",
+  "welcome.moreOffsetBody": "een exact lichaam een vaste afstand laten groeien of krimpen, rondom of alleen zijwaarts, voor de speling van een klemmende passing, of een onderdeel in één stap met speling rondom uit een ander snijden.",
   "guide.select.holePattern": "Gatenpatroon (de werkbalkknop naast Patroon, rechtsklik op een lichaam, of Ctrl+K): klik op een plat vlak en stel dan de gatvorm, maat, tussenafstand, opstelling, marge en diepte in. De gaten verschijnen als voorbeeld; ‘Maken’ voegt ze toe als gaten, gegroepeerd met het lichaam. Groepering opheffen maakt ze weer los.",
   "guide.select.faceTool": "Vlak (de werkbalkknop naast Gatenpatroon, rechtsklik op een lichaam, of Ctrl+K): klik op een plat vlak, kies naar buiten of naar binnen en stel dan de inspringing vanaf de rand, de hoekradius en de diepte in. Wat het toevoegt, is een schetslichaam, gegroepeerd met het lichaam.",
   "scalePercent.errorTooSmall": "‘{name}’ zou kleiner worden dan 0,01 mm.",

@@ -1163,7 +1163,7 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "welcome.moreVaseTitle": "Vases et pots",
   "welcome.moreVaseBody": "une forme à part pour les vases, pots et abat-jour : forme du corps, section, torsion, motifs, trous de drainage, soucoupe et couvercle - plein pour le mode vase du trancheur ou creux.",
   "welcome.moreOffsetTitle": "Décaler et découper",
-  "welcome.moreOffsetBody": "faites grossir ou rétrécir un corps exact d'une distance donnée, pour le jeu d'un ajustement serré, ou découpez une pièce dans une autre avec un jeu tout autour, en une seule étape.",
+  "welcome.moreOffsetBody": "faites grossir ou rétrécir un corps exact d'une distance donnée, tout autour ou seulement sur les côtés, pour le jeu d'un ajustement serré, ou découpez une pièce dans une autre avec un jeu tout autour, en une seule étape.",
   "guide.select.holePattern": "Motif de trou (le bouton de la barre d'outils à côté de Motif, cliquez avec le bouton droit sur un corps ou Ctrl+K) : cliquez sur une face plate, puis définissez la forme, la taille, l'espacement, la disposition, la marge et la profondeur du trou. Les trous s'affichent à titre d'aperçu ; \"Créer\" les ajoute sous forme de trous regroupés avec le corps. Dissocier les libère à nouveau.",
   "guide.select.faceTool": "Face (le bouton de la barre d'outils à côté de Modèle de trou, clic droit sur un corps ou Ctrl+K) : cliquez sur une face plane, choisissez vers l'extérieur ou vers l'intérieur, puis réglez le retrait depuis le bord, le rayon des coins et la profondeur. Ce qui est ajouté est un corps d'esquisse regroupé avec le corps.",
   "scalePercent.errorTooSmall": "\"{name}\" deviendrait inférieur à 0,01 mm.",

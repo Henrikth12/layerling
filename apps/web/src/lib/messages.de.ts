@@ -1173,7 +1173,7 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "welcome.moreVaseTitle": "Vasen und Töpfe",
   "welcome.moreVaseBody": "eine eigene Form für Vasen, Töpfe und Lampenschirme: Körperform, Querschnitt, Verdrehung, Muster, Abflusslöcher, Untersetzer und Deckel - massiv für den Vasenmodus des Slicers oder hohl.",
   "welcome.moreOffsetTitle": "Versetzen und Ausschneiden",
-  "welcome.moreOffsetBody": "einen exakten Körper um ein festes Maß wachsen oder schrumpfen lassen, für das Spiel einer Presspassung, oder ein Teil mit Spiel ringsum aus einem anderen ausschneiden, in einem Schritt.",
+  "welcome.moreOffsetBody": "einen exakten Körper um ein festes Maß wachsen oder schrumpfen lassen, ringsum oder nur seitlich, für das Spiel einer Presspassung, oder ein Teil mit Spiel ringsum aus einem anderen ausschneiden, in einem Schritt.",
   "guide.select.holePattern": "Lochmuster (Knopf neben dem Muster in der Leiste, Rechtsklick auf einen Körper oder Strg+K): eine ebene Fläche anklicken, dann Lochform, Größe, Abstand, Anordnung, Rand und Tiefe einstellen. Die Löcher erscheinen als Vorschau; „Erzeugen“ legt sie als Aussparungen an, mit dem Körper gruppiert. Gruppe auflösen gibt sie wieder frei.",
   "guide.select.faceTool": "Fläche (Knopf neben dem Lochmuster in der Leiste, Rechtsklick auf einen Körper oder Strg+K): eine ebene Fläche anklicken, Heraus oder Hinein wählen, dann Rand zur Kante, Eckenradius und Tiefe einstellen. Das Werkzeug legt einen Skizzenkörper an, mit dem Körper gruppiert.",
   "scalePercent.errorTooSmall": "„{name}“ würde kleiner als 0,01 mm.",
