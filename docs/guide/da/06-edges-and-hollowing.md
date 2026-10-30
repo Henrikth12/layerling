@@ -108,7 +108,7 @@ Hver flade på et legeme kan flyttes den samme afstand, udad eller indad. Det er
 4. Sæt hak ved {{ui:offset.copy}} for at beholde delen, som den er, og få det forstørrede legeme som en kopi, der allerede er et hul. Grupper hullet med modstykket, så skærer det præcis det spillerum, du valgte.
 5. Klik på {{ui:offset.apply}}.
 
-Sæt flueben ved {{ui:offset.sideways}}, når kun omridset skal vokse eller skrumpe: siderne flytter sig med afstanden, mens hver flad over- og underside bliver i sin højde. Et skilt får en kant hele vejen rundt, en sokkel bliver bredere, og legemet bliver ikke højere. På et trappeformet legeme beholder hvert trin sin egen højde.
+Sæt flueben ved {{ui:offset.sideways}}, når kun omridset skal vokse eller skrumpe: siderne flytter sig med afstanden, mens hver flad over- og underside bliver i sin højde. Et skilt får en kant hele vejen rundt, en sokkel bliver bredere, og legemet bliver ikke højere. På et trappeformet legeme beholder hvert trin sin egen højde. En tekst, der forskydes via sine omrids, beholder så også sin højde.
 
 Uden hak forskydes selve legemet. Det bliver et fast, nøjagtigt legeme, som efter en affasning: listen øverst i panelet tager forskydningen tilbage, og {{ui:edge.editAction}} åbner værktøjet igen med den gamle afstand. Kun nøjagtige CAD-legemer kan forskydes - kasser, cylindre og de andre former, grupper af dem, importerede STEP-dele. Et legeme, der kun er et mesh af trekanter, som mange STL-importer, kan ofte ikke. En afstand, der er for stor til legemet, for eksempel en formindskelse ud over den tyndeste væg, afvises.
 

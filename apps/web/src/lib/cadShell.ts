@@ -1,4 +1,5 @@
 import { JoinType, type OcctKernel, type ShapeHandle } from "occt-wasm";
+import { isCadModifierWasmMemoryFault } from "@/lib/cadModifierRuntime";
 import { shellOpenSides } from "@/lib/shellLimits";
 import type { ShellEdges, ShellOpenings, ShellSide } from "@/types/layerling";
 
@@ -20,6 +21,15 @@ function shapeIsValid(cad: OcctKernel, shape: ShapeHandle) {
   } catch {
     return false;
   }
+}
+
+/**
+ * Whether a failure is more than a verdict on the distance: a missing kernel function, or a WebAssembly fault after which
+ * the kernel must be started again. Those go up to the worker instead of being read as "too thick" or "too far".
+ */
+function mustSurface(error: unknown) {
+  if (!(error instanceof Error)) return false;
+  return /is not a function/.test(error.message) || isCadModifierWasmMemoryFault(error.message, error.name);
 }
 
 function releaseAll(cad: OcctKernel, handles: ShapeHandle[]) {
@@ -177,8 +187,8 @@ function shellBody(cad: OcctKernel, solid: ShapeHandle, thickness: number, openi
               cad.release(result);
               lastError = new Error("invalid shell");
             } catch (error) {
-              // A missing kernel function is not a verdict on the wall thickness.
-              if (error instanceof Error && /is not a function/.test(error.message)) throw error;
+              // A missing kernel function or a kernel fault is not a verdict on the wall thickness.
+              if (mustSurface(error)) throw error;
               lastError = error;
             }
           }
@@ -273,7 +283,7 @@ export function offsetSolid(cad: OcctKernel, solid: ShapeHandle, distance: numbe
         if (volume > 0 && (shrink ? volume < baseVolume * (1 - 1e-6) : volume > baseVolume * (1 + 1e-6))) return result;
         cad.release(result);
       } catch (error) {
-        if (error instanceof Error && /is not a function/.test(error.message)) throw error;
+        if (mustSurface(error)) throw error;
       }
     }
   }
@@ -356,7 +366,7 @@ export function offsetSolidSideways(cad: OcctKernel, solid: ShapeHandle, distanc
     cad.release(result);
     throw new Error(CANNOT_OFFSET_MESSAGE);
   } catch (error) {
-    if (error instanceof Error && /is not a function/.test(error.message)) throw error;
+    if (mustSurface(error)) throw error;
     throw new Error(CANNOT_OFFSET_MESSAGE);
   } finally {
     releaseAll(cad, [...handles, ...layers]);
