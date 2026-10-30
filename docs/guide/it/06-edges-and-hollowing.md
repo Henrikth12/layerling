@@ -107,6 +107,8 @@ Ogni faccia di un corpo può essere spostata della stessa distanza, verso l'este
 4. Spunta {{ui:offset.copy}} per tenere il pezzo com'è e ottenere il corpo ingrandito come copia che è già un vuoto. Raggruppa quel vuoto con il pezzo da accoppiare e taglia esattamente il gioco scelto.
 5. Clicca su {{ui:offset.apply}}.
 
+Spunta {{ui:offset.sideways}} quando deve crescere o restringersi solo il contorno: i lati si spostano della distanza, mentre ogni faccia piana sopra e sotto resta alla sua altezza. Un'insegna riceve un bordo tutto intorno, una base si allarga e il corpo non diventa più alto. In un corpo a gradini ogni gradino mantiene la propria altezza.
+
 Senza la spunta viene spostato il corpo stesso. Diventa un corpo esatto fisso, come dopo uno smusso: l'elenco in alto nel pannello annulla l'offset e {{ui:edge.editAction}} riapre lo strumento con la distanza precedente. Si possono spostare solo corpi CAD esatti - scatole, cilindri e le altre forme, i loro gruppi, parti STEP importate. Un corpo che è solo una maglia di triangoli, come molte importazioni STL, spesso non può. Una distanza troppo grande per il corpo, ad esempio una riduzione oltre la parete più sottile, viene rifiutata.
 
 ## Eliminare facce

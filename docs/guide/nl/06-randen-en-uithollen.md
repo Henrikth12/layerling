@@ -105,6 +105,8 @@ Elk vlak van een lichaam kan over dezelfde afstand naar buiten of naar binnen wo
 4. Vink {{ui:offset.copy}} aan om het onderdeel te houden en het vergrote lichaam als kopie te krijgen die al een gat is. Groepeer dat gat met het tegenstuk en het snijdt precies de speling die je koos.
 5. Klik op {{ui:offset.apply}}.
 
+Vink {{ui:offset.sideways}} aan als alleen de omtrek moet groeien of krimpen: de zijkanten schuiven de afstand op, terwijl elke vlakke boven- en onderkant op zijn hoogte blijft. Een bord krijgt rondom een rand, een sokkel wordt breder en het lichaam wordt niet hoger. Bij een getrapt lichaam houdt elke trede zijn eigen hoogte.
+
 Zonder vinkje wordt het lichaam zelf verschoven. Het wordt een vast exact lichaam, zoals na een afschuining: de lijst bovenin het paneel neemt de offset terug en {{ui:edge.editAction}} opent het gereedschap opnieuw met de oude afstand. Alleen exacte CAD-lichamen kunnen worden verschoven - blokken, cilinders en de andere vormen, groepen daarvan, geïmporteerde STEP-onderdelen. Een lichaam dat alleen een driehoeksnet is, zoals veel STL-imports, lukt vaak niet. Een afstand die te groot is voor het lichaam, bijvoorbeeld verkleinen voorbij de dunste wand, wordt geweigerd.
 
 ## Vlakken verwijderen

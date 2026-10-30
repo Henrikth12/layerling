@@ -900,6 +900,7 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "offset.edges": "Vnější rohy",
   "offset.edgesHint": "Zaoblené drží odsazený povrch na vnějších rozích kulatý; ostré nechá plochy pokračovat, dokud se nepotkají.",
   "offset.copy": "Ponechat originál a přidat odsazené těleso jako díru",
+  "offset.sideways": "Jen do stran: rovné horní a spodní plochy zůstanou ve své výšce",
   "offset.apply": "Odsadit",
   "offset.working": "Odsazuji…",
   "offset.cancel": "Zrušit odsazení",

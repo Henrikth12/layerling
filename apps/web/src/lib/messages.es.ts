@@ -634,6 +634,7 @@ export const MESSAGES_ES: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Esquinas exteriores",
   "offset.edgesHint": "Redondeado mantiene redonda la superficie desfasada en las esquinas exteriores; afilado deja que las caras sigan hasta encontrarse.",
   "offset.copy": "Conservar el original y añadir el cuerpo desfasado como hueco",
+  "offset.sideways": "Solo los lados: las caras planas de arriba y abajo mantienen su altura",
   "offset.apply": "Desfasar",
   "offset.working": "Desfasando…",
   "offset.cancel": "Cancelar el desfase",

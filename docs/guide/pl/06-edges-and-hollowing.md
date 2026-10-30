@@ -107,6 +107,8 @@ Każdą ścianę bryły można przesunąć o tę samą odległość na zewnątrz
 4. Zaznacz {{ui:offset.copy}}, aby zachować część bez zmian, a powiększoną bryłę dostać jako kopię, która już jest otworem. Zgrupuj ten otwór z częścią współpracującą, a wytnie dokładnie wybrany luz.
 5. Kliknij {{ui:offset.apply}}.
 
+Zaznacz {{ui:offset.sideways}}, gdy ma rosnąć lub maleć tylko obrys: boki przesuwają się o odległość, a każda płaska górna i dolna ściana zostaje na swojej wysokości. Tabliczka dostaje obramowanie dookoła, podstawa robi się szersza, a bryła nie staje się wyższa. W bryle schodkowej każdy stopień zachowuje swoją wysokość.
+
 Bez zaznaczenia odsunięta zostaje sama bryła. Staje się stałą, dokładną bryłą, jak po fazie: lista u góry panelu cofa odsunięcie, a {{ui:edge.editAction}} otwiera narzędzie ponownie ze starą odległością. Odsunąć można tylko dokładne bryły CAD - prostopadłościany, walce i inne kształty, ich grupy, importowane części STEP. Bryła będąca tylko siatką trójkątów, jak wiele importów STL, często nie daje się odsunąć. Odległość zbyt duża dla bryły, na przykład zmniejszenie poza najcieńszą ścianę, zostaje odrzucona.
 
 ## Usuwanie ścian

@@ -452,6 +452,8 @@ export type CadModifierWorkerRequest =
       shellEdges?: ShellEdges;
       // Only for "offset" (#919): `amount` is the distance, moved inward when this is set.
       offsetShrink?: boolean;
+      // Only for "offset" (#1057): only the sides move, the body keeps its height.
+      offsetSideways?: boolean;
       // Only for "deleteFace": the faces to delete, as the prepare numbered them.
       faceIds?: number[];
       // The finest deflection the shape's edge-treatment history has needed

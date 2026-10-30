@@ -771,6 +771,7 @@ export const MESSAGES_PL: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Narożniki zewnętrzne",
   "offset.edgesHint": "Zaokrąglone utrzymuje odsuniętą powierzchnię okrągłą na zewnętrznych narożach; ostre pozwala ścianom biec dalej, aż się spotkają.",
   "offset.copy": "Zachowaj oryginał i dodaj odsuniętą bryłę jako otwór",
+  "offset.sideways": "Tylko na boki: płaskie górne i dolne ściany zostają na swojej wysokości",
   "offset.apply": "Odsuń",
   "offset.working": "Odsuwanie…",
   "offset.cancel": "Anuluj odsunięcie",

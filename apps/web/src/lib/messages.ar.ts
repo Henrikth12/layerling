@@ -641,6 +641,7 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "offset.edges": "الزوايا الخارجية",
   "offset.edgesHint": "«مستدير» يُبقي السطح المُزاح مستديرًا عند الزوايا الخارجية؛ «حاد» يمدّ الأوجه حتى تلتقي.",
   "offset.copy": "الاحتفاظ بالأصل وإضافة الجسم المُزاح كثقب",
+  "offset.sideways": "الجوانب فقط: تبقى الأوجه العلوية والسفلية المستوية على ارتفاعها",
   "offset.apply": "إزاحة",
   "offset.working": "جارٍ الإزاحة…",
   "offset.cancel": "إلغاء الإزاحة",

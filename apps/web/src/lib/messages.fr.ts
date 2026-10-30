@@ -766,6 +766,7 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Coins extérieurs",
   "offset.edgesHint": "Arrondi garde la surface décalée ronde aux coins extérieurs ; vif laisse les faces se prolonger jusqu'à ce qu'elles se rencontrent.",
   "offset.copy": "Garder l'original et ajouter le corps décalé comme trou",
+  "offset.sideways": "Côtés seulement : les faces planes du dessus et du dessous gardent leur hauteur",
   "offset.apply": "Décaler",
   "offset.working": "Décalage…",
   "offset.cancel": "Annuler le décalage",

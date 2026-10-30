@@ -776,6 +776,7 @@ export const MESSAGES_EN = {
   "offset.edges": "Outer corners",
   "offset.edgesHint": "Rounded keeps the offset surface round at outer corners; sharp lets the faces run on until they meet.",
   "offset.copy": "Keep the original and add the offset body as a hole",
+  "offset.sideways": "Sides only: flat tops and bottoms stay at their height",
   "offset.apply": "Offset",
   "offset.working": "Offsetting…",
   "offset.cancel": "Cancel offset",

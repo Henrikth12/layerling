@@ -775,6 +775,7 @@ export const MESSAGES_NL: Record<MessageKey, string> = {
   "offset.edges": "Buitenhoeken",
   "offset.edgesHint": "Afgerond houdt het verschoven oppervlak rond bij buitenhoeken; scherp laat de vlakken doorlopen tot ze elkaar raken.",
   "offset.copy": "Het origineel houden en het verschoven lichaam als gat toevoegen",
+  "offset.sideways": "Alleen zijwaarts: vlakke boven- en onderkanten blijven op hun hoogte",
   "offset.apply": "Verschuiven",
   "offset.working": "Verschuiven…",
   "offset.cancel": "Offset annuleren",

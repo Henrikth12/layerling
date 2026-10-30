@@ -775,6 +775,7 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "offset.edges": "Außenecken",
   "offset.edgesHint": "Gerundet hält die versetzte Fläche an Außenecken rund; scharf lässt die Flächen weiterlaufen, bis sie sich treffen.",
   "offset.copy": "Original behalten und den versetzten Körper als Loch hinzufügen",
+  "offset.sideways": "Nur seitlich: flache Ober- und Unterseiten bleiben auf ihrer Höhe",
   "offset.apply": "Versetzen",
   "offset.working": "Versetze…",
   "offset.cancel": "Versatz abbrechen",

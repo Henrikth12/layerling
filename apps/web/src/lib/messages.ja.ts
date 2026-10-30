@@ -672,6 +672,7 @@ export const MESSAGES_JA: Partial<Record<MessageKey, string>> = {
   "offset.edges": "外側の角",
   "offset.edgesHint": "「丸め」は外側の角でオフセット面を丸く保ち、「シャープ」は面が交わるまで延長します。",
   "offset.copy": "元を残し、オフセットしたボディを穴として追加",
+  "offset.sideways": "側面のみ：平らな上面と底面は高さを保つ",
   "offset.apply": "オフセット",
   "offset.working": "オフセット中…",
   "offset.cancel": "オフセットをキャンセル",

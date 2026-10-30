@@ -1871,6 +1871,7 @@ export const MESSAGES_PT_BR: Partial<Record<MessageKey, string>> = {
   "offset.copy": "Manter o original e adicionar o corpo deslocado como furo",
   "offset.apply": "Deslocar",
   "offset.working": "Deslocando…",
+  "offset.sideways": "Só os lados: as faces planas de cima e de baixo mantêm a altura",
   "offset.cancel": "Cancelar deslocamento",
   "offset.errorFailed": "Não foi possível aumentar ou diminuir o corpo por essa distância. Escolha uma distância menor.",
   "status.offsetGrown": "Aumentado em {size} mm",

@@ -107,6 +107,8 @@ Every face of a body can be moved by the same distance, out or in. That is what 
 4. Tick {{ui:offset.copy}} to keep the part as it is and get the grown body as a copy that already is a hole. Group that hole with the mating part and it cuts exactly the clearance you chose.
 5. Click {{ui:offset.apply}}.
 
+Tick {{ui:offset.sideways}} when only the outline should grow or shrink: the sides move by the distance, while every flat top and bottom stays at its height. A sign gets a border all round, a base gets wider, and the body does not get taller. On a stepped body each step keeps its own height.
+
 Without the tick the body itself is offset. It becomes a fixed exact body, like after a chamfer: the list at the top of the panel takes the offset back, and {{ui:edge.editAction}} opens the tool again with the old distance. Only bodies that are exact CAD bodies can be offset - boxes, cylinders and the other shapes, groups of them, imported STEP parts. A body that is only a triangle mesh, such as many STL imports, often cannot be. A distance that is too big for the body, for example a shrink beyond its thinnest wall, is refused.
 
 A text whose letters the kernel cannot offset as a body - in some fonts an A, B, M, N, W or 9 - is offset through its outlines instead: it gets the fill {{ui:prop.textWider}} by the distance (narrower when it shrinks) and grows by as much at the top and the bottom. It stays a text you can go on editing. This works for a text with filled letters and no rounding; one that already has a fill mode is refused as before.

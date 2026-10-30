@@ -605,6 +605,7 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Dış köşeler",
   "offset.edgesHint": "Yuvarlak, dış köşelerde ötelenen yüzeyi yuvarlak tutar; keskin, yüzlerin buluşana kadar devam etmesini sağlar.",
   "offset.copy": "Aslı sakla ve ötelenen gövdeyi delik olarak ekle",
+  "offset.sideways": "Yalnızca yanlar: düz üst ve alt yüzler yüksekliklerini korur",
   "offset.apply": "Ötele",
   "offset.working": "Öteleniyor…",
   "offset.cancel": "Ötelemeyi iptal et",

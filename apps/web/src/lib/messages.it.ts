@@ -594,6 +594,7 @@ export const MESSAGES_IT: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Angoli esterni",
   "offset.edgesHint": "Arrotondato mantiene tonda la superficie negli spigoli esterni; netto lascia proseguire le facce finché non si incontrano.",
   "offset.copy": "Tieni l'originale e aggiungi il corpo con offset come vuoto",
+  "offset.sideways": "Solo ai lati: le facce piane sopra e sotto restano alla loro altezza",
   "offset.apply": "Applica offset",
   "offset.working": "Offset in corso…",
   "offset.cancel": "Annulla offset",

@@ -628,6 +628,7 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "offset.edges": "外角",
   "offset.edgesHint": "圓角會讓偏移後的曲面在外角保持圓滑；尖角則讓各面延伸直到相交。",
   "offset.copy": "保留原件，並把偏移後的實體作為孔加入",
+  "offset.sideways": "僅側面：平的頂面和底面保持原高度",
   "offset.apply": "偏移",
   "offset.working": "正在偏移…",
   "offset.cancel": "取消偏移",

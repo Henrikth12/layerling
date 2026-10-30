@@ -1103,7 +1103,7 @@ export const tools = [
   },
   {
     name: "layerling_offset_object",
-    description: "Move every face of one exact solid by the same distance, outward (grow, the default) or inward (shrink) - like the editor's Offset tool. A hole can be offset too and stays a hole: grown, it cuts with that much clearance. This is the clearance for a press fit or a snap joint: with asHole true the original stays as it is and a copy, grown by the distance, is added as a hole to cut the mating part with (group them with layerling_group_objects, or use layerling_boolean_cut). `distance` is in millimetres (0.01 to 10, default 0.2). `edges` round (default) keeps the offset surface round at the outer corners, sharp lets the faces run on until they meet. A body that is only a triangle mesh often cannot be offset, and neither can a bundle or a hole; the error then says so. The result is a fixed exact body: its offset can be taken back like a chamfer.",
+    description: "Move every face of one exact solid by the same distance, outward (grow, the default) or inward (shrink) - like the editor's Offset tool. A hole can be offset too and stays a hole: grown, it cuts with that much clearance. This is the clearance for a press fit or a snap joint: with asHole true the original stays as it is and a copy, grown by the distance, is added as a hole to cut the mating part with (group them with layerling_group_objects, or use layerling_boolean_cut). `distance` is in millimetres (0.01 to 10, default 0.2). `edges` round (default) keeps the offset surface round at the outer corners, sharp lets the faces run on until they meet. With `sideways` true only the sides move and every flat top and bottom stays at its height, so the body gets a border all round (or loses one) without getting taller - a wider base, a rim around a sign. A body that is only a triangle mesh often cannot be offset, and neither can a bundle or a hole; the error then says so. The result is a fixed exact body: its offset can be taken back like a chamfer.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["id"],
@@ -1113,6 +1113,7 @@ export const tools = [
         distance: { type: "number", description: "Distance in millimetres, 0.01 to 10; 0.2 when omitted." },
         shrink: { type: "boolean", description: "True moves the faces inward (the body gets smaller); false or omitted outward." },
         asHole: { type: "boolean", description: "True keeps the original and adds the offset body as a copy that is a hole; the result is that copy." },
+        sideways: { type: "boolean", description: "True moves only the sides (X and Y); flat tops and bottoms keep their height. False or omitted moves every face." },
         edges: { type: "string", enum: ["round", "sharp"] },
       },
     },

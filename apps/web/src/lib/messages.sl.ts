@@ -664,6 +664,7 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Zunanji vogali",
   "offset.edgesHint": "Zaobljeno obdrži odmaknjeno površino okroglo na zunanjih vogalih; ostro pusti ploskvam, da tečejo naprej, dokler se ne srečajo.",
   "offset.copy": "Obdrži izvirnik in dodaj odmaknjeno telo kot luknjo",
+  "offset.sideways": "Samo ob straneh: ravne zgornje in spodnje ploskve ostanejo na svoji višini",
   "offset.apply": "Odmakni",
   "offset.working": "Odmikam…",
   "offset.cancel": "Prekliči odmik",

@@ -105,6 +105,8 @@ Chaque face d'un corps peut être déplacée de la même distance, vers l'extér
 4. Coche {{ui:offset.copy}} pour garder la pièce telle quelle et obtenir le corps agrandi comme copie qui est déjà un trou. Groupe ce trou avec la pièce complémentaire, il coupe exactement le jeu choisi.
 5. Clique sur {{ui:offset.apply}}.
 
+Coche {{ui:offset.sideways}} quand seul le contour doit grandir ou rétrécir : les côtés se déplacent de la distance, et chaque face plane du dessus et du dessous garde sa hauteur. Un panneau reçoit une bordure tout autour, un socle s'élargit, et le corps ne devient pas plus haut. Sur un corps en gradins, chaque marche garde sa propre hauteur.
+
 Sans la coche, le corps lui-même est décalé. Il devient un corps exact fixe, comme après un chanfrein : la liste en haut du panneau annule le décalage, et {{ui:edge.editAction}} rouvre l'outil avec l'ancienne distance. Seuls les corps CAD exacts peuvent être décalés - boîtes, cylindres et les autres formes, leurs groupes, pièces STEP importées. Un corps qui n'est qu'un maillage de triangles, comme beaucoup d'imports STL, ne le peut souvent pas. Une distance trop grande pour le corps, par exemple une réduction au-delà de sa paroi la plus fine, est refusée.
 
 ## Supprimer des faces

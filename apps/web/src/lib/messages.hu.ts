@@ -595,6 +595,7 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "offset.edges": "Külső sarkok",
   "offset.edgesHint": "A lekerekített kerekre hagyja az eltolt felületet a külső sarkoknál; az éles tovább viszi a lapokat, míg találkoznak.",
   "offset.copy": "Az eredeti marad, az eltolt testet lyukként adja hozzá",
+  "offset.sideways": "Csak oldalra: a sík alsó és felső lapok a helyükön maradnak",
   "offset.apply": "Eltolás",
   "offset.working": "Eltolás…",
   "offset.cancel": "Eltolás megszakítása",
