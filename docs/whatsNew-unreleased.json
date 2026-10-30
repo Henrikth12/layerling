@@ -1,6 +1,16 @@
 [
   {
     "title": {
+      "de": "Versetzen nur zur Seite",
+      "en": "Offset sideways only"
+    },
+    "body": {
+      "de": "Beim Versetzen gibt es den Haken „Nur seitlich“: Der Umriss wächst oder schrumpft um den Abstand, flache Ober- und Unterseiten bleiben auf ihrer Höhe. So bekommt ein Schild einen Rand ringsum, ohne höher zu werden.",
+      "en": "Offset has a new tick, \"Sides only\": the outline grows or shrinks by the distance, while flat tops and bottoms stay at their height. A sign gets a border all round without getting taller."
+    }
+  },
+  {
+    "title": {
       "de": "Schlitzschrauben und Unterlegscheiben",
       "en": "Slotted screws and washers"
     },
