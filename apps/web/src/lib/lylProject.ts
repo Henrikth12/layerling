@@ -1506,7 +1506,7 @@ function validateShapeDefinition(definition: Record<string, unknown>, label: str
       const threadHeadChamfer = finiteNumber(definition.threadHeadChamfer, `${label}.threadHeadChamfer`);
       if (threadHeadChamfer < 0 || threadHeadChamfer > 480) throw new Error(`${label}.threadHeadChamfer is outside the supported range`);
     }
-    if (definition.threadDrive !== undefined && !["hex", "torx", "phillips", "none"].includes(definition.threadDrive as string)) {
+    if (definition.threadDrive !== undefined && !["hex", "torx", "phillips", "slot", "none"].includes(definition.threadDrive as string)) {
       throw new Error(`${label}.threadDrive is invalid`);
     }
     for (const field of ["threadHeadDiameter", "threadDriveSize", "threadDriveDepth"] as const) {

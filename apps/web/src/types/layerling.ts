@@ -653,7 +653,7 @@ export type GridfinityOpening = {
 export type ThreadRole = "rod" | "screw" | "nut" | "bore";
 export type ThreadHead = "cylinder" | "countersunk" | "hex";
 /** What drives a screw: a recess in its free head face (#1052). */
-export type ThreadDrive = "hex" | "torx" | "phillips" | "none";
+export type ThreadDrive = "hex" | "torx" | "phillips" | "slot" | "none";
 export type ThreadHand = "right" | "left";
 /**
  * Die Zahnform: scharfe ISO-Spitze, flache Trapezflanke, rundes Profil oder

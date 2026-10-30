@@ -593,7 +593,7 @@ export function normalizeShapeCustomizations(value: unknown, fallback: ShapeCust
       entry.threadHeadChamfer = optionalShapeNumber(source.threadHeadChamfer, fallbackEntry?.threadHeadChamfer, 0, 40);
       entry.threadDrive = source.threadDrive === undefined
         ? fallbackEntry?.threadDrive
-        : ["hex", "torx", "phillips", "none"].includes(source.threadDrive)
+        : ["hex", "torx", "phillips", "slot", "none"].includes(source.threadDrive)
           ? source.threadDrive
           : fallbackEntry?.threadDrive;
     }

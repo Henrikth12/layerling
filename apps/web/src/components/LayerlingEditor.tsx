@@ -141,6 +141,7 @@ import { isBuildMessage, reportWorkerBuild } from "@/lib/buildStamp";
 import { ensureLylFileWritable, forgetLylFile, forgetStlFile, linkedLylFile, linkedStlFile, lylFileAccessSupported, pickLylFileToOpen, pickLylFileToSave, pickStlFileToSave, rememberLylFile, rememberStlFile, writeLylFile, type LylFileHandle } from "@/lib/lylFileAccess";
 import { clipboardShape, displayShapeName, hasOwnShapeName, iconTagAsset, qrCodeAsset, makeShapeFromAsset, nameTagAsset, shapeAssetLabel, toolbarShapeAssets } from "@/lib/shapeCatalog";
 import { PORT_PRESET_ORDER, PORT_PRESETS, type PortPreset } from "@/lib/portGeometry";
+import { WASHER_SIZE_ORDER, isWasherSize, washerTubeFields } from "@/lib/washerSizes";
 import { importedShapeFromStl } from "@/lib/stlImport";
 import { exportMeshesToStl } from "@/lib/stlExport";
 import { exportMeshesTo3mfAsync, THREE_MF_MEDIA_TYPE } from "@/lib/threemfExport";
@@ -10347,9 +10348,12 @@ export function LayerlingEditor({
         // A port opening named by its socket takes that socket's opening, unless a size is given as well (#1049).
         const portPreset = kind === "port" && typeof params.portPreset === "string" ? PORT_PRESETS[params.portPreset as PortPreset] : undefined;
         if (kind === "port" && params.portPreset !== undefined && !portPreset) throw new Error(`portPreset must be one of ${PORT_PRESET_ORDER.join(", ")}`);
-        const requestedWidth = mcpOptionalNumber(params.width ?? params.size) ?? portPreset?.width;
-        const requestedDepth = mcpOptionalNumber(params.depth ?? params.size) ?? (rawKind === "cube" ? requestedWidth : undefined);
-        const requestedHeight = mcpOptionalNumber(params.height ?? params.size) ?? (rawKind === "cube" ? requestedWidth : undefined) ?? portPreset?.height;
+        // A tube named by a screw size is that size's washer (ISO 7089, #1052), unless a measure is given as well.
+        const washer = kind === "tube" && isWasherSize(params.washer) ? washerTubeFields(params.washer) : undefined;
+        if (kind === "tube" && params.washer !== undefined && !washer) throw new Error(`washer must be one of ${WASHER_SIZE_ORDER.join(", ")}`);
+        const requestedWidth = mcpOptionalNumber(params.width ?? params.size) ?? portPreset?.width ?? washer?.width;
+        const requestedDepth = mcpOptionalNumber(params.depth ?? params.size) ?? (rawKind === "cube" ? requestedWidth : undefined) ?? washer?.depth;
+        const requestedHeight = mcpOptionalNumber(params.height ?? params.size) ?? (rawKind === "cube" ? requestedWidth : undefined) ?? portPreset?.height ?? washer?.height;
         // A body of no size cannot be built, and a design holding one would not open again.
         ([["width", requestedWidth], ["depth", requestedDepth], ["height", requestedHeight]] as const).forEach(([key, value]) => {
           if (value !== undefined && value <= 0) throw new Error(`${key} must be greater than 0`);
@@ -10385,7 +10389,7 @@ export function LayerlingEditor({
             { ...asset, name, color },
             { x, z, elevation },
             {
-              ...mcpShapeCustomization(asset.kind, portPreset ? { cornerFillet: portPreset.corner, portProfile: portPreset.profile, ...shapeParams } : shapeParams),
+              ...mcpShapeCustomization(asset.kind, portPreset ? { cornerFillet: portPreset.corner, portProfile: portPreset.profile, ...shapeParams } : washer ? { bevel: washer.bevel, ...shapeParams } : shapeParams),
               width: requestedWidth,
               depth: requestedDepth,
               height: requestedHeight,

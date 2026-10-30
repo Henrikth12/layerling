@@ -315,6 +315,7 @@ import { shapePivotFromWorld, shapePivotWorld } from "@/lib/rotationPivot";
 import { signedDegrees } from "@/lib/geometryRotation";
 import { orientedMeasures, withOrientedMeasures } from "@/lib/orientedMeasures";
 import { tubeAfterInner, tubeAfterOuter, tubeInnerDiameter } from "@/lib/tubeDiameters";
+import { WASHER_SIZE_ORDER, isWasherSize, washerSizeFor, washerTubeFields } from "@/lib/washerSizes";
 import { MAX_HIRTH_TEETH, MIN_HIRTH_BASE, MIN_HIRTH_TEETH, MIN_HIRTH_TOOTH_HEIGHT, hirthBoreLimit, hirthFlankAngle, hirthToothHeightLimit, normalizeHirthBore, normalizeHirthTeeth, normalizeHirthToothHeight } from "@/lib/hirthGeometry";
 
 /**
@@ -420,12 +421,14 @@ const THREAD_DRIVE_OPTIONS: Array<{ value: ThreadDrive; label: MessageKey }> = [
   { value: "hex", label: "thread.driveHex" },
   { value: "torx", label: "thread.driveTorx" },
   { value: "phillips", label: "thread.drivePhillips" },
+  { value: "slot", label: "thread.driveSlot" },
   { value: "none", label: "thread.driveNone" },
 ];
 const DRIVE_SIZE_HINT: Record<Exclude<ThreadDrive, "none">, MessageKey> = {
   hex: "prop.driveSizeHex",
   torx: "prop.driveSizeTorx",
   phillips: "prop.driveSizePhillips",
+  slot: "prop.driveSizeSlot",
 };
 const THREAD_PROFILE_OPTIONS: Array<{ value: ThreadProfile; label: MessageKey }> = [
   { value: "v", label: "thread.profileV" },
@@ -1921,7 +1924,25 @@ function getShapePropertiesWithAppLimits(shape: WorkplaneShape, onUpdate: ShapeI
       // A round tube has one outer diameter, and outer, inner and wall follow one another whatever is typed
       // first (see tubeDiameters.ts); the two sides Length and Width only come back for an oval one.
       const inner = tubeInnerDiameter(width, wall);
+      // A washer is a tube of its screw size's measures (ISO 7089, #1052): one choice sets all three.
+      const applyWasher = (value: string) => {
+        if (!isWasherSize(value)) return;
+        const washer = washerTubeFields(value);
+        onUpdate({ ...widthPatch(washer.width), depth: washer.depth, size: resizedShapeSize(washer.width, washer.depth), height: washer.height, bevel: washer.bevel }, { resizeAxis: "width" });
+      };
       return [
+        {
+          type: "select" as const,
+          id: "washerSize",
+          label: t("prop.washerSize"),
+          value: washerSizeFor(width, inner, shape.height) ?? "custom",
+          options: [
+            { value: "custom", label: t("port.custom") },
+            ...WASHER_SIZE_ORDER.map((size) => ({ value: size, label: size })),
+          ],
+          hint: t("prop.washerSizeHint"),
+          onChange: applyWasher,
+        },
         ...roundSideProperties(shape, width, depth, onUpdate),
         {
           id: "outerDiameter",
@@ -6670,7 +6691,7 @@ function ThreadHeadPreview({ head }: { head: ThreadHead }) {
 /** Der Antrieb von oben, so wie man in den Kopf schaut. */
 function ThreadDrivePreview({ drive }: { drive: ThreadDrive }) {
   const common = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinejoin: "round" as const, "aria-hidden": true };
-  const recess = drive === "none" ? null : threadDriveOutline(drive, drive === "phillips" ? 14 : 12);
+  const recess = drive === "none" ? null : threadDriveOutline(drive, drive === "phillips" ? 14 : drive === "slot" ? 16 : 12);
   const points = recess ? threadDriveOutlinePoints(recess).map(([x, z]) => `${(12 + x).toFixed(2)},${(12 - z).toFixed(2)}`).join(" ") : "";
   return (
     <svg {...common}>

@@ -1,6 +1,16 @@
 [
   {
     "title": {
+      "de": "Schlitzschrauben und Unterlegscheiben",
+      "en": "Slotted screws and washers"
+    },
+    "body": {
+      "de": "Eine Schraube kann jetzt einen Schlitz bekommen, für einen Schlitzschraubendreher oder eine Münze. Und ein Rohr wird mit einem Klick zur Unterlegscheibe: unter „Unterlegscheibe“ die Schraubengröße wählen, Außen- und Innendurchmesser und Dicke folgen der ISO 7089.",
+      "en": "A screw can now have a slot, for a flat screwdriver or a coin. And a tube becomes a washer in one click: choose the screw size under \"Washer\", and outer and inner diameter and thickness follow ISO 7089."
+    }
+  },
+  {
+    "title": {
       "de": "Werkzeuge auch für Aussparungen",
       "en": "Tools for holes too"
     },
