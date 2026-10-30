@@ -1455,7 +1455,7 @@ export const MESSAGES_IT: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Seleziona almeno due forme da raggruppare in un insieme",
   "status.bundleNotOneBody": "Un insieme non è un singolo corpo. Raggruppalo (Ctrl+G) oppure lavora sulle singole parti (E per aprirlo).",
   "status.intersectedMany": "Intersezione eseguita su {count} forme",
-  "status.hullNeedsShapes": "Seleziona due forme o più, almeno una delle quali un solido, per l'Involucro",
+  "status.hullNeedsShapes": "Seleziona due forme o più per l'Involucro",
   "status.hulledMany": "Involucro creato intorno a {count} forme",
   "status.hulling": "Calcolo dell'involucro ...",
   "status.hullChanged": "Il progetto è cambiato durante il calcolo dell'involucro; seleziona le forme e riprova",

@@ -1471,7 +1471,7 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "A kötegbe fogáshoz jelölj ki legalább két alakzatot",
   "status.bundleNotOneBody": "Egy köteg nem egyetlen test. Csoportosítsd (Ctrl+G), vagy dolgozz a részein egyenként (az E megnyitja).",
   "status.intersectedMany": "{count} alakzat metszete elkészült",
-  "status.hullNeedsShapes": "A burokhoz jelölj ki két vagy több formát, legalább egy testet",
+  "status.hullNeedsShapes": "A burokhoz jelölj ki két vagy több formát",
   "status.hulledMany": "Burok elkészült {count} forma körül",
   "status.hulling": "A burok számítása ...",
   "status.hullChanged": "A terv megváltozott a burok számítása közben; jelöld ki a formákat, és próbáld újra",

@@ -40,6 +40,8 @@ Ha egy addig működő kijelölés egy újabb élre kattintva hibára fut, az az
 
 A mutató alatti él is vastagabban rajzolódik, így látod, melyiket választja ki egy kattintás.
 
+Egy furat is elfogadja a {{ui:editor.tool.chamfer}} és a {{ui:editor.tool.fillet}} műveletet, akárcsak a {{ui:editor.tool.hollow}}, a {{ui:editor.tool.offset}} és a {{ui:editor.tool.deleteFace}} eszközt: furat marad, és az új alakjával vág. Ha egy hasáb alakú furat négy függőleges élét lekerekíted, lekerekített belső sarkú zsebet vág, a {{ui:editor.tool.offset}} eszközzel megnövelt furat pedig ennyivel több hézaggal vág. Azt az élt, ahol a furat a darabhoz ér, inkább a kész csoporton munkáld meg: az az él hozzá tartozik.
+
 ### Élművelet visszavétele
 
 Egy megmunkált test bármikor újra megmunkálható. Jelöld ki újra, és nyisd meg az eszközt – a Lekerekítés, az Élletörés és a Kiüregelés is mutatja a listát: az {{ui:edge.featureHistory}} alatt látod, mi van már rajta. A {{ui:edge.revertAction}} egyetlen műveletet vesz vissza. Figyelem: ha újabb műveletek vannak fölötte, azok is vele mennek, és a panel megmondja, hány.

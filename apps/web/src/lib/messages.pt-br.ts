@@ -3192,7 +3192,7 @@ export const MESSAGES_PT_BR: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Selecione pelo menos duas formas para o conjunto",
   "status.bundleNotOneBody": "Um conjunto não é um sólido só. Agrupe-o (Ctrl+G) ou trabalhe nas peças uma a uma (E o abre).",
   "status.intersectedMany": "Interseção de {count} formas feita",
-  "status.hullNeedsShapes": "Selecione duas formas ou mais, pelo menos uma delas um sólido, para a Envoltória",
+  "status.hullNeedsShapes": "Selecione duas formas ou mais para a Envoltória",
   "status.hulledMany": "Envoltória criada em volta de {count} formas",
   "status.hulling": "Calculando a envoltória ...",
   "status.hullChanged": "O design mudou enquanto a envoltória era calculada; selecione as formas e tente de novo",

@@ -41,6 +41,8 @@ Gdy wybór, który działał, przestaje działać po kliknięciu jeszcze jednej 
 
 Krawędź pod wskaźnikiem też jest rysowana grubiej, więc widać, którą wybierze kliknięcie.
 
+Otwór także przyjmuje {{ui:editor.tool.chamfer}} i {{ui:editor.tool.fillet}}, podobnie jak {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} i {{ui:editor.tool.deleteFace}}: pozostaje otworem i wycina swoim nowym kształtem. Zaokrąglenie czterech pionowych krawędzi otworu w kształcie prostopadłościanu daje kieszeń z zaokrąglonymi narożnikami wewnętrznymi, a otwór powiększony przez {{ui:editor.tool.offset}} wycina z odpowiednio większym luzem. Krawędź, w której otwór styka się z częścią, obrabiaj na gotowej grupie: ta krawędź należy do niej.
+
 ### Cofanie obróbki krawędzi
 
 Obrobioną bryłę zawsze można obrobić ponownie. Zaznacz ją znowu i otwórz narzędzie. Zaokrąglenie, Fazowanie i Wydrąż pokazują listę: w {{ui:edge.featureHistory}} widzisz, co już na niej jest. {{ui:edge.revertAction}} cofa pojedynczą obróbkę. Uwaga: jeśli leżą na niej nowsze obróbki, znikają razem z nią, a panel mówi, ile ich jest.

@@ -732,7 +732,7 @@ export const tools = [
   },
   {
     name: "layerling_hull_objects",
-    description: "Wrap the given objects in their convex hull, like the editor's Hull button: the smallest convex body round all of them, as if shrink-wrapped (a half sphere on a cylinder, four posts become a box). Pass two or more objects, at least one of them a solid; holes among them are cut out of the hull afterwards. The result replaces them and opens like a group, so the parts stay editable; the hull itself is a mesh.",
+    description: "Wrap the given objects in their convex hull, like the editor's Hull button: the smallest convex body round all of them, as if shrink-wrapped (a half sphere on a cylinder, four posts become a box). Pass two or more objects. With a solid among them, the holes among them are cut out of the hull afterwards; when all of them are holes, the hull is a hole itself, so two cylinder holes cut a slot. The result replaces them and opens like a group, so the parts stay editable; the hull itself is a mesh.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["ids"],
@@ -1069,7 +1069,7 @@ export const tools = [
   },
   {
     name: "layerling_delete_faces",
-    description: "Delete faces of an exact body, as the editor's Delete face tool does: the faces around them grow until they close the gap, so a fillet, a hole, a boss or a step is gone and the body stays exact (fillet, chamfer and STEP export still work on it). Give every face of the feature, with ids from layerling_list_faces - the four faces of a box's rounded top edges, the wall of a hole, the side and top of a boss. When the faces around them cannot close the gap, nothing changes and the answer says so. Deleting only the floor of a pocket makes it a hole straight through. One undo step; undone like an edge treatment.",
+    description: "Delete faces of an exact body, solid or hole, as the editor's Delete face tool does: the faces around them grow until they close the gap, so a fillet, a hole, a boss or a step is gone and the body stays exact (fillet, chamfer and STEP export still work on it). Give every face of the feature, with ids from layerling_list_faces - the four faces of a box's rounded top edges, the wall of a hole, the side and top of a boss. When the faces around them cannot close the gap, nothing changes and the answer says so. Deleting only the floor of a pocket makes it a hole straight through. One undo step; undone like an edge treatment.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["id", "faceIds"],
@@ -1082,7 +1082,7 @@ export const tools = [
   },
   {
     name: "layerling_hollow_object",
-    description: "Hollow a solid into walls of equal thickness, like a box, cup or case. The walls grow inward, so the outside keeps its size. `openings` chooses which flat sides stay open, measured against the world's axes: a list of any of top, bottom, front (+z), back (-z), left (-x) and right (+x) - for example [\"front\"] for a drawer slot - or one of the names top (default), bottom, top-bottom, or none for a sealed cavity. A side asked for in a list must have a flat face at the very edge of the body on that side. `edges` sets how the inner walls meet where the body has a step or opening: round (default, radius = wall thickness) or sharp. Can be undone like an edge treatment. Resizing the body later hollows it again at the new size a moment afterwards, so the walls keep their thickness.",
+    description: "Hollow a solid into walls of equal thickness, like a box, cup or case. A hole can be hollowed too and stays a hole. The walls grow inward, so the outside keeps its size. `openings` chooses which flat sides stay open, measured against the world's axes: a list of any of top, bottom, front (+z), back (-z), left (-x) and right (+x) - for example [\"front\"] for a drawer slot - or one of the names top (default), bottom, top-bottom, or none for a sealed cavity. A side asked for in a list must have a flat face at the very edge of the body on that side. `edges` sets how the inner walls meet where the body has a step or opening: round (default, radius = wall thickness) or sharp. Can be undone like an edge treatment. Resizing the body later hollows it again at the new size a moment afterwards, so the walls keep their thickness.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["id", "thickness"],
@@ -1102,7 +1102,7 @@ export const tools = [
   },
   {
     name: "layerling_offset_object",
-    description: "Move every face of one exact solid by the same distance, outward (grow, the default) or inward (shrink) - like the editor's Offset tool. This is the clearance for a press fit or a snap joint: with asHole true the original stays as it is and a copy, grown by the distance, is added as a hole to cut the mating part with (group them with layerling_group_objects, or use layerling_boolean_cut). `distance` is in millimetres (0.01 to 10, default 0.2). `edges` round (default) keeps the offset surface round at the outer corners, sharp lets the faces run on until they meet. A body that is only a triangle mesh often cannot be offset, and neither can a bundle or a hole; the error then says so. The result is a fixed exact body: its offset can be taken back like a chamfer.",
+    description: "Move every face of one exact solid by the same distance, outward (grow, the default) or inward (shrink) - like the editor's Offset tool. A hole can be offset too and stays a hole: grown, it cuts with that much clearance. This is the clearance for a press fit or a snap joint: with asHole true the original stays as it is and a copy, grown by the distance, is added as a hole to cut the mating part with (group them with layerling_group_objects, or use layerling_boolean_cut). `distance` is in millimetres (0.01 to 10, default 0.2). `edges` round (default) keeps the offset surface round at the outer corners, sharp lets the faces run on until they meet. A body that is only a triangle mesh often cannot be offset, and neither can a bundle or a hole; the error then says so. The result is a fixed exact body: its offset can be taken back like a chamfer.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["id"],
@@ -1161,7 +1161,7 @@ export const tools = [
   },
   {
     name: "layerling_apply_edge_treatment",
-    description: "Apply chamfer, chamfillet or fillet to specific edge ids returned by layerling_list_edges, to \"all\" sharp edges, to the \"top\" edges (every edge along the body's highest level, such as the rim of a cookie cutter), to the \"bottom\" edges (every edge along its lowest level, such as the foot of a part), or to the \"vertical\" edges (every edge that stands straight up, such as the corners of a box), as the editor's Top edges, Bottom edges and Vertical edges buttons pick them. A chamfillet is the printable foot: a chamfer at the plate (chamferAngle 15 to 75, default 45) that blends tangentially into a fillet toward the wall, so the foot needs no support and ends soft; amount is the height it takes up, and it is mostly used with \"bottom\". A fillet with endAmount has a variable radius: it runs from amount at one end of the edge to endAmount at the other, on exactly one edge id; if the large end comes out where the small one should be, apply it again with the two values swapped.",
+    description: "Apply chamfer, chamfillet or fillet to specific edge ids returned by layerling_list_edges, on a solid or a hole (a hole stays a hole: a box hole with filleted vertical edges cuts a pocket with round inside corners), to \"all\" sharp edges, to the \"top\" edges (every edge along the body's highest level, such as the rim of a cookie cutter), to the \"bottom\" edges (every edge along its lowest level, such as the foot of a part), or to the \"vertical\" edges (every edge that stands straight up, such as the corners of a box), as the editor's Top edges, Bottom edges and Vertical edges buttons pick them. A chamfillet is the printable foot: a chamfer at the plate (chamferAngle 15 to 75, default 45) that blends tangentially into a fillet toward the wall, so the foot needs no support and ends soft; amount is the height it takes up, and it is mostly used with \"bottom\". A fillet with endAmount has a variable radius: it runs from amount at one end of the edge to endAmount at the other, on exactly one edge id; if the large end comes out where the small one should be, apply it again with the two values swapped.",
     inputSchema: {
       ...editorTargetSchema,
       required: ["id", "kind", "edgeIds", "amount"],

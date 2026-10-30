@@ -41,6 +41,8 @@ Si una selección que funcionaba falla al hacer clic en una arista más, esa ari
 
 La arista que hay bajo el puntero también se dibuja más gruesa, para que veas cuál va a elegir el clic.
 
+Un hueco también admite {{ui:editor.tool.chamfer}} y {{ui:editor.tool.fillet}}, igual que {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} y {{ui:editor.tool.deleteFace}}: sigue siendo un hueco y corta con su nueva forma. Redondear las cuatro aristas verticales de un hueco en forma de caja da una cavidad con esquinas interiores redondeadas, y un hueco agrandado con {{ui:editor.tool.offset}} corta con ese margen de más. Para romper la arista donde un hueco se une a la pieza, trata el grupo terminado: esa arista es suya.
+
 ### Deshacer una operación de aristas
 
 Un cuerpo con chaflanes, redondeos o vaciado siempre se puede volver a modificar. Selecciónalo de nuevo y abre la herramienta (Redondeo, Chaflán o Vaciar; todas muestran la lista): en {{ui:edge.featureHistory}} ves lo que ya tiene aplicado. {{ui:edge.revertAction}} deshace una sola operación. Atención: si hay operaciones más recientes encima, se van con ella, y el panel te dice cuántas.

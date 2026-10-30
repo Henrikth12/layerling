@@ -1691,7 +1691,7 @@ export const MESSAGES_RU: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Выберите хотя бы две фигуры для связки",
   "status.bundleNotOneBody": "Связка — не одно тело. Сгруппируйте её (Ctrl+G) или работайте с её деталями по одной (E открывает её).",
   "status.intersectedMany": "Пересечено фигур: {count}",
-  "status.hullNeedsShapes": "Для оболочки выдели две фигуры или больше, хотя бы одна из них — тело",
+  "status.hullNeedsShapes": "Для оболочки выдели две фигуры или больше",
   "status.hulledMany": "Оболочка вокруг {count} фигур создана",
   "status.hulling": "Строю оболочку ...",
   "status.hullChanged": "Проект изменился во время расчёта оболочки; выдели фигуры и попробуй снова",

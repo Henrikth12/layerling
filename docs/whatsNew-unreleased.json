@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "title": {
+      "de": "Werkzeuge auch für Aussparungen",
+      "en": "Tools for holes too"
+    },
+    "body": {
+      "de": "Fasen, Verrunden, Aushöhlen, Versatz und Fläche löschen gehen jetzt auch an einer Aussparung, und sie bleibt eine Aussparung: eine verrundete Quader-Aussparung schneidet eine Tasche mit runden Innenecken. Die Hülle aus zwei Zylinder-Aussparungen ergibt ein Langloch.",
+      "en": "Chamfer, fillet, hollow, offset and delete face now work on a hole too, and it stays a hole: a rounded box hole cuts a pocket with round inside corners. The hull of two cylinder holes cuts a slot."
+    }
+  }
+]

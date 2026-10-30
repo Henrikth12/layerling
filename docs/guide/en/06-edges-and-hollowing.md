@@ -41,6 +41,8 @@ When a selection that worked fails after you click one more edge, that edge turn
 
 The edge under the pointer is drawn wider too, so you can see which one a click will pick.
 
+A hole takes {{ui:editor.tool.chamfer}} and {{ui:editor.tool.fillet}} as well, and so do {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} and {{ui:editor.tool.deleteFace}}: it stays a hole and cuts with its new shape. Rounding the four upright edges of a box hole cuts a pocket with round inside corners, and a hole grown with {{ui:editor.tool.offset}} cuts with that much more room. To break the edge where a hole meets the part, treat the finished group instead: that edge belongs to it.
+
 ### Taking an edge treatment back
 
 A treated body can always be treated again. Select it again and open the tool - Fillet, Chamfer or Hollow, each shows the list: under {{ui:edge.featureHistory}} you see what is already on it. {{ui:edge.revertAction}} takes back a single treatment. Note: if newer treatments lie on top, they go with it, and the panel tells you how many.

@@ -1499,7 +1499,7 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "綁定前請至少選取兩個形狀",
   "status.bundleNotOneBody": "綁定體不是單一實體。請將其群組（Ctrl+G），或逐一處理其中的部件（按 E 開啟）。",
   "status.intersectedMany": "已對 {count} 個形狀求交集",
-  "status.hullNeedsShapes": "凸包需要選取兩個或更多形狀，其中至少一個是實體",
+  "status.hullNeedsShapes": "凸包需要選取兩個或更多形狀",
   "status.hulledMany": "已為 {count} 個形狀產生凸包",
   "status.hulling": "正在計算凸包 ...",
   "status.hullChanged": "計算凸包時設計發生了變化；請選取形狀後再試一次",

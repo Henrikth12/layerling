@@ -1697,7 +1697,7 @@ export const MESSAGES_NL: Record<MessageKey, string> = {
   "status.selectTwoToBundle": "Selecteer minstens twee vormen om te bundelen",
   "status.bundleNotOneBody": "Een bundel is geen enkel lichaam. Groepeer hem (Ctrl+G) of bewerk de delen een voor een (E opent hem).",
   "status.intersectedMany": "Doorsnijding van {count} vormen gemaakt",
-  "status.hullNeedsShapes": "Selecteer twee vormen of meer, minstens één ervan een lichaam, voor Omhulsel",
+  "status.hullNeedsShapes": "Selecteer twee vormen of meer voor Omhulsel",
   "status.hulledMany": "Omhulsel om {count} vormen gemaakt",
   "status.hulling": "Omhulsel wordt berekend ...",
   "status.hullChanged": "Het ontwerp veranderde tijdens het berekenen van het omhulsel; selecteer de vormen en probeer het opnieuw",

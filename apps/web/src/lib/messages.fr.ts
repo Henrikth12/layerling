@@ -1684,7 +1684,7 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Sélectionnez au moins deux formes à regrouper",
   "status.bundleNotOneBody": "Un groupe lié n'est pas un corps unique. Groupez-le (Ctrl+G) ou travaillez sur ses pièces une à une (touche E pour l'ouvrir).",
   "status.intersectedMany": "{count} formes intersectées",
-  "status.hullNeedsShapes": "Sélectionnez deux formes ou plus, dont au moins un solide, pour l'Enveloppe",
+  "status.hullNeedsShapes": "Sélectionnez deux formes ou plus pour l'Enveloppe",
   "status.hulledMany": "Enveloppe créée autour de {count} formes",
   "status.hulling": "Calcul de l'enveloppe ...",
   "status.hullChanged": "Le design a changé pendant le calcul de l'enveloppe ; sélectionnez les formes et réessayez",

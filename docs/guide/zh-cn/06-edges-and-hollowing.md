@@ -41,6 +41,8 @@ summary: 对指定的边做倒角或圆角，为盒子、杯子和壳体抽出�
 
 指针下方的边也会画得更粗，方便你看出点击会选中哪一条。
 
+孔同样可以使用{{ui:editor.tool.chamfer}}和{{ui:editor.tool.fillet}},{{ui:editor.tool.hollow}}、{{ui:editor.tool.offset}}和{{ui:editor.tool.deleteFace}}也一样:它仍然是孔,并以新的形状进行切除。把长方体孔的四条竖直边倒圆,就会切出内角为圆角的凹槽;用{{ui:editor.tool.offset}}放大的孔会多留出相应的间隙。若要处理孔与零件相交处的边,请改为处理完成后的组:那条边属于组。
+
 ### 撤销边处理
 
 处理过的实体随时可以再次处理。重新选中它并打开工具——圆角、倒角或抽壳都会显示这份列表：在 {{ui:edge.featureHistory}} 下可以看到它上面已经有哪些处理。{{ui:edge.revertAction}} 可撤销单次处理。注意：如果上面还叠着更新的处理，它们会一并撤销，面板会告诉你有多少个。

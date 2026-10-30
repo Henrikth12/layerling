@@ -1492,7 +1492,7 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Paketlemek için en az iki şekil seç",
   "status.bundleNotOneBody": "Bir paket tek bir gövde değildir. Onu grupla (Ctrl+G) veya parçaları üzerinde tek tek çalış (E onu açar).",
   "status.intersectedMany": "{count} şeklin kesişimi alındı",
-  "status.hullNeedsShapes": "Dışbükey zarf için iki veya daha fazla şekil seçin, en az biri katı olsun",
+  "status.hullNeedsShapes": "Dışbükey zarf için iki veya daha fazla şekil seçin",
   "status.hulledMany": "{count} şeklin etrafında dışbükey zarf oluşturuldu",
   "status.hulling": "Dışbükey zarf hesaplanıyor ...",
   "status.hullChanged": "Zarf hesaplanırken tasarım değişti; şekilleri seçip yeniden deneyin",

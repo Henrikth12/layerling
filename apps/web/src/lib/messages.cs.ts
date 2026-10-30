@@ -1762,7 +1762,7 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "status.selectTwoToBundle": "Pro seskupení vyberte alespoň dva tvary",
   "status.bundleNotOneBody": "Seskupení není jedno těleso. Sloučte jej (Ctrl+G) nebo upravujte jednotlivé díly (E otevře seskupení).",
   "status.intersectedMany": "Vytvořen průnik tvarů (počet: {count})",
-  "status.hullNeedsShapes": "Pro obal vyber dva nebo více tvarů, aspoň jeden z nich těleso",
+  "status.hullNeedsShapes": "Pro obal vyber dva nebo více tvarů",
   "status.hulledMany": "Obal kolem {count} tvarů vytvořen",
   "status.hulling": "Počítám obal ...",
   "status.hullChanged": "Návrh se při výpočtu obalu změnil; vyber tvary a zkus to znovu",

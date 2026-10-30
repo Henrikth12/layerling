@@ -1586,7 +1586,7 @@ export const MESSAGES_JA: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "バンドルにするにはシェイプを2つ以上選択してください",
   "status.bundleNotOneBody": "バンドルは1つのボディではありません。グループ化（Ctrl+G）するか、パーツを1つずつ操作してください（E で開きます）。",
   "status.intersectedMany": "シェイプを{count}個交差させました",
-  "status.hullNeedsShapes": "凸包には形状を2つ以上選択してください（少なくとも1つはソリッド）",
+  "status.hullNeedsShapes": "凸包には形状を2つ以上選択してください",
   "status.hulledMany": "{count} 個の形状の凸包を作成しました",
   "status.hulling": "凸包を計算しています ...",
   "status.hullChanged": "凸包の計算中にデザインが変わりました。形状を選択してもう一度お試しください",

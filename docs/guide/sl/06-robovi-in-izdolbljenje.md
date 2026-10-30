@@ -39,6 +39,8 @@ Medtem ko vrtiš mero, layerling predogled preračuna. To lahko traja trenutek. 
 
 Rob pod kazalcem je prav tako narisan širše, da vidiš, kateri se bo izbral s klikom.
 
+Tudi luknja sprejme {{ui:editor.tool.chamfer}} in {{ui:editor.tool.fillet}}, prav tako {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} in {{ui:editor.tool.deleteFace}}: ostane luknja in reže s svojo novo obliko. Če zaobliš štiri navpične robove luknje v obliki kvadra, dobiš žep z zaobljenimi notranjimi vogali, luknja, povečana z {{ui:editor.tool.offset}}, pa reže s toliko več zračnosti. Rob, kjer luknja sreča del, raje obdelaj na končani skupini: ta rob pripada njej.
+
 ### Preklic obdelave robov
 
 Obdelano telo lahko kadarkoli obdelaš še enkrat. Izberi ga znova in odpri orodje - zaokrožitev, posnetje ali izdolbljenje vsi pokažejo seznam: Pod {{ui:edge.featureHistory}} piše, kaj je že na njem. {{ui:edge.revertAction}} prekliče posamezno obdelavo. Pozor: če so nad njo novejše obdelave, gredo z njo, okno pa pove, koliko jih je.

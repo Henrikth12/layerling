@@ -1499,7 +1499,7 @@ export const MESSAGES_ZH_CN: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "捆绑前至少选择两个形状",
   "status.bundleNotOneBody": "捆绑体不是单个实体。请将其分组（Ctrl+G），或逐个处理其中的部件（按 E 打开）。",
   "status.intersectedMany": "已求交 {count} 个形状",
-  "status.hullNeedsShapes": "凸包需要选择两个或更多形状，其中至少一个是实体",
+  "status.hullNeedsShapes": "凸包需要选择两个或更多形状",
   "status.hulledMany": "已为 {count} 个形状生成凸包",
   "status.hulling": "正在计算凸包 ...",
   "status.hullChanged": "计算凸包时设计发生了变化；请选择形状后重试",

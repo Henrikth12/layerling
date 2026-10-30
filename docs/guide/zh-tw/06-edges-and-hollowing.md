@@ -41,6 +41,8 @@ summary: 對選定的邊做倒角或圓角，為盒子、杯子與殼體抽出�
 
 滑鼠指標下方的邊也會畫得更粗，讓你看得出點擊會選取哪一條。
 
+孔同樣可以使用{{ui:editor.tool.chamfer}}和{{ui:editor.tool.fillet}},{{ui:editor.tool.hollow}}、{{ui:editor.tool.offset}}和{{ui:editor.tool.deleteFace}}也一樣:它仍然是孔,並以新的形狀進行切除。把長方體孔的四條垂直邊倒圓,就會切出內角為圓角的凹槽;用{{ui:editor.tool.offset}}放大的孔會多留出相應的間隙。若要處理孔與零件相交處的邊,請改為處理完成後的群組:那條邊屬於群組。
+
 ### 取消邊處理
 
 處理過的實體隨時可以再處理。重新選取它並開啟工具——圓角、倒角或抽殼都會顯示這份清單：在 {{ui:edge.featureHistory}} 下可以看到它上面已經有哪些處理。{{ui:edge.revertAction}} 可取消單次處理。注意：如果上面還疊著較新的處理，它們會一併取消，面板會告訴你有幾項。

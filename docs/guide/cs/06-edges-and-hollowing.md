@@ -39,6 +39,8 @@ Jestliže dříve funkční výběr přestane fungovat po přidání další hra
 
 Hrana pod ukazatelem se také kreslí silněji, abyste věděli, kterou kliknutí vybere.
 
+Také díra přijme {{ui:editor.tool.chamfer}} a {{ui:editor.tool.fillet}}, stejně jako {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} a {{ui:editor.tool.deleteFace}}: zůstane dírou a řeže svým novým tvarem. Zaoblením čtyř svislých hran díry ve tvaru kvádru vznikne kapsa se zaoblenými vnitřními rohy a díra zvětšená pomocí {{ui:editor.tool.offset}} řeže s o tolik větší vůlí. Hranu, kde se díra setkává s dílem, upravte raději na hotové skupině: tato hrana patří jí.
+
 ### Vrácení úpravy hran
 
 Upravené těleso lze upravovat znovu. Vyberte je a otevřete zaoblení, zkosení nebo vytvoření dutiny. Všechny tyto panely zobrazují {{ui:edge.featureHistory}}. Příkaz {{ui:edge.revertAction}} vrátí konkrétní úpravu. Pokud na ni navazují novější úpravy, odstraní se také; panel předem uvede jejich počet.

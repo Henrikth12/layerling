@@ -1698,7 +1698,7 @@ export const MESSAGES_EN = {
   "status.selectTwoToBundle": "Select at least two shapes to bundle",
   "status.bundleNotOneBody": "A bundle is not one body. Group it (Ctrl+G) or work on its parts one by one (E opens it).",
   "status.intersectedMany": "Intersected {count} shapes",
-  "status.hullNeedsShapes": "Select two shapes or more, at least one of them a solid, for Hull",
+  "status.hullNeedsShapes": "Select two shapes or more for Hull",
   "status.hulledMany": "Made a hull round {count} shapes",
   "status.hulling": "Making the hull ...",
   "status.hullChanged": "The scene changed while making the hull; select the shapes and try again",

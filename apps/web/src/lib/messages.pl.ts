@@ -1703,7 +1703,7 @@ export const MESSAGES_PL: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Zaznacz co najmniej dwa kształty, aby utworzyć zestaw",
   "status.bundleNotOneBody": "Zestaw nie jest jedną bryłą. Zgrupuj go (Ctrl+G) albo pracuj na jego częściach po kolei (E go otwiera).",
   "status.intersectedMany": "Część wspólna kształtów: {count}",
-  "status.hullNeedsShapes": "Zaznacz dwa kształty lub więcej, w tym co najmniej jedną bryłę, aby utworzyć otoczkę",
+  "status.hullNeedsShapes": "Zaznacz dwa kształty lub więcej, aby utworzyć otoczkę",
   "status.hulledMany": "Utworzono otoczkę wokół {count} kształtów",
   "status.hulling": "Obliczanie otoczki ...",
   "status.hullChanged": "Projekt zmienił się podczas obliczania otoczki; zaznacz kształty i spróbuj ponownie",

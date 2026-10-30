@@ -6871,7 +6871,7 @@ export function LayerlingEditor({
     setShellTool(null);
     if (refuseLockedSelection()) return;
     const kindLabel = t(kind === "fillet" ? "editor.tool.fillet" : kind === "chamfillet" ? "edge.chamfillet" : "editor.tool.chamfer");
-    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || selectedShape.hole || isNonSolidShape(selectedShape)) {
+    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || isNonSolidShape(selectedShape)) {
       setNotice(t("status.selectOneSolid", { kind: kindLabel }));
       return;
     }
@@ -7023,8 +7023,8 @@ export function LayerlingEditor({
   // tessellation, for picking), and only an exact body will do: no part goes as a mesh, and no
   // exact part has a mesh to fall back on.
   const prepareCadModifierForMcp = useCallback(async (shape: WorkplaneShape, sharpAngle: number, options: { faces?: boolean; faceMesh?: boolean } = {}) => {
-    if (shape.locked || shape.hole) {
-      throw new Error("Select one unlocked solid object for edge treatment");
+    if (shape.locked) {
+      throw new Error("Select one unlocked object for edge treatment");
     }
     if (shape.groupOperation === "bundle") {
       throw new Error("A bundle is not one body; group it (layerling_group_objects) or treat its parts one by one");
@@ -7291,8 +7291,8 @@ export function LayerlingEditor({
   // `watched` is the body in the scene the result replaces; it is the shape
   // itself, except when a resized hollow body is hollowed again from its state before.
   const shellShape = useCallback(async (shape: WorkplaneShape, thickness: number, openings: ShellOpenings, edges: ShellEdges = "round", watched: WorkplaneShape = shape, offset?: { shrink: boolean }) => {
-    if (shape.locked || shape.hole || isNonSolidShape(shape)) {
-      throw new Error("Select one unlocked solid object to hollow");
+    if (shape.locked || isNonSolidShape(shape)) {
+      throw new Error("Select one unlocked object to hollow");
     }
     invalidateCadModifierSession();
     const sourceFingerprint = projectShapesFingerprint([watched]);
@@ -7380,8 +7380,8 @@ export function LayerlingEditor({
    * here, and a face that is not the same any more stops the deletion.
    */
   const deleteFacesShape = useCallback(async (shape: WorkplaneShape, faceIds: number[], picked?: CadFaceInfo[]) => {
-    if (shape.locked || shape.hole || isNonSolidShape(shape)) {
-      throw new Error("Select one unlocked solid object to delete faces from");
+    if (shape.locked || isNonSolidShape(shape)) {
+      throw new Error("Select one unlocked object to delete faces from");
     }
     invalidateCadModifierSession();
     const sourceFingerprint = projectShapesFingerprint([shape]);
@@ -7465,7 +7465,7 @@ export function LayerlingEditor({
       return;
     }
     if (refuseLockedSelection()) return;
-    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || selectedShape.hole || isNonSolidShape(selectedShape)) {
+    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || isNonSolidShape(selectedShape)) {
       setNotice(t("status.selectOneSolid", { kind: t("editor.tool.hollow") }));
       return;
     }
@@ -7485,7 +7485,7 @@ export function LayerlingEditor({
       return;
     }
     if (refuseLockedSelection()) return;
-    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || selectedShape.hole || isNonSolidShape(selectedShape)) {
+    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || isNonSolidShape(selectedShape)) {
       setNotice(t("status.selectOneSolid", { kind: t("editor.tool.offset") }));
       return;
     }
@@ -8732,7 +8732,7 @@ export function LayerlingEditor({
       return;
     }
     if (refuseLockedSelection()) return;
-    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || selectedShape.hole || isNonSolidShape(selectedShape)) {
+    if (selectedShapes.length !== 1 || !selectedShape || selectedShape.locked || isNonSolidShape(selectedShape)) {
       setNotice(t("status.selectOneSolid", { kind: t("editor.tool.deleteFace") }));
       return;
     }
@@ -9274,7 +9274,9 @@ export function LayerlingEditor({
         const axes = { x: [xAxis.x, xAxis.y, xAxis.z] as const, z: [zAxis.x, zAxis.y, zAxis.z] as const };
         place = (built, wall) => movedWithEditedOutline(placeSketchShape(built, placementWorkplaneRef.current, single), single, wall, { x: built.x, z: built.z }, axes);
       } else {
-        const found = (await textCutterOutline(targets)) ?? (await footprintOutline(targets));
+        // Holes only give their own outline (#1055): the outline is taken as from solids, which would leave nothing of them.
+        const sources = targets.every((shape) => shape.hole) ? targets.map((shape) => withHoleMode(shape, false)) : targets;
+        const found = (await textCutterOutline(sources)) ?? (await footprintOutline(sources));
         if (!found) return fail(t("status.cookieCutterNoOutline"));
         outline = found.profile;
         place = (built, wall) => canonicalizeShape({ ...built, x: found.x + built.x - wall.x, z: found.z + built.z - wall.z, elevation: found.floor });
@@ -11339,7 +11341,7 @@ export function LayerlingEditor({
         const groupable = currentShapes().filter((shape) => ids.has(shape.id));
         if (groupable.some((shape) => shape.locked)) throw new Error("Unlock every selected object before making a hull");
         if (groupable.some((shape) => isNonSolidShape(shape))) throw new Error("A ruler isn't a solid and can't be part of a hull");
-        if (!canHullShapes(groupable)) throw new Error("Pass two objects or more, at least one of them a solid, to make a hull");
+        if (!canHullShapes(groupable)) throw new Error("Pass two objects or more to make a hull");
         const sourceFingerprint = projectShapesFingerprint(currentShapes());
         const sourceProjectId = projectInfoRef.current.projectId;
         const result = await buildHullShapeFromSelection(groupable, workspaceSettingsRef.current.booleanTriangleLimit);
@@ -14360,7 +14362,8 @@ export function LayerlingEditor({
         alignMode={alignMode}
         // A locked shape in the selection is the anchor the others line up on, so Align stays.
         canAlign={selectedShapes.length > 1 && selectedShapes.some((shape) => !shape.locked)}
-        canEdgeModify={selectedShapes.length === 1 && Boolean(selectedShape && !selectedShape.locked && !selectedShape.hole && !isNonSolidShape(selectedShape))}
+        // A hole takes them too (#1055): a box hole with round vertical edges cuts a pocket with round inside corners.
+        canEdgeModify={selectedShapes.length === 1 && Boolean(selectedShape && !selectedShape.locked && !isNonSolidShape(selectedShape))}
         edgeModifierKind={edgeModifier?.kind ?? null}
         mirrorMode={mirrorMode}
         canSplit={canSplitSelection}

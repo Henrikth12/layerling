@@ -635,7 +635,10 @@ function combinedScope(cad: OcctKernel, parts: CadModifierMeshPart[], depth: num
 }
 
 function reconstructParts(cad: OcctKernel, parts: CadModifierMeshPart[]) {
-  const combined = combinedScope(cad, parts, 0);
+  // A hole on its own, or a group of holes only, is the body to treat itself (#1055): it stays a
+  // hole in the scene, and here it is built like a solid.
+  const holesOnly = parts.length > 0 && parts.every((part) => part.hole);
+  const combined = combinedScope(cad, holesOnly ? parts.map((part) => ({ ...part, hole: false })) : parts, 0);
   if (combined === null) throw new Error("The group has no solid body to modify");
   let result: ShapeHandle;
   // The repair runs on a copy: ShapeFix also rewrites the sub-shapes it

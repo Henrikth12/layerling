@@ -1534,7 +1534,7 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "حدد شكلين على الأقل للحزم",
   "status.bundleNotOneBody": "الحزمة ليست جسمًا واحدًا. جمّعها (Ctrl+G) أو اعمل على أجزائها واحدًا واحدًا (E يفتحها).",
   "status.intersectedMany": "تم تقاطع الأشكال: {count}",
-  "status.hullNeedsShapes": "حدد شكلين أو أكثر، أحدهما على الأقل جسم، لإنشاء الغلاف",
+  "status.hullNeedsShapes": "حدد شكلين أو أكثر لإنشاء الغلاف",
   "status.hulledMany": "تم إنشاء غلاف حول {count} أشكال",
   "status.hulling": "جارٍ إنشاء الغلاف ...",
   "status.hullChanged": "تغيّر التصميم أثناء إنشاء الغلاف؛ حدد الأشكال وحاول مرة أخرى",

@@ -2122,7 +2122,7 @@ export const MESSAGES_DA: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Vælg mindst to former at bundte",
   "status.bundleNotOneBody": "Et bundt er ikke én form. Gruppér det (Ctrl+G) eller arbejd på dets dele én ad gangen (E åbner det).",
   "status.intersectedMany": "Fælles-skåret {count} former",
-  "status.hullNeedsShapes": "Vælg to figurer eller flere, mindst én af dem et legeme, til Hylster",
+  "status.hullNeedsShapes": "Vælg to figurer eller flere til Hylster",
   "status.hulledMany": "Hylster om {count} figurer lavet",
   "status.hulling": "Laver hylsteret ...",
   "status.hullChanged": "Designet ændrede sig, mens hylsteret blev beregnet; vælg figurerne og prøv igen",

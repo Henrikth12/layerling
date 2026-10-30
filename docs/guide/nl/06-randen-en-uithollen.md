@@ -39,6 +39,8 @@ Mislukt een selectie die eerst werkte nadat je op nog een rand hebt geklikt, dan
 
 Ook de rand onder de aanwijzer wordt breder getekend, zodat je ziet welke een klik zal kiezen.
 
+Ook een gat neemt {{ui:editor.tool.chamfer}} en {{ui:editor.tool.fillet}} aan, net als {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} en {{ui:editor.tool.deleteFace}}: het blijft een gat en snijdt met zijn nieuwe vorm. Rond je de vier staande randen van een kubusvormig gat af, dan krijg je een kamer met ronde binnenhoeken, en een gat dat met {{ui:editor.tool.offset}} groter is gemaakt, snijdt met zoveel meer ruimte. De rand waar een gat het onderdeel raakt, bewerk je juist op de afgewerkte groep: die rand hoort bij haar.
+
 ### Een randbewerking terugdraaien
 
 Een bewerkt lichaam kun je altijd opnieuw bewerken. Selecteer het weer en open het gereedschap; Afronden, Afschuinen en Uithollen tonen allemaal de lijst: onder {{ui:edge.featureHistory}} zie je wat er al op zit. {{ui:edge.revertAction}} draait één bewerking terug. Let op: liggen er nieuwere bewerkingen bovenop, dan gaan die mee, en het paneel meldt hoeveel.

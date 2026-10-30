@@ -41,6 +41,8 @@ Se una selezione che funzionava smette di funzionare quando aggiungi un altro sp
 
 Anche lo spigolo sotto il puntatore viene disegnato più largo, così puoi vedere quale selezionerai con il clic.
 
+Anche un foro accetta {{ui:editor.tool.chamfer}} e {{ui:editor.tool.fillet}}, così come {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} e {{ui:editor.tool.deleteFace}}: resta un foro e taglia con la sua nuova forma. Arrotondando i quattro spigoli verticali di un foro a parallelepipedo si ottiene una tasca con angoli interni arrotondati, e un foro ingrandito con {{ui:editor.tool.offset}} taglia con altrettanto gioco in più. Per smussare lo spigolo dove un foro incontra il pezzo, tratta invece il gruppo finito: quello spigolo appartiene a lui.
+
 ### Annullare un trattamento degli spigoli
 
 Puoi sempre modificare di nuovo un corpo su cui hai applicato uno strumento per gli spigoli. Selezionalo e apri Raccordo, Smusso o Svuota: in ciascuno trovi l’elenco dei trattamenti già applicati sotto {{ui:edge.featureHistory}}. {{ui:edge.revertAction}} annulla un singolo trattamento. Se sopra ce ne sono di più recenti, verranno annullati insieme; il pannello ti indica quanti.

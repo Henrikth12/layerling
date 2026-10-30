@@ -1519,7 +1519,7 @@ export const MESSAGES_ES: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Selecciona al menos dos formas para crear un conjunto",
   "status.bundleNotOneBody": "Un conjunto no es un solo cuerpo. Agrúpalo (Ctrl+G) o trabaja con sus piezas una a una (E lo abre).",
   "status.intersectedMany": "Intersección de {count} formas",
-  "status.hullNeedsShapes": "Selecciona dos formas o más, al menos una de ellas un sólido, para la Envolvente",
+  "status.hullNeedsShapes": "Selecciona dos formas o más para la Envolvente",
   "status.hulledMany": "Envolvente creada alrededor de {count} formas",
   "status.hulling": "Calculando la envolvente ...",
   "status.hullChanged": "El diseño cambió mientras se calculaba la envolvente; selecciona las formas y vuelve a intentarlo",

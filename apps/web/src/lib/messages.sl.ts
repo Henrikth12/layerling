@@ -1364,7 +1364,7 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "status.selectTwoToBundle": "Za povezavo v sveženj izberi vsaj dve obliki",
   "status.bundleNotOneBody": "Sveženj ni eno telo. Združi ga v skupino (Ctrl+G) ali urejaj dele posamično (E ga odpre).",
   "status.intersectedMany": "Presek oblik: {count}",
-  "status.hullNeedsShapes": "Za ovojnico izberi dve obliki ali več, vsaj eno telo",
+  "status.hullNeedsShapes": "Za ovojnico izberi dve obliki ali več",
   "status.hulledMany": "Ovojnica okoli {count} oblik ustvarjena",
   "status.hulling": "Računam ovojnico ...",
   "status.hullChanged": "Načrt se je med računanjem ovojnice spremenil; izberi oblike in poskusi znova",

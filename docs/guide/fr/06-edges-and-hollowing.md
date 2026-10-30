@@ -39,6 +39,8 @@ Lorsqu'une sélection qui a fonctionné échoue après avoir cliqué sur un bord
 
 Le bord sous le pointeur est également plus large, afin que vous puissiez voir lequel un clic sélectionnera.
 
+Un perçage accepte aussi {{ui:editor.tool.chamfer}} et {{ui:editor.tool.fillet}}, de même que {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} et {{ui:editor.tool.deleteFace}} : il reste un perçage et découpe avec sa nouvelle forme. Arrondir les quatre arêtes verticales d'un perçage en boîte donne une poche aux coins intérieurs arrondis, et un perçage agrandi avec {{ui:editor.tool.offset}} découpe avec autant de jeu en plus. Pour casser l'arête là où un perçage rencontre la pièce, traitez plutôt le groupe terminé : cette arête lui appartient.
+
 ### Reprendre un traitement de pointe
 
 Un corps traité peut toujours être traité à nouveau. Sélectionnez-le à nouveau et ouvrez l'outil - Congé, Chanfrein ou Creux, chacun affiche la liste : sous {{ui:edge.featureHistory}} vous voyez ce qu'il y a déjà dessus. {{ui:edge.revertAction}} reprend un seul traitement. Remarque : si des traitements plus récents se trouvent au-dessus, ils vont avec et le panneau vous indique combien.

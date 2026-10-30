@@ -41,6 +41,8 @@ Når en markering der virkede fejler efter du klikker én kant mere, bliver den 
 
 Kanten under markøren tegnes også bredere, så du kan se hvilken et klik vil vælge.
 
+Et hul tager også {{ui:editor.tool.chamfer}} og {{ui:editor.tool.fillet}}, og det samme gør {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} og {{ui:editor.tool.deleteFace}}: det forbliver et hul og skærer med sin nye form. Afrundes de fire lodrette kanter på et kassehul, får du en lomme med runde indvendige hjørner, og et hul gjort større med {{ui:editor.tool.offset}} skærer med så meget mere luft. Kanten, hvor et hul møder delen, bearbejder du i stedet på den færdige gruppe: den kant hører til den.
+
 ### Tage en kantbehandling tilbage
 
 En behandlet form kan altid behandles igen. Vælg den igen og åbn værktøjet - Rund, Fas eller Hul, hver viser listen: under {{ui:edge.featureHistory}} ser du hvad der allerede er på den. {{ui:edge.revertAction}} tager en enkelt behandling tilbage. Bemærk: hvis nyere behandlinger ligger ovenpå, følger de med, og panelet fortæller dig hvor mange.

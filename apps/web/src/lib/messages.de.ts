@@ -1697,7 +1697,7 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "status.selectTwoToBundle": "Mindestens zwei Formen zum Bündeln auswählen",
   "status.bundleNotOneBody": "Ein Bündel ist kein einzelner Körper. Gruppiere es (Strg+G) oder bearbeite seine Teile einzeln (E öffnet es).",
   "status.intersectedMany": "Schnittmenge aus {count} Formen gebildet",
-  "status.hullNeedsShapes": "Markiere zwei Formen oder mehr, mindestens einen Körper, für die Hülle",
+  "status.hullNeedsShapes": "Markiere zwei Formen oder mehr für die Hülle",
   "status.hulledMany": "Hülle um {count} Formen erstellt",
   "status.hulling": "Hülle wird berechnet ...",
   "status.hullChanged": "Der Entwurf hat sich beim Berechnen der Hülle geändert; markiere die Formen und versuche es noch einmal",

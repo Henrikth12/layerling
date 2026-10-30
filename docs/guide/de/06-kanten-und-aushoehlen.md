@@ -41,6 +41,8 @@ Scheitert eine Auswahl, die eben noch ging, nachdem du eine weitere Kante angekl
 
 Auch die Kante unter dem Mauszeiger wird breiter gezeichnet, damit du siehst, welche ein Klick wählt.
 
+Auch eine Aussparung nimmt {{ui:editor.tool.chamfer}} und {{ui:editor.tool.fillet}} an, ebenso {{ui:editor.tool.hollow}}, {{ui:editor.tool.offset}} und {{ui:editor.tool.deleteFace}}: Sie bleibt eine Aussparung und schneidet mit ihrer neuen Form. Werden die vier senkrechten Kanten einer Quader-Aussparung verrundet, entsteht eine Tasche mit runden Innenecken, und eine mit {{ui:editor.tool.offset}} vergrößerte Aussparung schneidet mit entsprechend mehr Luft. Die Kante, an der eine Aussparung auf das Teil trifft, brichst du dagegen an der fertigen Gruppe: Diese Kante gehört ihr.
+
 ### Eine Kantenbearbeitung zurücknehmen
 
 Ein behandelter Körper lässt sich jederzeit noch einmal behandeln. Wähle ihn wieder aus und öffne das Werkzeug - Verrundung, Fase oder Aushöhlen zeigen alle die Liste: Unter {{ui:edge.featureHistory}} steht, was schon darauf liegt. {{ui:edge.revertAction}} nimmt eine einzelne Bearbeitung zurück. Achtung: Liegen neuere Bearbeitungen darüber, gehen sie mit weg, und das Fenster sagt dir, wie viele.
