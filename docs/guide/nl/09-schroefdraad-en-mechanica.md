@@ -28,6 +28,8 @@ De lijst groepeert de maten per serie, en een regel onder het veld noemt de seri
 
 De G-maten zijn de cilindrische Whitworth-pijpdraden volgens ISO 228-1, te vinden op fittingen voor water, gas, hydrauliek en pneumatiek. De maat noemt de pijp, niet de draad: een G1 meet 33,249 mm over de draad. Kies je een G-maat, dan wordt het profiel {{ui:thread.profileWhitworth}}, en kies je een metrische of inchmaat, dan gaat het terug naar {{ui:thread.profileV}}. Een {{ui:thread.profileTrapezoidal}}- of {{ui:thread.profileRound}}-profiel dat je zelf koos, blijft staan. De norm legt alleen de draad vast, dus de kop van een schroef en een moer op een G-maat krijgen dezelfde verhoudingen als op een diameter die je zelf instelt. De conische pijpdraden R, Rc en Rp zitten er niet bij.
 
+De laatste reeks in de lijst, {{ui:thread.group.bottle}}, bevat PCO 1881: de 28 mm-hals van de meeste water- en frisdrankflessen, 27,4 mm over de draad met een spoed van 2,7 mm. De draad heeft brede, platte toppen, dus als je hem kiest wordt het profiel {{ui:thread.profileCustom}} met een {{ui:prop.threadDepth}} van 1,6 mm en een {{ui:prop.threadFlankAngle}} van 30°; een maat die je daarna kiest brengt zijn eigen profiel terug. Maak de hals als {{ui:thread.rod}} en de dop als {{ui:thread.nut}}, of trek een {{ui:thread.bore}} van een cilinder af. De maten volgen de normtekening zoals de OpenSCAD-bibliotheek BOSL2 die geeft; print een proefstuk vóór een hele dop. Jerrycans en afwasmiddelflessen hebben geen gezamenlijke norm: meet de hals die je hebt en vul de waarden in bij {{ui:thread.customSize}}.
+
 Meer instellingen:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} of {{ui:thread.left}}.

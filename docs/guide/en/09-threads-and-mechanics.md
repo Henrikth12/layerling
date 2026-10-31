@@ -28,6 +28,8 @@ The list groups the sizes by series, and a line under the field names the series
 
 The G sizes are the parallel Whitworth pipe threads to ISO 228-1, found on fittings for water, gas, hydraulics and pneumatics. The size names the pipe, not the thread: a G1 measures 33.249 mm across the thread. Choosing a G size sets the profile to {{ui:thread.profileWhitworth}}, and choosing a metric or inch size sets it back to {{ui:thread.profileV}}. A {{ui:thread.profileTrapezoidal}} or {{ui:thread.profileRound}} profile you picked yourself stays. The standard only defines the thread, so the head of a screw and a nut on a G size get the same proportions as on a diameter you set yourself. The tapered pipe threads R, Rc and Rp are not included.
 
+The last series in the list, {{ui:thread.group.bottle}}, holds PCO 1881: the 28 mm neck of most water and soda bottles, 27.4 mm across with a pitch of 2.7 mm. Its thread has wide flat crests, so choosing it sets the profile to {{ui:thread.profileCustom}} with a {{ui:prop.threadDepth}} of 1.6 mm and a {{ui:prop.threadFlankAngle}} of 30°; another size chosen afterwards brings its own profile back. Make the neck as a {{ui:thread.rod}} and the cap as a {{ui:thread.nut}}, or subtract a {{ui:thread.bore}} from a cylinder. The measures follow the drawing of the standard as the OpenSCAD library BOSL2 has it; print a test piece before a whole cap. Canisters and washing-up liquid bottles have no common standard, so measure the neck you have and enter its values under {{ui:thread.customSize}}.
+
 More settings:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} or {{ui:thread.left}}.

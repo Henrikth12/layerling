@@ -28,6 +28,8 @@ Seznam je rozdělen podle řad a pod ním je vysvětlení vybrané řady:
 
 G je válcový Whitworthův trubkový závit podle ISO 228-1 pro vodu, plyn, hydrauliku a pneumatiku. Označení odpovídá trubce, nikoli vnějšímu průměru závitu: G1 má 33,249 mm. Volba G nastaví {{ui:thread.profileWhitworth}}, metrická či palcová velikost vrátí {{ui:thread.profileV}}. Ručně zvolený {{ui:thread.profileTrapezoidal}} nebo {{ui:thread.profileRound}} zůstává. Norma zde určuje jen závit; hlava šroubu a matice G mají obecné proporce jako vlastní průměr. Varianty R, Rc a Rp nejsou zahrnuty.
 
+Poslední řada seznamu, {{ui:thread.group.bottle}}, obsahuje PCO 1881: hrdlo 28 mm většiny lahví od vody a limonád, 27,4 mm přes závit se stoupáním 2,7 mm. Jeho závit má široké ploché vrcholy, proto jeho volba přepne profil na {{ui:thread.profileCustom}} s {{ui:prop.threadDepth}} 1,6 mm a {{ui:prop.threadFlankAngle}} 30°; velikost zvolená potom vrátí svůj vlastní profil. Hrdlo udělejte jako {{ui:thread.rod}} a víčko jako {{ui:thread.nut}}, nebo odečtěte {{ui:thread.bore}} od válce. Rozměry odpovídají výkresu normy, jak jej uvádí knihovna OpenSCAD BOSL2; před celým víčkem vytiskněte zkušební kus. Kanystry a lahve od saponátu žádnou společnou normu nemají, změřte tedy hrdlo, které máte, a zadejte hodnoty v {{ui:thread.customSize}}.
+
 Další nastavení:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} nebo {{ui:thread.left}}.

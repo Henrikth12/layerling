@@ -28,6 +28,8 @@ Listen grupperer størrelserne efter serie, og en linje under feltet navngiver s
 
 G-størrelserne er de parallelle Whitworth-rørgevind til ISO 228-1, der findes på fittings til vand, gas, hydraulik og pneumatik. Størrelsen navngiver røret, ikke gevindet: en G1 måler 33,249 mm over gevindet. At vælge en G-størrelse sætter profilen til {{ui:thread.profileWhitworth}}, og at vælge en metrisk eller tomme-størrelse sætter den tilbage til {{ui:thread.profileV}}. En {{ui:thread.profileTrapezoidal}} eller {{ui:thread.profileRound}} profil du selv har valgt bevares. Standarden definerer kun gevindet, så hovedet på en skrue og en møtrik på en G-størrelse får de samme proportioner som på en diameter du selv har sat. De koniske rørgevind R, Rc og Rp er ikke medtaget.
 
+Den sidste serie på listen, {{ui:thread.group.bottle}}, indeholder PCO 1881: 28 mm-halsen på de fleste vand- og sodavandsflasker, 27,4 mm over gevindet med en stigning på 2,7 mm. Gevindet har brede, flade toppe, så når du vælger det, skifter profilet til {{ui:thread.profileCustom}} med en {{ui:prop.threadDepth}} på 1,6 mm og en {{ui:prop.threadFlankAngle}} på 30°; en størrelse valgt bagefter bringer sit eget profil tilbage. Lav halsen som {{ui:thread.rod}} og kapslen som {{ui:thread.nut}}, eller træk et {{ui:thread.bore}} fra en cylinder. Målene følger standardens tegning, som OpenSCAD-biblioteket BOSL2 gengiver den; print et prøvestykke før en hel kapsel. Dunke og opvaskemiddelflasker har ingen fælles standard, så mål den hals, du har, og indtast værdierne under {{ui:thread.customSize}}.
+
 Flere indstillinger:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} eller {{ui:thread.left}}.

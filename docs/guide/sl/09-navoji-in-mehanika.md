@@ -28,6 +28,8 @@ Seznam razvršča velikosti po vrstah, vrstica pod poljem pa navede vrsto izbran
 
 Velikosti G so cilindrični Whitworthovi cevni navoji po ISO 228-1, kot sedijo na fitingih za vodo, plin, hidravliko in pnevmatiko. Velikost poimenuje cev, ne navoj: G1 meri čez navoj 33,249 mm. Če izbereš velikost G, se profil preklopi na {{ui:thread.profileWhitworth}}, metrična ali palčna velikost ga spet nastavi na {{ui:thread.profileV}}. {{ui:thread.profileTrapezoidal}} ali {{ui:thread.profileRound}}, ki si ju sam izbral, ostaneta. Standard določa samo navoj; glava vijaka in matica dobita pri velikosti G enaka razmerja kot pri samostojno izbranem premeru. Stožčasti cevni navoji R, Rc in Rp niso zraven.
 
+Zadnja vrsta na seznamu, {{ui:thread.group.bottle}}, vsebuje PCO 1881: 28-mm grlo večine steklenic za vodo in gazirane pijače, 27,4 mm čez navoj s korakom 2,7 mm. Njegov navoj ima široka, ploska temena, zato ob izbiri profil preklopi na {{ui:thread.profileCustom}} z {{ui:prop.threadDepth}} 1,6 mm in {{ui:prop.threadFlankAngle}} 30°; velikost, izbrana pozneje, vrne svoj profil. Grlo naredi kot {{ui:thread.rod}}, pokrovček kot {{ui:thread.nut}} ali pa od valja odštej {{ui:thread.bore}}. Mere sledijo risbi standarda, kot jo navaja knjižnica OpenSCAD BOSL2; pred celim pokrovčkom natisni preizkusni kos. Kanistri in steklenice detergenta za posodo nimajo skupnega standarda: izmeri grlo, ki ga imaš, in vnesi vrednosti pod {{ui:thread.customSize}}.
+
 Dodatne nastavitve:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} ali {{ui:thread.left}}.

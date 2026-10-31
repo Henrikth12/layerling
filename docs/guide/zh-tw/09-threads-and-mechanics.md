@@ -28,6 +28,8 @@ summary: 能相互配合的螺絲、螺帽與螺紋孔，以及齒輪、彈簧�
 
 G 規格是符合 ISO 228-1 的平行惠氏管螺紋，常見於水、瓦斯、液壓與氣動接頭。規格指的是管子，不是螺紋：G1 在螺紋處量得 33.249 mm。選擇 G 規格會把牙型設為 {{ui:thread.profileWhitworth}}，選擇公制或英吋規格則設回 {{ui:thread.profileV}}。自己選的 {{ui:thread.profileTrapezoidal}} 或 {{ui:thread.profileRound}} 牙型會保留。標準只定義螺紋，因此 G 規格的螺絲頭與螺帽，比例和自行設定直徑時相同。錐形管螺紋 R、Rc 與 Rp 未包含在內。
 
+清單中的最後一個系列 {{ui:thread.group.bottle}} 包含 PCO 1881：大多數水瓶和汽水瓶的 28 mm 瓶口，螺紋外徑 27.4 mm，螺距 2.7 mm。它的螺紋牙頂寬而平，所以選擇它時牙型會切換為 {{ui:thread.profileCustom}}，{{ui:prop.threadDepth}} 為 1.6 mm，{{ui:prop.threadFlankAngle}} 為 30°；之後選擇的其他規格會恢復各自的牙型。瓶口用 {{ui:thread.rod}} 製作，瓶蓋用 {{ui:thread.nut}}，或者從圓柱體中減去一個 {{ui:thread.bore}}。尺寸依照 OpenSCAD 函式庫 BOSL2 所載的標準圖面；列印整個瓶蓋之前先列印一個試件。油桶和洗碗精瓶沒有統一標準：請測量你手上的瓶口，並在 {{ui:thread.customSize}} 中輸入數值。
+
 更多設定：
 
 - **{{ui:prop.threadHand}}：** {{ui:thread.right}} 或 {{ui:thread.left}}。

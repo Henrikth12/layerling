@@ -1,6 +1,16 @@
 [
   {
     "title": {
+      "de": "Flaschengewinde PCO 1881",
+      "en": "Bottle thread PCO 1881"
+    },
+    "body": {
+      "de": "Im Größenmenü des Gewindes gibt es jetzt die Reihe „PCO – Flaschen“ mit PCO 1881, dem 28-mm-Hals der meisten Wasser- und Limoflaschen. Er bringt sein flaches Profil gleich mit. Baue den Hals als Stange und den Deckel als Mutter oder Gewindeloch, für Trichter, Ausgießer oder einen Ersatzdeckel.",
+      "en": "The thread's size menu now has the series \"PCO – Bottles\" with PCO 1881, the 28 mm neck of most water and soda bottles. It brings its flat profile along. Make the neck as a rod and the cap as a nut or tapped hole, for funnels, spouts or a spare cap."
+    }
+  },
+  {
+    "title": {
       "de": "Duplizieren wiederholt auch die Größe",
       "en": "Duplicate repeats the size too"
     },

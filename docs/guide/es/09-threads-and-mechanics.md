@@ -28,6 +28,8 @@ La lista agrupa los tamaños por series, y una línea bajo el campo indica la se
 
 Las medidas G son las roscas de tubo Whitworth cilíndricas según ISO 228-1, las de los racores de agua, gas, hidráulica y neumática. La medida da nombre al tubo, no a la rosca: una G1 mide 33,249 mm de diámetro exterior de rosca. Al elegir una medida G, el perfil pasa a {{ui:thread.profileWhitworth}}, y al elegir una métrica o una en pulgadas vuelve a {{ui:thread.profileV}}. Si has elegido tú un perfil {{ui:thread.profileTrapezoidal}} o {{ui:thread.profileRound}}, se mantiene. La norma solo define la rosca, así que la cabeza de un tornillo y una tuerca con medida G tienen las mismas proporciones que con un diámetro que fijes tú. Las roscas de tubo cónicas R, Rc y Rp no están incluidas.
 
+La última serie de la lista, {{ui:thread.group.bottle}}, contiene PCO 1881: el cuello de 28 mm de la mayoría de botellas de agua y refrescos, 27,4 mm sobre la rosca con un paso de 2,7 mm. Su rosca tiene crestas planas y anchas, así que al elegirla el perfil pasa a {{ui:thread.profileCustom}} con una {{ui:prop.threadDepth}} de 1,6 mm y un {{ui:prop.threadFlankAngle}} de 30°; un tamaño elegido después recupera su propio perfil. Haz el cuello como {{ui:thread.rod}} y el tapón como {{ui:thread.nut}}, o resta un {{ui:thread.bore}} de un cilindro. Las medidas siguen el plano de la norma tal como lo recoge la biblioteca de OpenSCAD BOSL2; imprime una pieza de prueba antes de un tapón entero. Los bidones y las botellas de lavavajillas no tienen una norma común: mide el cuello que tengas e introduce sus valores en {{ui:thread.customSize}}.
+
 Más ajustes:
 
 - **{{ui:prop.threadHand}}:** {{ui:thread.right}} o {{ui:thread.left}}.
