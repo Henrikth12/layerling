@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "title": {
+      "de": "Duplizieren wiederholt auch die Größe",
+      "en": "Duplicate repeats the size too"
+    },
+    "body": {
+      "de": "Dupliziere eine Form, vergrößere die Kopie und schiebe sie weiter: Jedes weitere Strg+D macht die nächste Kopie um denselben Faktor größer und rückt sie um denselben Schritt weiter, wie in Tinkercad.",
+      "en": "Duplicate a shape, make the copy larger and move it: every further Ctrl+D makes the next copy larger by the same factor and moves it by the same step, as in Tinkercad."
+    }
+  }
+]

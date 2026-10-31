@@ -75,6 +75,7 @@ import { storedCustomFonts } from "@/lib/customFontStore";
 import { ArrayPanel } from "./workplane/ArrayPanel";
 import { ScalePercentPanel, type ScalePercentSettings } from "./workplane/ScalePercentPanel";
 import { scaleShapesByPercent } from "@/lib/scaleByPercent";
+import { isSameSize, resizedCopy, SAME_SIZE, shapeSize, sizeFactorsBetween, type ShapeSize, type SizeFactors } from "@/lib/duplicateResize";
 import { canToggleGroupColors, colorForParts, groupShowsPartColors } from "@/lib/groupColors";
 import { disposeBoundsTree } from "three-mesh-bvh";
 import { SHELL_SIDES, shellMaxThickness, shellOpeningsFor, shellOpenSides } from "@/lib/shellLimits";
@@ -738,6 +739,7 @@ type ShapeTransformSnapshot = {
   z: number;
   elevation: number;
   rotationQuaternion: THREE.Quaternion;
+  size: ShapeSize;
 };
 
 /**
@@ -755,6 +757,7 @@ function shapeTransformSnapshot(shape: WorkplaneShape): ShapeTransformSnapshot {
     z: shape.z,
     elevation: shape.elevation ?? 0,
     rotationQuaternion: quaternionForShape(shape.parametricSource ?? shape),
+    size: shapeSize(shape),
   };
 }
 
@@ -763,9 +766,11 @@ type ShapeMoveDelta = {
   dz: number;
   delevation: number;
   rotationDelta: THREE.Quaternion;
+  /** A resize of the copy, repeated like the move (Discussion #1072). */
+  sizeFactors: SizeFactors;
 };
 
-const ZERO_MOVE_DELTA: ShapeMoveDelta = { dx: 0, dz: 0, delevation: 0, rotationDelta: new THREE.Quaternion() };
+const ZERO_MOVE_DELTA: ShapeMoveDelta = { dx: 0, dz: 0, delevation: 0, rotationDelta: new THREE.Quaternion(), sizeFactors: SAME_SIZE };
 
 function shapeMoveDeltaBetween(from: ShapeTransformSnapshot, to: ShapeTransformSnapshot): ShapeMoveDelta {
   return {
@@ -773,13 +778,14 @@ function shapeMoveDeltaBetween(from: ShapeTransformSnapshot, to: ShapeTransformS
     dz: to.z - from.z,
     delevation: to.elevation - from.elevation,
     rotationDelta: to.rotationQuaternion.clone().multiply(from.rotationQuaternion.clone().invert()),
+    sizeFactors: sizeFactorsBetween(from.size, to.size),
   };
 }
 
 function isZeroMoveDelta(delta: ShapeMoveDelta) {
   const epsilon = 1e-6;
   return Math.abs(delta.dx) < epsilon && Math.abs(delta.dz) < epsilon && Math.abs(delta.delevation) < epsilon
-    && 1 - Math.abs(delta.rotationDelta.w) < epsilon;
+    && 1 - Math.abs(delta.rotationDelta.w) < epsilon && isSameSize(delta.sizeFactors);
 }
 
 /**
@@ -793,14 +799,16 @@ function isZeroMoveDelta(delta: ShapeMoveDelta) {
  * die Drehung wirklich die Netz-Eckpunkte der Kopie, nicht nur ein Feld, das
  * ohnehin gleich wieder auf 0 zurueckfiele.
  */
-function applyShapeMoveDelta(shape: WorkplaneShape, delta: ShapeMoveDelta): WorkplaneShape {
+function applyShapeMoveDelta(source: WorkplaneShape, delta: ShapeMoveDelta): WorkplaneShape {
+  // The resize comes first, in the copy's own axes, as its original was resized before it was turned on.
+  const shape = resizedCopy(source, delta.sizeFactors);
   const moved: WorkplaneShape = {
     ...shape,
     x: shape.x + delta.dx,
     z: shape.z + delta.dz,
     elevation: (shape.elevation ?? 0) + delta.delevation,
   };
-  if (isZeroMoveDelta({ ...ZERO_MOVE_DELTA, rotationDelta: delta.rotationDelta })) {
+  if (1 - Math.abs(delta.rotationDelta.w) < 1e-6) {
     return moved;
   }
   if (shapeTransformShouldRemainEditable(moved)) {
