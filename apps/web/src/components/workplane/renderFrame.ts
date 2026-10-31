@@ -318,6 +318,7 @@ function splitSeeThroughAtPlate(state: FrameState, plate: THREE.Object3D) {
   // three.js keeps what lies on the positive side of a clipping plane.
   nearSide.setFromNormalAndCoplanarPoint(plateNormal.clone().multiplyScalar(cameraSide), plateCenter);
   farSide.copy(nearSide).negate();
+  farSide.constant -= NEAR_HALF_TOLERANCE;
   nearSide.constant += NEAR_HALF_TOLERANCE;
   const section = state.sectionPlane ?? null;
   const nearPlanes = section ? [nearSide, section] : [nearSide];
