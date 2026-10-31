@@ -572,7 +572,7 @@ export const MESSAGES_EN = {
   "editor.group.combine": "Combine",
   "editor.group.modify": "Modify",
   "editor.group.arrange": "Arrange",
-  "editor.group.manage": "Manage",
+  "editor.group.file": "File",
   "editor.tool.note": "Note",
   "editor.tool.copy": "Copy",
   "editor.tool.paste": "Paste",

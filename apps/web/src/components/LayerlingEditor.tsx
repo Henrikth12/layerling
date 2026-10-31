@@ -14630,6 +14630,10 @@ export function LayerlingEditor({
             notes={notesVisible ? sketchNotes.notes : undefined}
             noteNumbers={sketchNotes.numbers}
             noteMode={noteMode}
+            notesVisible={notesVisible}
+            noteCount={sketchNotes.notes.length}
+            onNoteTool={toggleNoteTool}
+            onToggleNotes={toggleNotesVisible}
             onAddNote={sketchNotes.add}
             onUpdateNote={sketchNotes.update}
             onRemoveNote={sketchNotes.remove}
@@ -14790,6 +14794,9 @@ export function LayerlingEditor({
           onDuplicateShapesMoved={duplicateShapesMoved}
           notes={historyViewState ? historyViewState.notes : notes}
           notesVisible={notesVisible}
+          noteCount={notes.length}
+          onNoteTool={toggleNoteTool}
+          onToggleNotes={toggleNotesVisible}
           showOverhangs={overhangsVisible}
           noteMode={historyViewState ? false : noteMode}
           rotationPivot={activeRotationPivot}

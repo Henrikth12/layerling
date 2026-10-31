@@ -540,7 +540,7 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "合併",
   "editor.group.modify": "修改",
   "editor.group.arrange": "排列",
-  "editor.group.manage": "管理",
+  "editor.group.file": "檔案",
   "editor.tool.note": "備註",
   "editor.tool.copy": "複製",
   "editor.tool.paste": "貼上",

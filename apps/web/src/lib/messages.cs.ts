@@ -697,7 +697,7 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "editor.group.combine": "Spojování",
   "editor.group.modify": "Úpravy",
   "editor.group.arrange": "Uspořádání",
-  "editor.group.manage": "Správa",
+  "editor.group.file": "Soubor",
   "editor.tool.note": "Poznámka",
   "editor.tool.copy": "Kopírovat",
   "editor.tool.paste": "Vložit",

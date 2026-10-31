@@ -1,6 +1,6 @@
 "use client";
 
-import { AlignCenterHorizontal, AlignCenterVertical, ScanLine, AlignEndHorizontal, AlignEndVertical, AlignStartHorizontal, AlignStartVertical, Check, ChevronUp, CornerDownRight, Crop, Crosshair, FlipHorizontal2, FlipVertical2, Home, Layers, Link, Link2Off, LockKeyhole, LockKeyholeOpen, Minus, Plus, Ruler, RulerDimensionLine, Slash, Spline, Split, Trash2, Waves, X } from "lucide-react";
+import { AlignCenterHorizontal, AlignCenterVertical, ScanLine, AlignEndHorizontal, AlignEndVertical, AlignStartHorizontal, AlignStartVertical, Check, ChevronUp, CornerDownRight, Crop, Crosshair, FlipHorizontal2, FlipVertical2, Home, Layers, Link, Link2Off, LockKeyhole, LockKeyholeOpen, Minus, Plus, Ruler, RulerDimensionLine, Slash, Spline, Split, Trash2, Waves, X, Eye, EyeOff } from "lucide-react";
 import { displayedHandle } from "@/lib/sketchBezierHandles";
 import { curveStretches } from "@/lib/sketchCurveThroughPoints";
 import { markEscapeHandled } from "@/lib/escapeHandled";
@@ -11,7 +11,7 @@ import { SketchNotes } from "@/components/SketchNotes";
 import { SketchLockBadge, SketchRotateHandles, SketchTurnRing } from "@/components/SketchHandles";
 import { lockBadgeSpot, rotateHandleSpots } from "@/lib/sketchHandleSpots";
 import { SKETCH_DOUBLE_CLICK_PIXELS, useSketchViewSlide } from "@/lib/useSketchViewSlide";
-import { ToolbarConstructionLineIcon } from "@/components/toolbarIcons";
+import { ToolbarConstructionLineIcon, ToolbarNoteIcon } from "@/components/toolbarIcons";
 import { constructionCrossings } from "@/lib/sketchConstruction";
 import { outlineSideMiddles, sketchSnapPoints } from "@/lib/sketchSnapPoints";
 import { openEndPoints } from "@/lib/sketchPointJoin";
@@ -146,6 +146,11 @@ type SketchWorkspaceProps = {
   notes?: readonly SketchNote[];
   noteNumbers?: ReadonlyMap<string, number>;
   noteMode?: boolean;
+  /** The note buttons of the camera bar (Stefan, 31.10.2026: they moved here from Manage). */
+  notesVisible?: boolean;
+  noteCount?: number;
+  onNoteTool?: () => void;
+  onToggleNotes?: () => void;
   /** Puts a note on the spot and gives its id, or null when there is no room for another. */
   onAddNote?: (spot: { x: number; z: number }) => string | null;
   onUpdateNote?: (id: string, patch: Partial<SketchNote>) => void;
@@ -759,6 +764,10 @@ export function SketchWorkspace({
   notes,
   noteNumbers,
   noteMode = false,
+  notesVisible = true,
+  noteCount = 0,
+  onNoteTool,
+  onToggleNotes,
   onAddNote,
   onUpdateNote,
   onRemoveNote,
@@ -2160,6 +2169,23 @@ export function SketchWorkspace({
           >
             <Layers size={26} strokeWidth={2.2} aria-hidden="true" />
           </button>
+        ) : null}
+        {onNoteTool && onToggleNotes ? (
+          <div className="note-control-group" role="group" aria-label={t("visibility.notes")}>
+            <button className={noteMode ? "active" : ""} aria-label={t("editor.tool.note")} aria-pressed={noteMode} title={t("editor.tool.note")} onClick={onNoteTool}>
+              <ToolbarNoteIcon />
+            </button>
+            <button
+              className={`note-visibility-button ${notesVisible ? "" : "active"}`}
+              aria-label={t("visibility.notes")}
+              aria-pressed={!notesVisible}
+              title={noteCount > 0 ? `${t("visibility.notes")} (${noteCount})` : t("visibility.notes")}
+              disabled={noteCount === 0}
+              onClick={onToggleNotes}
+            >
+              {notesVisible ? <Eye size={22} strokeWidth={2.1} aria-hidden="true" /> : <EyeOff size={22} strokeWidth={2.1} aria-hidden="true" />}
+            </button>
+          </div>
         ) : null}
       </div>
       <section ref={wrapRef} className="sketch-plate-wrap" aria-label="2D sketch plate">

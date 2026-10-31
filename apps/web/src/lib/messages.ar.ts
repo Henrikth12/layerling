@@ -553,7 +553,7 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "دمج",
   "editor.group.modify": "تعديل",
   "editor.group.arrange": "ترتيب",
-  "editor.group.manage": "إدارة",
+  "editor.group.file": "ملف",
   "editor.tool.note": "ملاحظة",
   "editor.tool.copy": "نسخ",
   "editor.tool.paste": "لصق",

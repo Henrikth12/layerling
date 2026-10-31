@@ -566,7 +566,7 @@ export const MESSAGES_JA: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "結合",
   "editor.group.modify": "変形",
   "editor.group.arrange": "配置",
-  "editor.group.manage": "管理",
+  "editor.group.file": "ファイル",
   "editor.tool.note": "メモ",
   "editor.tool.copy": "コピー",
   "editor.tool.paste": "貼り付け",

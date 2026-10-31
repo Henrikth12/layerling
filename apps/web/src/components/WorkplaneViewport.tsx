@@ -14,6 +14,7 @@ import * as THREE from "three";
 import { triangleTouchesRect, type ScreenRect } from "@/lib/screenRectHit";
 import { FramingSquareIcon } from "@/components/FramingSquareIcon";
 import { GridEyeIcon } from "@/components/GridEyeIcon";
+import { ToolbarNoteIcon } from "@/components/toolbarIcons";
 import { AlignOverlay, MirrorOverlay, type AlignOverlayState, type MirrorOverlayState } from "@/components/workplane/ActionOverlays";
 import { MoveDimensionOverlay } from "@/components/workplane/MoveDimensionOverlay";
 import { OriginDimensionOverlay } from "@/components/workplane/OriginDimensionOverlay";
@@ -233,6 +234,10 @@ type WorkplaneViewportProps = {
   onDuplicateShapesMoved?: (ids: string[], delta: { dx: number; dz: number; delevation: number }) => void;
   notes?: WorkplaneNote[];
   notesVisible?: boolean;
+  /** The note buttons of the camera bar: put a note, show or hide them all (Stefan, 31.10.2026: they moved here from Manage). */
+  onNoteTool?: () => void;
+  onToggleNotes?: () => void;
+  noteCount?: number;
   /** Tint faces red that overhang more steeply than workspace.overhangAngle. */
   showOverhangs?: boolean;
   noteMode?: boolean;
@@ -1449,6 +1454,9 @@ export function WorkplaneViewport({
   onDuplicateShapesMoved,
   notes = EMPTY_NOTES,
   notesVisible = true,
+  onNoteTool,
+  onToggleNotes,
+  noteCount = 0,
   showOverhangs = false,
   noteMode = false,
   rotationPivot = null,
@@ -7960,6 +7968,29 @@ export function WorkplaneViewport({
                 </MovableSectionPanel>
               ) : null}
             </div>
+            {onNoteTool && onToggleNotes ? (
+              <div className="note-control-group" role="group" aria-label={t("visibility.notes")}>
+                <button
+                  className={noteMode ? "active" : ""}
+                  aria-label={t("editor.tool.note")}
+                  aria-pressed={noteMode}
+                  title={t("editor.tool.note")}
+                  onClick={onNoteTool}
+                >
+                  <ToolbarNoteIcon />
+                </button>
+                <button
+                  className={`note-visibility-button ${notesVisible ? "" : "active"}`}
+                  aria-label={t("visibility.notes")}
+                  aria-pressed={!notesVisible}
+                  title={noteCount > 0 ? `${t("visibility.notes")} (${noteCount})` : t("visibility.notes")}
+                  disabled={noteCount === 0}
+                  onClick={onToggleNotes}
+                >
+                  {notesVisible ? <Eye size={22} strokeWidth={2.1} aria-hidden="true" /> : <EyeOff size={22} strokeWidth={2.1} aria-hidden="true" />}
+                </button>
+              </div>
+            ) : null}
           </>
         )}
       </div>

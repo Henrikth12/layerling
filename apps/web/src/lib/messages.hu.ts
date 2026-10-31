@@ -508,7 +508,7 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "Egyesítés",
   "editor.group.modify": "Módosítás",
   "editor.group.arrange": "Elrendezés",
-  "editor.group.manage": "Kezelés",
+  "editor.group.file": "Fájl",
   "editor.tool.note": "Jegyzet",
   "editor.tool.copy": "Másolás",
   "editor.tool.paste": "Beillesztés",

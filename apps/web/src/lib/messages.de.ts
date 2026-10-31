@@ -571,7 +571,7 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "editor.group.combine": "Verbinden",
   "editor.group.modify": "Anpassen",
   "editor.group.arrange": "Anordnen",
-  "editor.group.manage": "Verwalten",
+  "editor.group.file": "Datei",
   "editor.tool.note": "Notiz",
   "editor.tool.copy": "Kopieren",
   "editor.tool.paste": "Einfügen",

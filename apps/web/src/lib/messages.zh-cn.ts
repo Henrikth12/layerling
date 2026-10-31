@@ -540,7 +540,7 @@ export const MESSAGES_ZH_CN: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "组合",
   "editor.group.modify": "修改",
   "editor.group.arrange": "排列",
-  "editor.group.manage": "管理",
+  "editor.group.file": "文件",
   "editor.tool.note": "备注",
   "editor.tool.copy": "复制",
   "editor.tool.paste": "粘贴",

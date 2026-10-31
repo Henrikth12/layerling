@@ -478,7 +478,7 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "Združevanje",
   "editor.group.modify": "Spreminjanje",
   "editor.group.arrange": "Razporeditev",
-  "editor.group.manage": "Upravljanje",
+  "editor.group.file": "Datoteka",
   "editor.tool.note": "Opomba",
   "editor.tool.copy": "Kopiraj",
   "editor.tool.paste": "Prilepi",

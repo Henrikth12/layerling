@@ -562,7 +562,7 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "Combiner",
   "editor.group.modify": "Modifier",
   "editor.group.arrange": "Organiser",
-  "editor.group.manage": "Gérer",
+  "editor.group.file": "Fichier",
   "editor.tool.note": "Remarque",
   "editor.tool.copy": "Copier",
   "editor.tool.paste": "Coller",

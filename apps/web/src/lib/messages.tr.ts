@@ -517,7 +517,7 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "editor.group.combine": "Birleştir",
   "editor.group.modify": "Değiştir",
   "editor.group.arrange": "Düzenle",
-  "editor.group.manage": "Yönet",
+  "editor.group.file": "Dosya",
   "editor.tool.note": "Not",
   "editor.tool.copy": "Kopyala",
   "editor.tool.paste": "Yapıştır",
