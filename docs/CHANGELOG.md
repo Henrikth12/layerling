@@ -6,6 +6,7 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **A tapped hole in a resized group stays round (Discussion #1066):** 1.127.0 kept a thread's shape only in a group without holes. A group with a hole is cut into one body when it is made, and resizing it only stretched that body, so a tapped hole in a plate pulled longer became an oval. A resized group with a thread in it (rod, screw, nut or tapped hole) is now cut again from its parts once the resize is done, in the same Undo step: the thread keeps its diameter, pitch and everything else it was given, moves with the stretch, and its length follows it, so a hole through a thicker plate still goes through. A locked group, an intersection, hull or loft, and a group with edges or a texture on it stay as they were. `groupThreadRecut.ts`; kernel test in `groupThreadRecut.e2e.ts`. Reported again by @willi1955 in #1066.
 - **The camera bar's house says "Home view" (Issue #1071):** Two buttons carry a house, the camera bar's that resets the view and the title row's that goes back to the projects, and the first was simply called "Home" - so a click meant to leave the project only turned the work plane. Its name and tooltip now say "Home view" (in Czech, Danish, French, Japanese, Brazilian Portuguese, Russian, Slovenian, Turkish and Simplified Chinese likewise a view; the other languages already said so). Reported by @mscho1 in #1071.
 
 ## 1.127.0
