@@ -1,6 +1,26 @@
 [
   {
     "title": {
+      "de": "Ausrichtgriffe bleiben am kleinen Teil",
+      "en": "Alignment handles stay by a tiny part"
+    },
+    "body": {
+      "de": "Bei einem winzigen Teil, ganz nah herangezoomt, standen die Ausrichtgriffe weit daneben oder außerhalb des Bildes. Jetzt stehen sie auf dem Bildschirm höchstens 40 Pixel neben der Auswahl.",
+      "en": "On a tiny part zoomed in close, the alignment handles landed far off it or off the screen. Now they stand at most 40 pixels beside the selection on the screen."
+    }
+  },
+  {
+    "title": {
+      "de": "Rechtsklickmenü scrollt mit dem Mausrad",
+      "en": "The right-click menu scrolls with the wheel"
+    },
+    "body": {
+      "de": "Ein Rechtsklickmenü, das höher als das Fenster ist, scrollt jetzt mit dem Mausrad, statt sich zu schließen. Das Rad außerhalb des Menüs schließt es wie bisher.",
+      "en": "A right-click menu taller than the window now scrolls with the mouse wheel instead of closing. The wheel outside the menu closes it as before."
+    }
+  },
+  {
+    "title": {
       "de": "Suchwörter auf der Anleitungsseite markiert",
       "en": "Search words marked on the guide page"
     },

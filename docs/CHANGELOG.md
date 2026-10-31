@@ -20,6 +20,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 - **Robertson drive:** A screw takes the square Robertson drive common in Canada as well. Its size is the square across flats and starts at the bit for the thread, from #00 (1.3 mm) on the smallest to #4 (4.83 mm) on M8 and up - #2 (2.84 mm) on M4 and M5. The socket is cut straight, without the slight taper of a real one. The MCP bridge takes `threadDrive: "robertson"`.
 
+- **undici 8.12.3:** The test-only dependency undici (through jsdom) moves from 8.11.2 to 8.12.3. Pointed out by @WC3D in PR #1063.
+
 ## 1.125.0
 
 - **Screw drives and head diameter (Discussion #1052):** A screw's drive was always a hex socket, sized from the thread diameter and 60 % of the head height deep, so a flat head on a large free diameter came out with an 11 mm socket barely a millimetre deep, and the head diameter could not be changed. Now the properties offer the drive - hex socket, Torx, Phillips or none - with its size (across flats, Torx outer diameter, span of the cross) and depth, up to nine tenths of the head, and the head diameter (across flats on a hex head). Left alone they follow the size as before, so saved screws do not change; a hex head still starts without a drive. The drive is cut into the exact body with true arcs for the Torx lobes, so the edge tool and the STEP export get it too, and the MCP bridge takes `threadDrive`, `threadDriveSize`, `threadDriveDepth` and `threadHeadDiameter`.
