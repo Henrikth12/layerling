@@ -38,5 +38,15 @@
       "de": "Die Feder gibt es jetzt auch flach: ein Band, das in Wellen über die Platte läuft und liegend gedruckt wird. Wähle runde Wellen, Zickzack oder eckige Bögen, an den Enden eine Öse, eine Lasche oder nichts, und stelle Bögen und Bandbreite ein. Du findest es unter „Form“ bei der Feder.",
       "en": "The spring now comes flat too: a band that runs in waves across the plate and is printed lying down. Pick round waves, a zigzag or square turns, an eye, a tab or nothing at the ends, and set the bends and the band width. You find it under Form on the spring."
     }
+  },
+  {
+    "title": {
+      "de": "Verrunden und STEP am Pfeilrad",
+      "en": "Fillets and STEP for the herringbone gear"
+    },
+    "body": {
+      "de": "Verrunden und „Fläche löschen“ gehen jetzt auch am Pfeilrad. Der STEP-Export, der es bisher ausließ, nimmt es mit seinen echten schrägen Zähnen mit.",
+      "en": "Fillets and \"Delete face\" now work on the herringbone gear too. The STEP export, which used to leave it out, now takes it with its true slanted teeth."
+    }
   }
 ]
