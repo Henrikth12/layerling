@@ -5979,6 +5979,21 @@ html[data-theme="dark"] .visibility-hidden-badge {
   text-transform: uppercase;
 }
 
+/* The title is the window's handle: a bar across the top of the picture that takes the press, the rest lets clicks through. */
+.sketch-revolve-preview-title.movable {
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 10px 12px 8px;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: auto;
+}
+
+.sketch-revolve-preview.moving .sketch-revolve-preview-title.movable {
+  cursor: grabbing;
+}
+
 .sketch-revolve-preview canvas {
   display: block;
   width: 100%;
@@ -6725,8 +6740,8 @@ html[data-theme="dark"] .sketch-shape-options .unit {
   z-index: 11;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 5px;
+  gap: 1px;
+  padding: 4px;
   background: #faf7f3;
   border: 1px solid rgba(219, 207, 194, 0.9);
   border-radius: 17px;
@@ -6738,7 +6753,7 @@ html[data-theme="dark"] .sketch-shape-options .unit {
   position: relative;
   display: grid;
   width: 44px;
-  height: 43px;
+  height: 40px;
   place-items: center;
   color: #5a3917;
   background: transparent;
@@ -6754,13 +6769,17 @@ html[data-theme="dark"] .sketch-shape-options .unit {
    keeps its size relative to the others (they are drawn from 22 to 28 px), so
    the browser zooms the icon instead of every icon getting one new size. */
 .camera-controls > button,
-.camera-controls > div > button {
+.camera-controls > div > button,
+.camera-controls > .camera-group > div > button,
+.camera-controls > .camera-controls-handle > button {
   width: calc(44px * var(--toolbar-scale));
-  height: calc(43px * var(--toolbar-scale));
+  height: calc(40px * var(--toolbar-scale));
 }
 
 .camera-controls > button > svg,
-.camera-controls > div > button > svg {
+.camera-controls > div > button > svg,
+.camera-controls > .camera-group > div > button > svg,
+.camera-controls > .camera-controls-handle > button > svg {
   zoom: var(--toolbar-scale);
 }
 
@@ -6788,8 +6807,9 @@ html[data-theme="dark"] .sketch-shape-options .unit {
   box-shadow: inset 3px 0 0 #c56808;
 }
 
+/* Its buttons (place, eye, reset) take their places in the group around them, so a flat window's two columns can fill rows with them. */
 .workplane-control-group {
-  position: relative;
+  display: contents;
 }
 
 .tape-control-group {
@@ -6878,12 +6898,42 @@ html[data-theme="dark"] .panel-grip:hover {
   position: relative;
 }
 
-/* The note buttons: put a note, show or hide them all. */
-.note-control-group {
-  position: relative;
+/* The first button folds the bar away and, dragged, moves it (Stefan, 31.10.2026). A grip above the arrow says so; in two
+   columns it sits in the middle of the bar. */
+.camera-controls-handle {
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.camera-controls.moving .camera-controls-handle {
+  cursor: grabbing;
+}
+
+.camera-controls .camera-controls-toggle {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  cursor: inherit;
+}
+
+.camera-controls .camera-controls-toggle > svg:first-child {
+  opacity: 0.55;
+}
+
+/* What belongs together in the camera bar sits in a frame of its own (Stefan, 31.10.2026): the view, the zoom, the
+   projection, the workplane, the measuring and the notes. One column: the buttons below each other. Two columns (a flat
+   window): each group takes whole rows, two buttons wide, so a pair like plus and minus never splits. */
+.camera-controls > .camera-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 1px;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 14px;
 }
 
 /* The section button is the last one in the bar, so the panel opens upwards
@@ -13552,57 +13602,45 @@ html[data-theme="dark"] .theme-check {
    nur gut 500 Pixel hoch, und die einspaltige Leiste (120 + 460 Pixel) lief
    unten aus dem Bild - samt dem Knopf, der eine eingeschaltete
    Schnittansicht anzeigt. */
-@container workplane (max-height: 690px) {
+@container workplane (max-height: 660px) {
   .camera-controls {
     display: grid;
     grid-template-columns: repeat(2, auto);
     transform: none;
   }
 
-  /* Gefuellt wird zeilenweise, und das Zoompaar rutscht hinter die
-     Ansichtsknoepfe: So beginnt es auf einer neuen Zeile und Plus und Minus
-     stehen nebeneinander statt ueber Eck.
-
-     Benannt statt gezaehlt: Ein nth-child sitzt nur so lange richtig, bis
-     zwischen den Knoepfen einer dazukommt - der Finger-Umschalter tat genau
-     das und trieb Plus und Minus ueber Eck. Er reiht sich hier hinter das
-     Paar ein, damit dessen Zeile gerade aufgeht. */
-  .camera-controls > .camera-zoom-button,
-  .camera-controls > .camera-touch-rotate {
-    order: 1;
+  /* Jede Gruppe nimmt ganze Zeilen, zwei Knoepfe breit: Plus und Minus, Maßband und Winkellineal, Notiz und ihr Auge
+     bleiben so nebeneinander, und der Rahmen faellt mit der Gruppe zusammen. */
+  .camera-controls > .camera-group {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column: 1 / -1;
+    justify-content: start;
   }
 
-  .camera-controls > .workplane-control-group,
-  .camera-controls > .workplane-display-control-group,
-  .camera-controls > .tape-control-group,
-  .camera-controls > .corner-ruler-control-group,
-  .camera-controls > .note-control-group,
-  .camera-controls > .section-control-group {
-    order: 2;
+  .camera-controls > .camera-controls-handle {
+    grid-column: 1 / -1;
   }
 }
 
 /* At Large the column is a quarter taller, so it needs two columns from a taller
    workplane on - 600 px was measured for Medium (#241). */
-@container workplane (max-height: 830px) {
+@container workplane (max-height: 870px) {
   html[data-toolbar-size="large"] .camera-controls {
     display: grid;
     grid-template-columns: repeat(2, auto);
     transform: none;
   }
 
-  html[data-toolbar-size="large"] .camera-controls > .camera-zoom-button,
-  html[data-toolbar-size="large"] .camera-controls > .camera-touch-rotate {
-    order: 1;
+  html[data-toolbar-size="large"] .camera-controls > .camera-group {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column: 1 / -1;
+    justify-content: start;
   }
 
-  html[data-toolbar-size="large"] .camera-controls > .workplane-control-group,
-  html[data-toolbar-size="large"] .camera-controls > .workplane-display-control-group,
-  html[data-toolbar-size="large"] .camera-controls > .tape-control-group,
-  html[data-toolbar-size="large"] .camera-controls > .corner-ruler-control-group,
-  html[data-toolbar-size="large"] .camera-controls > .note-control-group,
-  html[data-toolbar-size="large"] .camera-controls > .section-control-group {
-    order: 2;
+  html[data-toolbar-size="large"] .camera-controls > .camera-controls-handle {
+    grid-column: 1 / -1;
   }
 }
 

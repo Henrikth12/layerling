@@ -2405,6 +2405,7 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "camera.hide": "隱藏相機控制",
   "camera.showShort": "顯示控制",
   "camera.hideShort": "隱藏控制",
+  "camera.moveHint": "拖曳可移動工具列，雙擊可復位",
   "camera.home": "回到預設視角",
   "camera.focusSelection": "將視圖置中於選取的物件",
   "camera.zoomIn": "放大",

@@ -15,6 +15,7 @@ import { triangleTouchesRect, type ScreenRect } from "@/lib/screenRectHit";
 import { FramingSquareIcon } from "@/components/FramingSquareIcon";
 import { GridEyeIcon } from "@/components/GridEyeIcon";
 import { ToolbarNoteIcon } from "@/components/toolbarIcons";
+import { CAMERA_BAR_PANEL, CameraBarHandle } from "@/components/workplane/CameraBarHandle";
 import { AlignOverlay, MirrorOverlay, type AlignOverlayState, type MirrorOverlayState } from "@/components/workplane/ActionOverlays";
 import { MoveDimensionOverlay } from "@/components/workplane/MoveDimensionOverlay";
 import { OriginDimensionOverlay } from "@/components/workplane/OriginDimensionOverlay";
@@ -1548,6 +1549,7 @@ export function WorkplaneViewport({
   const [tapeToolsOpen, setTapeToolsOpen] = useState(false);
   const [tapeClearPending, setTapeClearPending] = useState(false);
   const [cameraControlsCollapsed, setCameraControlsCollapsed] = useState(false);
+  const cameraBarMove = useMovablePanel<HTMLDivElement>("layerling.editor.cameraBarPosition", CAMERA_BAR_PANEL);
   const language = useLanguage();
   const [orthographicView, setOrthographicView] = useState(false);
   /** The window of the second view, while it is open. */
@@ -7477,16 +7479,17 @@ export function WorkplaneViewport({
       <ViewCube getRig={getViewCubeRig} cubeRef={viewCubeRef} />
       {secondViewWindow ? <SecondViewWindow popup={secondViewWindow} threeRef={threeRef} projectId={projectId} getSelectedIds={getSelectedIds} hasSelection={selectedIds.length > 0} onClosed={closeSecondView} /> : null}
 
-      <div className={`camera-controls ${cameraControlsCollapsed ? "collapsed" : ""}`} aria-label={t("camera.controls")} data-help-section="cameraBar">
-        {cameraControlsCollapsed ? (
-          <button className="camera-controls-toggle" aria-label={t("camera.show")} title={t("camera.showShort")} aria-expanded={false} onClick={() => setCameraControlsCollapsed(false)}>
-            <ChevronRight size={24} strokeWidth={2.25} aria-hidden="true" />
-          </button>
-        ) : (
+      <div
+        ref={cameraBarMove.panelRef}
+        className={`camera-controls ${cameraControlsCollapsed ? "collapsed" : ""} ${cameraBarMove.dragging ? "moving" : ""}`}
+        style={cameraBarMove.style}
+        aria-label={t("camera.controls")}
+        data-help-section="cameraBar"
+      >
+        <CameraBarHandle move={cameraBarMove} collapsed={cameraControlsCollapsed} onToggle={() => (cameraControlsCollapsed ? setCameraControlsCollapsed(false) : collapseCameraControls())} />
+        {cameraControlsCollapsed ? null : (
           <>
-            <button className="camera-controls-toggle" aria-label={t("camera.hide")} title={t("camera.hideShort")} aria-expanded={true} onClick={collapseCameraControls}>
-              <ChevronLeft size={24} strokeWidth={2.25} aria-hidden="true" />
-            </button>
+            <div className="camera-group">
             <button aria-label={t("camera.home")} aria-keyshortcuts="Home" title={t("camera.shortcut", { label: t("camera.home"), keys: "Home" })} onClick={resetView}>
               <Home size={24} strokeWidth={2.25} />
             </button>
@@ -7499,6 +7502,8 @@ export function WorkplaneViewport({
             >
               <Crosshair size={24} strokeWidth={2.25} />
             </button>
+            </div>
+            <div className="camera-group">
             <button className="camera-zoom-button" aria-label={t("camera.zoomIn")} aria-keyshortcuts="+" title={t("camera.shortcut", { label: t("camera.zoomIn"), keys: "+" })} onClick={() => zoomCamera(ZOOM_STEP_IN)}>
               <Plus size={28} strokeWidth={2.15} />
             </button>
@@ -7519,6 +7524,8 @@ export function WorkplaneViewport({
                 <Rotate3d size={26} strokeWidth={2.15} />
               </button>
             ) : null}
+            </div>
+            <div className="camera-group">
             <button
               className={orthographicView ? "active" : ""}
               aria-label={t("camera.orthographic")}
@@ -7544,6 +7551,8 @@ export function WorkplaneViewport({
                 <PictureInPicture2 size={24} strokeWidth={2.15} aria-hidden="true" />
               </button>
             ) : null}
+            </div>
+            <div className="camera-group">
             <div className="workplane-display-control-group">
               <button
                 className={workplaneLayerHidden ? "active" : ""}
@@ -7589,6 +7598,8 @@ export function WorkplaneViewport({
                 </button>
               ) : null}
             </div>
+            </div>
+            <div className="camera-group">
             <div className="tape-control-group">
               <button
                 className={`tape-trigger ${tapeToolsOpen ? "active" : ""}`}
@@ -7968,8 +7979,9 @@ export function WorkplaneViewport({
                 </MovableSectionPanel>
               ) : null}
             </div>
+            </div>
             {onNoteTool && onToggleNotes ? (
-              <div className="note-control-group" role="group" aria-label={t("visibility.notes")}>
+              <div className="camera-group note-control-group" role="group" aria-label={t("visibility.notes")}>
                 <button
                   className={noteMode ? "active" : ""}
                   aria-label={t("editor.tool.note")}

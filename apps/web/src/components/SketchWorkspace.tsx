@@ -12,6 +12,7 @@ import { SketchLockBadge, SketchRotateHandles, SketchTurnRing } from "@/componen
 import { lockBadgeSpot, rotateHandleSpots } from "@/lib/sketchHandleSpots";
 import { SKETCH_DOUBLE_CLICK_PIXELS, useSketchViewSlide } from "@/lib/useSketchViewSlide";
 import { ToolbarConstructionLineIcon, ToolbarNoteIcon } from "@/components/toolbarIcons";
+import { CAMERA_BAR_PANEL, CameraBarHandle } from "@/components/workplane/CameraBarHandle";
 import { constructionCrossings } from "@/lib/sketchConstruction";
 import { outlineSideMiddles, sketchSnapPoints } from "@/lib/sketchSnapPoints";
 import { openEndPoints } from "@/lib/sketchPointJoin";
@@ -773,6 +774,8 @@ export function SketchWorkspace({
   onRemoveNote,
 }: SketchWorkspaceProps) {
   useLanguage();
+  const cameraBarMove = useMovablePanel<HTMLDivElement>("layerling.sketch.cameraBarPosition", CAMERA_BAR_PANEL);
+  const [cameraBarCollapsed, setCameraBarCollapsed] = useState(false);
   const workspace = useMemo(() => normalizeWorkspaceSettings(initialWorkspace, DEFAULT_WORKPLANE_WORKSPACE), [initialWorkspace]);
   setLengthUnit(workspace);
   const unitLabel = lengthDisplayUnit(workspace).label;
@@ -2128,50 +2131,64 @@ export function SketchWorkspace({
         <div className="sketch-mode-badge">{operation === "revolve" ? t("sketch.modeBadgeRevolve") : operation === "sweep" ? t("sketch.modeBadgeSweep") : t("sketch.modeBadge")}</div>
       )}
       {operation === "revolve" ? <SketchRevolvePreview positions={revolvePreviewPositions} /> : null}
-      <div className="camera-controls sketch-camera-controls" aria-label={t("sketch.viewControls")} data-help-section="cameraBar">
-        <button aria-label={t("sketch.resetView")} aria-keyshortcuts="Home" title={t("camera.shortcut", { label: t("sketch.resetView"), keys: "Home" })} onClick={resetView}><Home size={28} /></button>
-        <button
-          aria-label={t("camera.focusSelection")}
-          aria-keyshortcuts="F Shift+F"
-          title={t("camera.shortcut", { label: t("camera.focusSelection"), keys: "F" })}
-          disabled={!focusBounds}
-          onClick={() => focusSelection()}
-        >
-          <Crosshair size={28} />
-        </button>
-        <button aria-label={t("sketch.zoomIn")} aria-keyshortcuts="+" title={t("camera.shortcut", { label: t("sketch.zoomIn"), keys: "+" })} onClick={() => zoomByButton(ZOOM_STEP_IN)}><Plus size={33} /></button>
-        <button aria-label={t("sketch.zoomOut")} aria-keyshortcuts="-" title={t("camera.shortcut", { label: t("sketch.zoomOut"), keys: "−" })} onClick={() => zoomByButton(ZOOM_STEP_OUT)}><Minus size={33} /></button>
-        <button
-          className={tool === "measure" ? "active" : ""}
-          aria-label={t("camera.tapeTools")}
-          title={t("camera.tapeTools")}
-          aria-pressed={tool === "measure"}
-          onClick={onMeasureTool}
-        >
-          <RulerDimensionLine size={26} strokeWidth={2.2} aria-hidden="true" />
-        </button>
-        <button
-          className={showMeasurements ? "active" : ""}
-          aria-label={t("sketch.showMeasurements")}
-          title={t("sketch.showMeasurements")}
-          aria-pressed={showMeasurements}
-          onClick={toggleMeasurements}
-        >
-          <Ruler size={26} strokeWidth={2.2} aria-hidden="true" />
-        </button>
-        {onToggleReferenceEdges ? (
+      <div
+        ref={cameraBarMove.panelRef}
+        className={`camera-controls sketch-camera-controls ${cameraBarCollapsed ? "collapsed" : ""} ${cameraBarMove.dragging ? "moving" : ""}`}
+        style={cameraBarMove.style}
+        aria-label={t("sketch.viewControls")}
+        data-help-section="cameraBar"
+      >
+        <CameraBarHandle move={cameraBarMove} collapsed={cameraBarCollapsed} onToggle={() => setCameraBarCollapsed((folded) => !folded)} />
+        {cameraBarCollapsed ? null : (<>
+        <div className="camera-group">
+          <button aria-label={t("sketch.resetView")} aria-keyshortcuts="Home" title={t("camera.shortcut", { label: t("sketch.resetView"), keys: "Home" })} onClick={resetView}><Home size={24} strokeWidth={2.25} /></button>
           <button
-            className={showReferenceEdges ? "active" : ""}
-            aria-label={t("sketch.showPartEdges")}
-            title={t("sketch.showPartEdges")}
-            aria-pressed={Boolean(showReferenceEdges)}
-            onClick={onToggleReferenceEdges}
+            aria-label={t("camera.focusSelection")}
+            aria-keyshortcuts="F Shift+F"
+            title={t("camera.shortcut", { label: t("camera.focusSelection"), keys: "F" })}
+            disabled={!focusBounds}
+            onClick={() => focusSelection()}
           >
-            <Layers size={26} strokeWidth={2.2} aria-hidden="true" />
+            <Crosshair size={24} strokeWidth={2.25} />
           </button>
-        ) : null}
+        </div>
+        <div className="camera-group">
+          <button aria-label={t("sketch.zoomIn")} aria-keyshortcuts="+" title={t("camera.shortcut", { label: t("sketch.zoomIn"), keys: "+" })} onClick={() => zoomByButton(ZOOM_STEP_IN)}><Plus size={28} strokeWidth={2.15} /></button>
+          <button aria-label={t("sketch.zoomOut")} aria-keyshortcuts="-" title={t("camera.shortcut", { label: t("sketch.zoomOut"), keys: "−" })} onClick={() => zoomByButton(ZOOM_STEP_OUT)}><Minus size={28} strokeWidth={2.15} /></button>
+        </div>
+        <div className="camera-group">
+          <button
+            className={tool === "measure" ? "active" : ""}
+            aria-label={t("camera.tapeTools")}
+            title={t("camera.tapeTools")}
+            aria-pressed={tool === "measure"}
+            onClick={onMeasureTool}
+          >
+            <RulerDimensionLine size={26} strokeWidth={2.2} aria-hidden="true" />
+          </button>
+          <button
+            className={showMeasurements ? "active" : ""}
+            aria-label={t("sketch.showMeasurements")}
+            title={t("sketch.showMeasurements")}
+            aria-pressed={showMeasurements}
+            onClick={toggleMeasurements}
+          >
+            <Ruler size={26} strokeWidth={2.2} aria-hidden="true" />
+          </button>
+          {onToggleReferenceEdges ? (
+            <button
+              className={showReferenceEdges ? "active" : ""}
+              aria-label={t("sketch.showPartEdges")}
+              title={t("sketch.showPartEdges")}
+              aria-pressed={Boolean(showReferenceEdges)}
+              onClick={onToggleReferenceEdges}
+            >
+              <Layers size={26} strokeWidth={2.2} aria-hidden="true" />
+            </button>
+          ) : null}
+        </div>
         {onNoteTool && onToggleNotes ? (
-          <div className="note-control-group" role="group" aria-label={t("visibility.notes")}>
+          <div className="camera-group note-control-group" role="group" aria-label={t("visibility.notes")}>
             <button className={noteMode ? "active" : ""} aria-label={t("editor.tool.note")} aria-pressed={noteMode} title={t("editor.tool.note")} onClick={onNoteTool}>
               <ToolbarNoteIcon />
             </button>
@@ -2187,6 +2204,7 @@ export function SketchWorkspace({
             </button>
           </div>
         ) : null}
+        </>)}
       </div>
       <section ref={wrapRef} className="sketch-plate-wrap" aria-label="2D sketch plate">
         <svg

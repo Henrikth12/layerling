@@ -48,7 +48,7 @@ At the left edge is a narrow bar. From the top:
 - {{ui:camera.hideWorkplane}} (the eye over a grid) hides the plate with its grid, so you can look at the underside of a design from below. Only the view changes: new shapes still land on the workplane. A second click shows it again.
 - {{ui:camera.placeWorkplane}}, the tape measure and the framing square are tools of their own, covered below and in [Measuring and notes](chapter:measuring-and-notes).
 
-The small arrow at the very top of the bar hides it if it gets in the way.
+The small arrow at the very top of the bar hides it if it gets in the way. That same button, dragged, moves the bar anywhere in the editor, in a sketch too; a double click puts it back. The 3D preview of a revolved sketch moves by its title in the same way.
 
 A design opens the way you left it: the angle, zoom and position of the view are kept with it in this browser, so you continue where you stopped, also after going Home or closing the page. A saved file (.lyl) carries the view along, so it opens in it elsewhere too. The view is not part of the undo history.
 

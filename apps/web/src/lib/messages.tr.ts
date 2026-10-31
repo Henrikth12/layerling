@@ -2398,6 +2398,7 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "camera.hide": "Kamera kontrollerini gizle",
   "camera.showShort": "Kontrolleri göster",
   "camera.hideShort": "Kontrolleri gizle",
+  "camera.moveHint": "Çubuğu taşımak için sürükleyin; çift tıklama yerine koyar",
   "camera.home": "Başlangıç",
   "camera.focusSelection": "Görünümü seçime ortala",
   "camera.zoomIn": "Yakınlaştır",

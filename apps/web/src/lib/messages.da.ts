@@ -3118,6 +3118,7 @@ export const MESSAGES_DA: Partial<Record<MessageKey, string>> = {
   "camera.hide": "Skjul kamerakontroller",
   "camera.showShort": "Vis kontroller",
   "camera.hideShort": "Skjul kontroller",
+  "camera.moveHint": "Træk for at flytte bjælken; dobbeltklik sætter den tilbage",
   "camera.home": "Hjem",
   "camera.focusSelection": "Centrér visning på markeringen",
   "camera.zoomIn": "Zoom ind",

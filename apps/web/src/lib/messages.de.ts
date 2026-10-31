@@ -3326,6 +3326,7 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "camera.hide": "Kamerasteuerung ausblenden",
   "camera.showShort": "Einblenden",
   "camera.hideShort": "Ausblenden",
+  "camera.moveHint": "Ziehen verschiebt die Leiste; Doppelklick bringt sie zurück",
   "camera.home": "Ausgangsansicht",
   "camera.focusSelection": "Ansicht auf die Auswahl zentrieren",
   "camera.zoomIn": "Vergrößern",

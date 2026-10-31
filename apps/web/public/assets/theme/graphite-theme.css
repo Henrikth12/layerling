@@ -2785,6 +2785,10 @@ html[data-theme="dark"]:where([data-palette="graphite"]) .panel-grip:hover {
   box-shadow: inset 3px 0 0 #dc3f36;
 }
 
+:where(html[data-theme="dark"][data-palette="graphite"]) .camera-controls > .camera-group {
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+
 :where(html[data-theme="dark"][data-palette="graphite"]) .section-tool-popover {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(207, 207, 207, 0.94);

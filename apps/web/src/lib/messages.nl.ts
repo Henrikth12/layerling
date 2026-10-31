@@ -3326,6 +3326,7 @@ export const MESSAGES_NL: Record<MessageKey, string> = {
   "camera.hide": "Camerabediening verbergen",
   "camera.showShort": "Bediening tonen",
   "camera.hideShort": "Bediening verbergen",
+  "camera.moveHint": "Sleep om de balk te verplaatsen; dubbelklikken zet hem terug",
   "camera.home": "Startpositie",
   "camera.focusSelection": "Weergave op selectie centreren",
   "camera.zoomIn": "Inzoomen",

@@ -2416,6 +2416,7 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "camera.hide": "Kameravezérlők elrejtése",
   "camera.showShort": "Vezérlők mutatása",
   "camera.hideShort": "Vezérlők elrejtése",
+  "camera.moveHint": "Húzdással mozgatható a sáv; dupla kattintással visszakerül",
   "camera.home": "Kezdőnézet",
   "camera.focusSelection": "Nézet a kijelölés közepére",
   "camera.zoomIn": "Nagyítás",

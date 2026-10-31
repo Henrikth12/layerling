@@ -2522,6 +2522,7 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "camera.hide": "إخفاء عناصر التحكم في الكاميرا",
   "camera.showShort": "إظهار عناصر التحكم",
   "camera.hideShort": "إخفاء عناصر التحكم",
+  "camera.moveHint": "اسحب لتحريك الشريط؛ النقر المزدوج يعيده",
   "camera.home": "المشهد كاملًا",
   "camera.focusSelection": "توسيط العرض على التحديد",
   "camera.zoomIn": "تكبير",

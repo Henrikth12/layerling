@@ -2557,6 +2557,7 @@ export const MESSAGES_JA: Partial<Record<MessageKey, string>> = {
   "camera.hide": "カメラ操作を非表示",
   "camera.showShort": "操作を表示",
   "camera.hideShort": "操作を非表示",
+  "camera.moveHint": "ドラッグでバーを移動、ダブルクリックで元に戻ります",
   "camera.home": "ホーム",
   "camera.focusSelection": "選択したものを中央に表示",
   "camera.zoomIn": "拡大",

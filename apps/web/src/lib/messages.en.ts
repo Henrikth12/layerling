@@ -3327,6 +3327,7 @@ export const MESSAGES_EN = {
   "camera.hide": "Hide camera controls",
   "camera.showShort": "Show controls",
   "camera.hideShort": "Hide controls",
+  "camera.moveHint": "Drag to move the bar; double-click puts it back",
   "camera.home": "Home",
   "camera.focusSelection": "Center view on selection",
   "camera.zoomIn": "Zoom in",

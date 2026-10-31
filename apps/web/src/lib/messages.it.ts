@@ -2371,6 +2371,7 @@ export const MESSAGES_IT: Partial<Record<MessageKey, string>> = {
   "camera.hide": "Nascondi i controlli della telecamera",
   "camera.showShort": "Mostra controlli",
   "camera.hideShort": "Nascondi controlli",
+  "camera.moveHint": "Trascina per spostare la barra; un doppio clic la riporta al suo posto",
   "camera.home": "Vista iniziale",
   "camera.focusSelection": "Centra la vista sulla selezione",
   "camera.zoomIn": "Ingrandisci",

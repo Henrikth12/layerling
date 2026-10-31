@@ -3332,6 +3332,7 @@ export const MESSAGES_PL: Partial<Record<MessageKey, string>> = {
   "camera.hide": "Ukryj sterowanie kamerą",
   "camera.showShort": "Pokaż sterowanie",
   "camera.hideShort": "Ukryj sterowanie",
+  "camera.moveHint": "Przeciągnij, aby przesunąć pasek; dwukrotne kliknięcie przywraca go na miejsce",
   "camera.home": "Widok początkowy",
   "camera.focusSelection": "Wyśrodkuj widok na zaznaczeniu",
   "camera.zoomIn": "Przybliż",

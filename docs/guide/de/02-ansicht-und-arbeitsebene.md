@@ -48,7 +48,7 @@ Am linken Rand liegt eine schmale Leiste. Von oben nach unten:
 - {{ui:camera.hideWorkplane}} (das Auge über dem Gitter) blendet die Platte mit ihrem Gitter aus, damit du die Unterseite eines Entwurfs von unten ansehen kannst. Es ändert sich nur die Ansicht: Neue Formen landen weiter auf der Arbeitsebene. Ein zweiter Klick blendet sie wieder ein.
 - {{ui:camera.placeWorkplane}}, das Maßband und das Winkellineal sind eigene Werkzeuge, sie kommen weiter unten und im Kapitel [Messen und Notizen](chapter:messen-und-notizen) vor.
 
-Über den kleinen Pfeil ganz oben in der Leiste kannst du sie ausblenden, wenn sie stört.
+Über den kleinen Pfeil ganz oben in der Leiste kannst du sie ausblenden, wenn sie stört. Derselbe Knopf, gezogen, verschiebt die Leiste an eine beliebige Stelle im Editor, auch in einer Skizze; ein Doppelklick stellt sie zurück. Die 3D-Vorschau einer gedrehten Skizze verschiebst du ebenso an ihrer Titelzeile.
 
 Ein Entwurf öffnet sich so, wie du ihn verlassen hast: Blickwinkel, Zoom und Ausschnitt der Ansicht bleiben mit ihm in diesem Browser erhalten, du machst also dort weiter, wo du aufgehört hast, auch nach „Home“ oder dem Schließen der Seite. Eine gespeicherte Datei (.lyl) nimmt die Ansicht mit, sie öffnet sich also auch anderswo darin. Die Ansicht gehört nicht zum Rückgängig-Verlauf.
 
