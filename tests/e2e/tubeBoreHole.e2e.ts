@@ -6,6 +6,7 @@ import { bentTubeNaturalDimensions, bentTubeProfileRadii, bentTubeSettings, norm
 import { boundsForShapesOfVertices, meshForShape } from "@/lib/editorMeshCore";
 import { rememberManifoldRuntime } from "@/lib/manifoldHandle";
 import { edgeTreatmentAppliedFrame } from "@/lib/edgeTreatmentHistory";
+import { normalizeShapeCustomizations } from "@/lib/workplaneSettings";
 
 /**
  * Two tubes grouped into a T-junction: the bore of one does not cut the wall of the other, so nothing flows through (#892).
@@ -111,6 +112,8 @@ describe("a filleted tube whose bore cuts as a hole (#1067)", () => {
     expect(parts[0].tubeBoreHole).toBeUndefined();
     expect(parts[1].width).toBe(14);
     expect(parts[1].x).toBe(7);
+    // The AI bridge reads the switch through the shape settings, which dropped it.
+    expect(normalizeShapeCustomizations({ tube: { tubeBoreHole: true }, bentTube: { tubeBoreHole: false } })).toMatchObject({ tube: { tubeBoreHole: true }, bentTube: { tubeBoreHole: false } });
     // A body that was never a tube has no bore to hand on.
     expect(splitBoreTube(filletedTube({ ...tube("box", {}), kind: "box" } as WorkplaneShape, { tubeBoreHole: true }))).toHaveLength(1);
   });

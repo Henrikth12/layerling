@@ -102,7 +102,7 @@ import { DEFAULT_INFILL_PERCENT, DEFAULT_WALLS, PRINT_MATERIAL_DENSITY, PRINT_MA
 import { matchingEdgeIds } from "@/lib/edgeMatching";
 import { CAD_MODIFIER_MAX_SHARP_ANGLE, CAD_MODIFIER_REQUEST_TIMEOUT_MS, CAD_MODIFIER_PREPARE_TRIANGLE_LIMIT, cadModifierPrepareTimeoutMs, cadModifierTimeoutMessage, cadModifierUserErrorMessage, cadModifierWorkerFailureMessage, cadModifierCandidateEdge, defaultCadModifierTangentChain, rescueSharpAngleForEdges, selectableCadModifierEdge, type CadModifierRequestPhase } from "@/lib/cadModifierRuntime";
 import { createCadPreviewQueue } from "@/lib/cadPreviewQueue";
-import { cloneWorkplaneShapeSnapshot, compactEdgeTreatmentHistory, edgeTreatmentAppliedFrame, groupBeforeEdgeTreatments, restoreShapeBeforeEdgeTreatment, wasGroupBeforeEdgeTreatments } from "@/lib/edgeTreatmentHistory";
+import { cloneWorkplaneShapeSnapshot, compactEdgeTreatmentHistory, edgeTreatmentAppliedFrame, groupBeforeEdgeTreatments, restoreShapeBeforeEdgeTreatment, tubeBeforeEdgeTreatments, wasGroupBeforeEdgeTreatments } from "@/lib/edgeTreatmentHistory";
 import { describeHistoryStep, historyStepsAround } from "@/lib/historyStepDescription";
 import { historyStepText } from "@/lib/historyStepText";
 import { historyViewMcpCommand } from "./workplane/historyViewMcp";
@@ -10566,6 +10566,8 @@ export function LayerlingEditor({
         if (typeof params.hidden === "boolean") patch.hidden = params.hidden;
         if (typeof params.transparent === "boolean") patch.transparent = params.transparent || undefined;
         if (typeof params.multicolor === "boolean") patch.multicolor = params.multicolor;
+        // A filleted tube is a mesh, which the shape's own settings below do not cover; its bore still can cut (#1067).
+        if (typeof params.tubeBoreHole === "boolean" && tubeBeforeEdgeTreatments(target)) patch.tubeBoreHole = params.tubeBoreHole;
         if (typeof params.font === "string") patch.font = mcpTextFont(params.font) ?? params.font;
         // Alles Formeigene in einem Zug, mit denselben Grenzen wie im
         // Merkmalsfeld: Seitenzahl, Kegelradien, Zahnrad, Gewinde, Feder,
