@@ -28,5 +28,15 @@
       "de": "Wähle in einer Skizze eine Form aus: In der Leiste darüber stehen jetzt X und Y für ihre Mitte, in mm vom Ursprung. Tippe einen Wert ein, und die Form rückt genau dorthin, etwa ein Loch 12 mm neben die Mitte einer Platte.",
       "en": "Select a shape in a sketch: the bar above it now shows X and Y for its middle, in mm from the origin. Type a value and the shape moves exactly there, such as a hole 12 mm from the middle of a plate."
     }
+  },
+  {
+    "title": {
+      "de": "Drehpunkt auf die Mitte einer Fläche",
+      "en": "Pivot to the centre of a face"
+    },
+    "body": {
+      "de": "Halte beim Ziehen der roten Drehpunkt-Markierung Shift gedrückt: Sie rastet dann an der Mitte der Fläche unter dem Zeiger ein, etwa auf der Achse eines Scharnierrings oder an der Spitze eines Kegels. Transparente Körper davor übergeht sie dabei.",
+      "en": "Hold Shift while you drag the red pivot marker: it snaps to the centre of the face under the pointer, such as the axis of a hinge ring or the tip of a cone. It looks past transparent bodies in front."
+    }
   }
 ]

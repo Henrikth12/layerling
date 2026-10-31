@@ -79,6 +79,7 @@ import { pivotHeightRange, pivotPlateReach } from "@/lib/zoomPivot";
 import { pointerReach } from "@/lib/pointerReach";
 import { boxSnapSpots, measurementMiddle, nearestReferenceOnScreen, type ReferencePosition } from "@/lib/referencePoints";
 import { type PivotPoint } from "@/lib/rotationPivot";
+import { pivotSnapCentre } from "@/lib/pivotSnap";
 import { overhangDownwardLimit } from "@/lib/overhangLimits";
 import { rotatedGeometryShapePatch, rotationPatchFromQuaternion as sharedRotationPatchFromQuaternion, signedDegrees } from "@/lib/geometryRotation";
 import type { CadModifierEdge } from "@/lib/cadModifierTypes";
@@ -90,7 +91,7 @@ import { syncHistoryPickHighlight, syncPickHighlight } from "@/components/workpl
 import { orbitViewBy, panViewBy } from "@/lib/viewArrowKeys";
 import { useViewportKeyboardHooks } from "@/components/workplane/viewportKeyboard";
 import { useViewportDoubleClick } from "@/components/workplane/useViewportDoubleClick";
-import { aimPickRay, firstShapeHit, pickImagePoint, pickLayFlatFace, pickMateFace, pickFaceCentre, pickRotationPivot, pickShapeAt, pointerRayFor, shapesUnderPointer, rayPointOnRotationPlane, RENDER_LAYER_SHAPES, splitAxisParameter, usePickOnlyPointer, type LayFlatPick, type PickOnlySelection } from "@/components/workplane/viewportPicking";
+import { aimPickRay, firstShapeHit, pickImagePoint, pickLayFlatFace, pickMateFace, pickFaceCentre, pickRotationPivot, pickShapeAt, pointerRayFor, shapesUnderPointer, rayPointOnRotationPlane, RENDER_LAYER_SHAPES, splitAxisParameter, usePickOnlyPointer, worldTrianglePositions, type LayFlatPick, type PickOnlySelection } from "@/components/workplane/viewportPicking";
 import { fastEdgesGeometry } from "@/lib/fastEdgesGeometry";
 import { RENDER_LAYER_HELPERS, type PointCardOffset, type ThreeState, type MoveDimensionSession, type NoteOverlayState, type TapePoint, type TapeAttachment, type TapeEdgeAttachment, type TapeModel, type TapeOverlayState, type TapeCandidate, type DragItem, quaternionForShape, projectToScreen, syncMoveDimensionWorldLines, tapeShapeDimensions, tapePointWorld, tapeEdgeWorldPoints, tapeSegmentWorldPoints, tapeMovableShapeId, syncTapeOverlay, tapeSegmentLengths, syncNoteOverlay, NoteOverlay, TapeOverlay, type RulerDimensionOverlayItem, type RulerDimensionOverlayState, syncRulerDimensionOverlay, RulerDimensionOverlay, type CornerRulerInstance, type CornerRulerOverlayState, syncCornerRulerToolOverlay, CornerRulerToolOverlay, syncOriginDimensionWorldLines, shapeCenter, shapeLocalExtents, projectShapeExtent, projectShapesExtent, type OriginDimensionFrame, formatMeasure, findShapeObject, releaseSharedShapeMaterials, disposeChildren, disposeObject } from "@/components/workplane/ViewportOverlays";
 import { MIN_SHAPE_SIZE, RENDER_LAYER_PREVIEWS, overhangUniforms, setEdgeLineStyle, setStrongHoles, setRulerInchScale, MODIFIER_EDGE_DEPTH_PULL, clamp, selectionFrameForShapes, refreshFrozenObjectMatrix, updateShapeObjectTransform, applySectionClipping, rebuildShapes, rebuildModifierEdges, setModifierEdgeHover, rebuildSelectionHelpers, cadFacePickLayerMesh, syncCadFaceLayer, syncBentTubeSegment, TRANSPARENT_SOLID_OPACITY, createShapeObject, onGroupDisplayReady } from "./workplane/viewportShapeObjects";
@@ -4100,7 +4101,7 @@ export function WorkplaneViewport({
     };
     const move = (moveEvent: PointerEvent) => {
       if (moveEvent.pointerId !== event.pointerId) return;
-      const point = resolvePivotDragPoint(state, moveEvent.clientX, moveEvent.clientY, latest ?? start);
+      const point = resolvePivotDragPoint(state, moveEvent.clientX, moveEvent.clientY, latest ?? start, moveEvent.shiftKey);
       if (!point) return;
       latest = point;
       show(point);
@@ -8487,12 +8488,18 @@ function pivotVector(point: PivotPoint | null | undefined) {
  * Where a dragged pivot marker lands (#140): on the body under the pointer - a corner or the
  * middle of an edge when the pointer is near one, a point along the edge, or else the point of
  * the surface. Beside every body it slides in the plane through `depth` facing the camera.
+ * With `centre` (Shift, #1065) it takes the centre of the face instead - the axis of a round one,
+ * the middle of a flat one, the tip of a cone - and looks through see-through bodies to reach it.
  */
-function resolvePivotDragPoint(state: ThreeState, clientX: number, clientY: number, depth: THREE.Vector3): THREE.Vector3 | null {
+function resolvePivotDragPoint(state: ThreeState, clientX: number, clientY: number, depth: THREE.Vector3, centre = false): THREE.Vector3 | null {
   const rect = aimPickRay(state, clientX, clientY, RENDER_LAYER_SHAPES);
-  const hit = firstShapeHit(state, { needsFace: true });
+  const hit = firstShapeHit(state, { needsFace: true, throughSeeThrough: centre });
   if (hit?.face) {
     const mesh = hit.object as THREE.Mesh<THREE.BufferGeometry>;
+    if (centre && hit.faceIndex !== undefined && hit.faceIndex !== null) {
+      const middle = pivotSnapCentre(pivotDragTriangles(mesh), hit.faceIndex);
+      if (middle) return new THREE.Vector3(middle.x, middle.y, middle.z);
+    }
     mesh.updateWorldMatrix(true, false);
     const normal = hit.face.normal.clone().applyNormalMatrix(new THREE.Matrix3().getNormalMatrix(mesh.matrixWorld)).normalize();
     const pointerX = clientX - rect.left;
@@ -8510,6 +8517,16 @@ function resolvePivotDragPoint(state: ThreeState, clientX: number, clientY: numb
   state.camera.getWorldDirection(facing);
   const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(facing, depth);
   return state.raycaster.ray.intersectPlane(plane, new THREE.Vector3());
+}
+
+/** A mesh's world triangles for the Shift snap, kept while neither it nor its place changes, so the drag does not redo them per move. */
+function pivotDragTriangles(mesh: THREE.Mesh<THREE.BufferGeometry>): Float64Array {
+  mesh.updateWorldMatrix(true, false);
+  const cached = mesh.userData.pivotDragTriangles as { geometry: THREE.BufferGeometry; matrix: THREE.Matrix4; positions: Float64Array } | undefined;
+  if (cached && cached.geometry === mesh.geometry && cached.matrix.equals(mesh.matrixWorld)) return cached.positions;
+  const positions = worldTrianglePositions(mesh);
+  mesh.userData.pivotDragTriangles = { geometry: mesh.geometry, matrix: mesh.matrixWorld.clone(), positions };
+  return positions;
 }
 
 function pickCadFace(state: ThreeState, pick: CadFacePick, clientX: number, clientY: number) {
