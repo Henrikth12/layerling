@@ -6,6 +6,7 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **Lid: a fourth kind that grips the wall from both sides (Discussion #1062):** Like the double-walled lids of a food container: a plate a wall wider than the body with the lip into the opening and the rim over the outside below it, so the body's wall sits in a groove between them, the chosen gap on both sides. One depth and one wall for lip and rim. In the Lid window as "Both sides", for `layerling_make_lid` as `type: "both"`. Kernel test in lidTool.e2e.ts. Suggested by @dlguess in #1062.
 - **Trace the template picture in a sketch (Discussion #1060):** Tracing a drawing laid under a sketch meant clicking along every edge by hand. The reference image's settings in sketch mode now have a Trace section: choose the dark or the light part and a threshold, and Trace outline turns that part of the picture into closed sketch lines right where it lies, turned and cropped with it, ready to edit. They come selected, so Delete takes them away to try another threshold. It is the same tracing a PNG or JPG gets in the import (#359), laid onto the picture (`sketchImageTrace.ts`, `traceRasterRings` split out of `rasterTrace.ts`). For an AI, `layerling_reference_image` takes `trace` and turns a reference image lying flat into a sketch body standing on it. Guide (sketches, reference images, AI) in every language, README and start page. Unit test in `sketchImageTrace.test.ts`. Suggested by @boatingman44, seconded by @BenedictJason.
 
 ## 1.126.0

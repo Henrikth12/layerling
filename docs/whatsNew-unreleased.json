@@ -8,5 +8,15 @@
       "de": "Ein Bild unter der Skizze wird mit „Umriss nachzeichnen“ zu Skizzenlinien, genau dort, wo es liegt: der dunkle oder der helle Teil, bei einer Schwelle, die du einstellst. Die Linien bearbeitest du danach wie alle anderen.",
       "en": "A picture under the sketch becomes sketch lines with \"Trace outline\", right where it lies: its dark or its light part, at a threshold you set. You then edit the lines like any others."
     }
+  },
+  {
+    "title": {
+      "de": "Deckel, der die Wand von beiden Seiten fasst",
+      "en": "A lid that grips the wall from both sides"
+    },
+    "body": {
+      "de": "Das Werkzeug „Deckel“ kennt eine vierte Art: „Beidseitig“. Unter der Platte sitzen eine Lippe, die in die Öffnung greift, und ein Rand, der außen herum greift. Die Wand deiner Dose sitzt dazwischen in einer Nut, wie bei einer Frischhaltedose.",
+      "en": "The Lid tool has a fourth kind: \"Both sides\". Below the plate sit a lip that goes into the opening and a rim that goes over the outside. The wall of your box sits in a groove between them, like on a food container."
+    }
   }
 ]
