@@ -100,7 +100,7 @@ import {
   threadSettings,
   threadSizeFor,
   threadSizeById,
-  threadProfileForSize,
+  threadSizeSettings,
   threadUsesInchPitch,
   threadsPerInchToPitch,
   type ThreadSettings,
@@ -2218,8 +2218,9 @@ function getShapePropertiesWithAppLimits(shape: WorkplaneShape, onUpdate: ShapeI
         onChange: (value) => {
           const chosen = threadSizeById(value);
           // Eine G-Groesse bringt ihr Whitworth-Profil mit, eine M-, UNC- oder
-          // UNF-Groesse das Spitzgewinde; Trapez und Rund bleiben stehen.
-          if (chosen) applyThread({ diameter: chosen.diameter, pitch: chosen.pitch, profile: threadProfileForSize(chosen, settings.profile) });
+          // UNF-Groesse das Spitzgewinde, ein Flaschenhals sein eigenes Profil;
+          // Trapez und Rund bleiben stehen.
+          if (chosen) applyThread(threadSizeSettings(chosen, settings.profile, standard));
         },
       },
       {

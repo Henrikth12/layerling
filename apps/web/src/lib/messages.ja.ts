@@ -1828,6 +1828,8 @@ export const MESSAGES_JA: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "例: カメラと三脚のねじ 1/4\"-20（ISO 1222）、大型の三脚雲台 3/8\"-16。",
   "thread.hint.UNF": "UNCと同じ直径で、より細かいピッチです（ASME B1.1）。",
   "thread.hint.G": "例: シャワーホース G1/2、洗濯機 G3/4、ワンタッチコネクター用の散水栓 G3/4（小型は G1/2）。",
+  "thread.group.bottle": "PCO – ボトル",
+  "thread.hint.bottle": "PCO 1881：ほとんどの水や炭酸飲料のボトルの28 mmの口。口部にはロッド、キャップにはナットまたはねじ穴を選びます。",
   "shape.box": "直方体",
   "shape.roundedBox": "角丸直方体",
   "shape.cylinder": "円柱",

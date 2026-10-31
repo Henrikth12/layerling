@@ -1521,6 +1521,8 @@ export const MESSAGES_PT_BR: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Ex.: parafuso de câmera e tripé 1/4\"-20 (ISO 1222), cabeças de tripé maiores 3/8\"-16.",
   "thread.hint.UNF": "Mesmos diâmetros da UNC com passo mais fino (ASME B1.1).",
   "thread.hint.G": "Ex.: mangueira de chuveiro G1/2, máquina de lavar G3/4, torneira de jardim para engate rápido G3/4 (pequena G1/2).",
+  "thread.group.bottle": "PCO – Garrafas",
+  "thread.hint.bottle": "PCO 1881: o gargalo de 28 mm da maioria das garrafas de água e refrigerante. Haste para o gargalo, porca ou furo roscado para uma tampa.",
   "thread.flankAngleHint": "O ângulo entre os dois flancos de um dente. 60° é a rosca triangular afiada, 30° a rosca trapezoidal. Com 90° ou menos nenhum flanco fica mais plano que 45°, então a rosca imprime sem suportes.",
   "thread.axialClearanceHint": "Folga extra ao longo do eixo da rosca, em mm, além da folga normal. Cada dente da porca fica mais fino nessa medida, sem alterar o diâmetro. Para a rosca girar livremente sem folga lateral excessiva, mantenha a folga normal em torno de 0,2 a 0,3 mm e use 0,2 mm aqui. Com 0, a folga vem só da folga normal, que abre os flancos só cerca de metade disso.",
   "thread.clearanceHint": "O espaço extra em todo o diâmetro. Uma rosca impressa precisa de mais do que se imagina: o vão entre os flancos é só cerca de metade disso. Em torno de 0,3 é justo, 0,4 o normal, 0,5 folgado. Imprima um par de teste antes.",

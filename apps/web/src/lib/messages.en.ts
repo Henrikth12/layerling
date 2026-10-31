@@ -2035,6 +2035,8 @@ export const MESSAGES_EN = {
   "thread.hint.UNC": "E.g. camera and tripod screw 1/4\"-20 (ISO 1222), larger tripod heads 3/8\"-16.",
   "thread.hint.UNF": "Same diameters as UNC with a finer pitch (ASME B1.1).",
   "thread.hint.G": "E.g. shower hose G1/2, washing machine G3/4, garden tap for the click-on connector G3/4 (small G1/2).",
+  "thread.group.bottle": "PCO – Bottles",
+  "thread.hint.bottle": "PCO 1881: the 28 mm neck of most water and soda bottles. Rod for the neck, Nut or Threaded hole for a cap.",
   "shape.box": "Box",
   "shape.roundedBox": "Rounded Box",
   "shape.cylinder": "Cylinder",

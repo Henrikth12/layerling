@@ -1741,6 +1741,8 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "例如相機與三腳架的 1/4\"-20 螺絲（ISO 1222），較大的腳架雲台為 3/8\"-16。",
   "thread.hint.UNF": "直徑與 UNC 相同，螺距更細（ASME B1.1）。",
   "thread.hint.G": "例如淋浴軟管 G1/2、洗衣機 G3/4、搭配快接頭的花園水龍頭 G3/4（小型為 G1/2）。",
+  "thread.group.bottle": "PCO – 瓶子",
+  "thread.hint.bottle": "PCO 1881：大多數水瓶和汽水瓶的 28 mm 瓶口。瓶口選螺桿，瓶蓋選螺帽或螺紋孔。",
   "shape.box": "長方體",
   "shape.roundedBox": "圓角長方體",
   "shape.cylinder": "圓柱體",

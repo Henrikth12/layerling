@@ -1712,6 +1712,8 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Pl. fényképezőgép- és állványcsavar: 1/4\"-20 (ISO 1222), nagyobb állványfejek: 3/8\"-16.",
   "thread.hint.UNF": "Ugyanazok az átmérők, mint az UNC-nél, finomabb menetemelkedéssel (ASME B1.1).",
   "thread.hint.G": "Pl. zuhanytömlő G1/2, mosógép G3/4, kerti csap gyorscsatlakozóhoz G3/4 (kicsi: G1/2).",
+  "thread.group.bottle": "PCO – Palackok",
+  "thread.hint.bottle": "PCO 1881: a legtöbb víz- és üdítős palack 28 mm-es nyaka. Rúd a nyakhoz, anya vagy menetes furat a kupakhoz.",
   "shape.box": "Doboz",
   "shape.roundedBox": "Lekerekített doboz",
   "shape.cylinder": "Henger",

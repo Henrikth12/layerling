@@ -1762,6 +1762,8 @@ export const MESSAGES_ES: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Por ejemplo, el tornillo de cámara y trípode 1/4\"-20 (ISO 1222); las rótulas de trípode más grandes, 3/8\"-16.",
   "thread.hint.UNF": "Los mismos diámetros que UNC, con un paso más fino (ASME B1.1).",
   "thread.hint.G": "Por ejemplo, manguera de ducha G1/2, lavadora G3/4, grifo de jardín para el conector rápido G3/4 (pequeño G1/2).",
+  "thread.group.bottle": "PCO – Botellas",
+  "thread.hint.bottle": "PCO 1881: el cuello de 28 mm de la mayoría de botellas de agua y refrescos. Varilla para el cuello, tuerca o agujero roscado para un tapón.",
   "shape.box": "Caja",
   "shape.roundedBox": "Caja redondeada",
   "shape.cylinder": "Cilindro",

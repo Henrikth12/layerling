@@ -1696,6 +1696,8 @@ export const MESSAGES_IT: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Ad esempio, vite per fotocamere e treppiedi da 1/4\"-20 (ISO 1222) e teste per treppiedi più grandi da 3/8\"-16.",
   "thread.hint.UNF": "Stessi diametri della UNC, ma con passo più fine (ASME B1.1).",
   "thread.hint.G": "Ad esempio, tubo doccia G1/2, lavatrice G3/4 e rubinetto da giardino per raccordo a innesto rapido G3/4 (piccolo G1/2).",
+  "thread.group.bottle": "PCO – Bottiglie",
+  "thread.hint.bottle": "PCO 1881: il collo da 28 mm della maggior parte delle bottiglie d'acqua e bibite. Barra per il collo, dado o foro filettato per un tappo.",
   "shape.box": "Parallelepipedo",
   "shape.roundedBox": "Parallelepipedo arrotondato",
   "shape.cylinder": "Cilindro",

@@ -2020,6 +2020,8 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Par ex. vis pour appareil photo et trépied 1/4\"-20 (ISO 1222), têtes de trépied plus grandes 3/8\"-16.",
   "thread.hint.UNF": "Mêmes diamètres que UNC avec un pas plus fin (ASME B1.1).",
   "thread.hint.G": "Par ex. flexible de douche G1/2, lave-linge G3/4, robinet de jardin pour le connecteur clipsable G3/4 (petit G1/2).",
+  "thread.group.bottle": "PCO – Bouteilles",
+  "thread.hint.bottle": "PCO 1881 : le goulot de 28 mm de la plupart des bouteilles d'eau et de soda. Tige pour le goulot, écrou ou trou taraudé pour un bouchon.",
   "shape.box": "Boîte",
   "shape.roundedBox": "Boîte arrondie",
   "shape.cylinder": "Cylindre",

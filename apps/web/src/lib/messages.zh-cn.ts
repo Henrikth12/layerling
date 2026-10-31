@@ -1741,6 +1741,8 @@ export const MESSAGES_ZH_CN: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "例如相机和三脚架螺钉 1/4\"-20（ISO 1222），较大的脚架云台为 3/8\"-16。",
   "thread.hint.UNF": "直径与 UNC 相同，螺距更细（ASME B1.1）。",
   "thread.hint.G": "例如淋浴软管 G1/2、洗衣机 G3/4、卡扣接头花园龙头 G3/4（小型为 G1/2）。",
+  "thread.group.bottle": "PCO – 瓶子",
+  "thread.hint.bottle": "PCO 1881：大多数水瓶和汽水瓶的 28 mm 瓶口。瓶口选螺杆，瓶盖选螺母或螺纹孔。",
   "shape.box": "长方体",
   "shape.roundedBox": "圆角长方体",
   "shape.cylinder": "圆柱体",

@@ -2365,6 +2365,8 @@ export const MESSAGES_DA: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "F.eks. kamera- og stativskrue 1/4\"-20 (ISO 1222), større stativhoveder 3/8\"-16.",
   "thread.hint.UNF": "Samme diametre som UNC med en finere deling (ASME B1.1).",
   "thread.hint.G": "F.eks. bruseslange G1/2, vaskemaskine G3/4, havelok til klik-samlingen G3/4 (lille G1/2).",
+  "thread.group.bottle": "PCO – Flasker",
+  "thread.hint.bottle": "PCO 1881: 28 mm-halsen på de fleste vand- og sodavandsflasker. Stang til halsen, møtrik eller gevindhul til en kapsel.",
   "shape.box": "Kasse",
   "shape.roundedBox": "Rundet kasse",
   "shape.cylinder": "Cylinder",

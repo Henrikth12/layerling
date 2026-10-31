@@ -1670,6 +1670,8 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Npr. vijak za fotoaparat in stativ 1/4\"-20 (ISO 1222), večje glave stativov 3/8\"-16.",
   "thread.hint.UNF": "Enaki premeri kot UNC, a z manjšim korakom (ASME B1.1).",
   "thread.hint.G": "Npr. tuš gibljiva cev G1/2, pralni stroj G3/4, vrtna pipa za priključek na zaskok G3/4 (majhna G1/2).",
+  "thread.group.bottle": "PCO – Steklenice",
+  "thread.hint.bottle": "PCO 1881: 28-mm grlo večine steklenic za vodo in gazirane pijače. Palica za grlo, matica ali navojna luknja za pokrovček.",
   "shape.box": "Kvader",
   "shape.roundedBox": "Zaobljen kvader",
   "shape.cylinder": "Valj",

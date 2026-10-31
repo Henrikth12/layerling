@@ -1728,6 +1728,8 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Örn. kamera ve tripod vidası 1/4\"-20 (ISO 1222), büyük tripod başları 3/8\"-16.",
   "thread.hint.UNF": "UNC ile aynı çaplar, daha ince adım (ASME B1.1).",
   "thread.hint.G": "Örn. duş hortumu G1/2, çamaşır makinesi G3/4, geçmeli bağlantı için bahçe musluğu G3/4 (küçük G1/2).",
+  "thread.group.bottle": "PCO – Şişeler",
+  "thread.hint.bottle": "PCO 1881: çoğu su ve gazlı içecek şişesinin 28 mm ağzı. Ağız için çubuk, kapak için somun veya dişli delik.",
   "shape.box": "Kutu",
   "shape.roundedBox": "Yuvarlatılmış kutu",
   "shape.cylinder": "Silindir",

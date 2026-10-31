@@ -2094,6 +2094,8 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "thread.hint.UNC": "Například stativový šroub fotoaparátu 1/4\"-20 (ISO 1222), u větších stativových hlav 3/8\"-16.",
   "thread.hint.UNF": "Stejné průměry jako UNC, ale jemnější rozteč (ASME B1.1).",
   "thread.hint.G": "Například sprchová hadice G1/2, pračka G3/4 a zahradní kohout pro rychlospojku G3/4 (menší G1/2).",
+  "thread.group.bottle": "PCO – Lahve",
+  "thread.hint.bottle": "PCO 1881: hrdlo 28 mm většiny lahví od vody a limonád. Tyč pro hrdlo, matice nebo závitový otvor pro víčko.",
   "shape.box": "Kvádr",
   "shape.roundedBox": "Zaoblený kvádr",
   "shape.cylinder": "Válec",

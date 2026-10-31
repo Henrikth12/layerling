@@ -1777,6 +1777,8 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "مثل برغي الكاميرا والحامل الثلاثي 1/4\"-20 (ISO 1222)، ورؤوس الحوامل الأكبر 3/8\"-16.",
   "thread.hint.UNF": "الأقطار نفسها في UNC لكن بخطوة أنعم (ASME B1.1).",
   "thread.hint.G": "مثل خرطوم الدش G1/2، والغسالة G3/4، وصنبور الحديقة لوصلة الخرطوم السريعة G3/4 (الصغير G1/2).",
+  "thread.group.bottle": "PCO – زجاجات",
+  "thread.hint.bottle": "PCO 1881: عنق بقطر 28 مم في معظم زجاجات الماء والمشروبات الغازية. القضيب للعنق، والصامولة أو الثقب الملولب للغطاء.",
   "shape.box": "صندوق",
   "shape.roundedBox": "صندوق مستدير",
   "shape.cylinder": "أسطوانة",

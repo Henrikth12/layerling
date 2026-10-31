@@ -2034,6 +2034,8 @@ export const MESSAGES_NL: Record<MessageKey, string> = {
   "thread.hint.UNC": "Bijv. camera- en statiefschroef 1/4\"-20 (ISO 1222), grotere statiefkoppen 3/8\"-16.",
   "thread.hint.UNF": "Dezelfde diameters als UNC met een fijnere spoed (ASME B1.1).",
   "thread.hint.G": "Bijv. doucheslang G1/2, wasmachine G3/4, tuinkraan voor de klikkoppeling G3/4 (klein G1/2).",
+  "thread.group.bottle": "PCO – Flessen",
+  "thread.hint.bottle": "PCO 1881: de 28 mm-hals van de meeste water- en frisdrankflessen. Staaf voor de hals, moer of schroefgat voor een dop.",
   "shape.box": "Blok",
   "shape.roundedBox": "Afgerond blok",
   "shape.cylinder": "Cilinder",

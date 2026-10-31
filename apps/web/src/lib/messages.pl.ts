@@ -2040,6 +2040,8 @@ export const MESSAGES_PL: Partial<Record<MessageKey, string>> = {
   "thread.hint.UNC": "Np. śruba aparatu i statywu 1/4\"-20 (ISO 1222), większe głowice statywów 3/8\"-16.",
   "thread.hint.UNF": "Te same średnice co UNC z drobniejszym skokiem (ASME B1.1).",
   "thread.hint.G": "Np. wąż prysznicowy G1/2, pralka G3/4, kran ogrodowy pod szybkozłączkę G3/4 (mały G1/2).",
+  "thread.group.bottle": "PCO – Butelki",
+  "thread.hint.bottle": "PCO 1881: szyjka 28 mm większości butelek na wodę i napoje. Pręt na szyjkę, nakrętka lub otwór gwintowany na zakrętkę.",
   "shape.box": "Prostopadłościan",
   "shape.roundedBox": "Zaokrąglony prostopadłościan",
   "shape.cylinder": "Walec",

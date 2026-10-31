@@ -2034,6 +2034,8 @@ export const MESSAGES_DE: Record<MessageKey, string> = {
   "thread.hint.UNC": "Z. B. Kamera- und Stativschraube 1/4\"-20 (ISO 1222), größere Stativköpfe 3/8\"-16.",
   "thread.hint.UNF": "Dieselben Durchmesser wie UNC mit feinerer Steigung (ASME B1.1).",
   "thread.hint.G": "Z. B. Duschschlauch G1/2, Waschmaschine G3/4, Gartenhahn für den Hahnverbinder G3/4 (klein G1/2).",
+  "thread.group.bottle": "PCO – Flaschen",
+  "thread.hint.bottle": "PCO 1881: der 28-mm-Hals der meisten Wasser- und Limoflaschen. Stange für den Hals, Mutter oder Gewindeloch für einen Deckel.",
   "shape.box": "Quader",
   "shape.roundedBox": "Abgerundeter Quader",
   "shape.cylinder": "Zylinder",
