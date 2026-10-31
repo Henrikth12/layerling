@@ -276,11 +276,12 @@ npm run export
 
 Die fertige Seite liegt in **`apps/web/.next-export/`**. Kopiere den **Inhalt** dieses Ordners (nicht den Ordner selbst) in das Dokumentenverzeichnis des Webservers, sodass `index.html` direkt darin liegt.
 
-Drei Dinge zu wissen:
+Vier Dinge zu wissen:
 
 - **layerling braucht eine eigene Adresse.** Die Dateien verweisen mit Pfaden aufeinander, die an der Wurzel beginnen (`/_next/...`). layerling muss deshalb an der Wurzel einer Adresse ausgeliefert werden, etwa `https://layerling.example.com/` oder `http://192.168.0.5:8080/`. In einem Unterordner (`https://example.com/layerling/`) läuft es nicht, und von der Festplatte (`file://`) lässt es sich nicht öffnen. Siehst du nur einen Block Text ohne jede Gestaltung, wurden die Skript- und Stildateien nicht geladen: Öffne die Entwicklerwerkzeuge des Browsers (F12), sieh im Reiter „Netzwerk“ nach roten Einträgen `/_next/...` und vergleiche deren Adresse mit dem Ort, an den du die Dateien gelegt hast.
 - **Ordner, die mit einem Unterstrich beginnen, müssen ausgeliefert werden.** Manche Server verstecken sie (GitHub Pages zum Beispiel ohne eine Datei `.nojekyll`), und in `_next` steckt das ganze Programm.
 - **Ein schneller Test auf dem eigenen Rechner:** `npx serve apps/web/.next-export` und die angezeigte Adresse öffnen.
+- **Als App installieren und offline nutzen geht nur mit https.** Der Export enthält die Offline-Dateien (`sw.js`), aber ein Browser nutzt sie nur unter einer `https://`-Adresse oder auf `localhost`, nicht unter einer einfachen `http://`-Adresse im eigenen Netz.
 
 ### Gemeinsame Entwürfe im Netz
 
@@ -444,7 +445,7 @@ MCP-Route abgeschaltet, es sei denn, der Server schaltet sie mit einem Zugriffss
 
 Die wichtigsten Werkzeugnamen sind `layerling_list_editors`, `layerling_read_scene`, `layerling_list_objects`,
 `layerling_create_shape`, `layerling_update_object`, `layerling_list_edges`, `layerling_apply_edge_treatment`,
-`layerling_hollow_object`, `layerling_make_lid`, `layerling_array_objects`, `layerling_set_section_view` und `layerling_capture_image`.
+`layerling_hollow_object`, `layerling_offset_object`, `layerling_cut_out`, `layerling_make_lid`, `layerling_array_objects`, `layerling_set_section_view` und `layerling_capture_image`.
 
 ### Claude Code
 
