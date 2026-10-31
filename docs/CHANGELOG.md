@@ -6,6 +6,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **Alignment handles stay next to a tiny part when you zoom in (Discussion #989):** The line of alignment handles stood a fixed 3 mm beside the selection, so on a part below a millimetre zoomed in to fill the view the handles landed far off it or off the screen. On the screen the line now stands at most 40 pixels beside the selection, in the same direction; normal views are unchanged. Asked for by @rickmb66 in Discussion #989, after the same change for the size marks.
+
 - **Search words marked on the guide page (Discussion #1059):** The guide search marked the words only in its list of results; the page a result opened showed them nowhere, and on a long page they were hard to find. Now the page marks every place the words appear, in the same way the search matches them (capital letters, accents, "ss" and "ß" and parts of words alike; single letters are left out when longer words are typed), and scrolls to the first one in the section that was picked, also when the result is on the page already open. Esc or a click on a mark clears them, and a printout leaves them out. Suggested by @boatingman44.
 
 - **The right-click menu scrolls with the wheel (Discussion #1058):** A menu taller than the window could only be scrolled by dragging its scroll bar; turning the wheel over it closed it, because every turn of the wheel anywhere closed the menu. The wheel over the menu now scrolls it, and only the wheel elsewhere closes it. Reported by @dlguess in Discussion #1058.
