@@ -455,6 +455,7 @@ a { color: var(--accent); }
 .guide-results span { display: block; color: var(--muted); font-size: 13px; line-height: 1.45; }
 .guide-results mark { background: transparent; color: var(--accent); font-weight: 800; }
 .guide-results p { margin: 0; padding: 10px 12px; color: var(--muted); font-size: 14px; }
+mark.guide-hit { background: #ffd54a; color: #231a11; border-radius: 2px; padding: 0 1px; cursor: pointer; }
 .editor-elsewhere { max-width: 1100px; margin: 0 auto; padding: 0 16px 10px; color: var(--muted); font-size: 14px; text-align: right; }
 .editor-elsewhere[hidden] { display: none; }
 .bar a.button { padding: 7px 14px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px; text-decoration: none; }
@@ -550,6 +551,7 @@ footer.note { max-width: 1100px; margin: 0 auto; padding: 0 16px 12px; color: va
   }
   body { font-size: 11pt; line-height: 1.55; }
   .bar, nav.chapters, .pager, .print-actions { display: none; }
+  mark.guide-hit { background: none; color: inherit; padding: 0; }
   .shell { display: block; padding: 0; }
   main { max-width: none; }
   h2, h3, h4 { break-after: avoid; }
@@ -650,20 +652,57 @@ function guideSnippet(hit){
   if(end<text.length)parts.push({text:" ...",mark:false});
   return parts;
 }
+function guideUnmarkPage(){
+  Array.prototype.forEach.call(document.querySelectorAll("mark.guide-hit"),function(mark){var parent=mark.parentNode;parent.replaceChild(document.createTextNode(mark.textContent),mark);parent.normalize();});
+}
+function guideMarkPage(query,umlauts,anchor){
+  var main=document.querySelector("main");if(!main)return;
+  guideUnmarkPage();
+  var walker=document.createTreeWalker(main,NodeFilter.SHOW_TEXT,null),nodes=[],node,marks=[];
+  while((node=walker.nextNode()))if(node.nodeValue.trim()&&!node.parentNode.closest("script,style"))nodes.push(node);
+  nodes.forEach(function(node){
+    var text=node.nodeValue,ranges=guideRanges(guideFold(text),query,umlauts);if(!ranges.length)return;
+    var piece=document.createDocumentFragment(),pos=0;
+    ranges.forEach(function(r){
+      if(r.at>pos)piece.appendChild(document.createTextNode(text.slice(pos,r.at)));
+      var mark=document.createElement("mark");mark.className="guide-hit";mark.textContent=text.slice(r.at,r.at+r.len);piece.appendChild(mark);marks.push(mark);pos=r.at+r.len;
+    });
+    if(pos<text.length)piece.appendChild(document.createTextNode(text.slice(pos)));
+    node.parentNode.replaceChild(piece,node);
+  });
+  if(!marks.length)return;
+  var target=anchor?document.getElementById(anchor):null,first=marks[0];
+  if(target)for(var i=0;i<marks.length;i++){if(target.compareDocumentPosition(marks[i])&Node.DOCUMENT_POSITION_FOLLOWING){first=marks[i];break;}}
+  first.scrollIntoView({block:"center"});
+}
 (function(){
   var form=document.getElementById("guide-search");if(!form||!window.fetch)return;
   var input=form.querySelector("input"),box=document.getElementById("guide-results"),prepared=null,loading=null;
+  var umlauts=form.getAttribute("data-umlauts")==="true";
+  function remember(link){
+    try{sessionStorage.setItem("layerling.guideHit",JSON.stringify({q:input.value,p:link.pathname}));}catch(e){}
+    if(link.pathname===location.pathname)setTimeout(markRemembered,0);
+  }
+  function markRemembered(){
+    var hit=null;try{hit=JSON.parse(sessionStorage.getItem("layerling.guideHit")||"null");sessionStorage.removeItem("layerling.guideHit");}catch(e){}
+    if(!hit||hit.p!==location.pathname||!guideTokens(hit.q||"").length)return;
+    var anchor="";try{anchor=decodeURIComponent(location.hash.slice(1));}catch(e){}
+    guideMarkPage(hit.q,umlauts,anchor);
+  }
+  if(document.readyState==="complete")markRemembered();else window.addEventListener("load",markRemembered);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")guideUnmarkPage();});
+  document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("mark.guide-hit"))guideUnmarkPage();});
   function load(){if(!loading){loading=fetch(form.getAttribute("data-index")).then(function(r){return r.json();}).then(function(list){prepared=guidePrepare(list);}).catch(function(){loading=null;});}return loading;}
   function close(){box.hidden=true;input.setAttribute("aria-expanded","false");}
   function render(){
     if(!guideTokens(input.value).length){close();return;}
     if(!prepared){load().then(function(){if(prepared)render();});return;}
-    var hits=guideSearch(prepared,input.value,8,form.getAttribute("data-umlauts")==="true");
+    var hits=guideSearch(prepared,input.value,8,umlauts);
     box.textContent="";
     if(!hits.length){var none=document.createElement("p");none.textContent=form.getAttribute("data-nothing");box.appendChild(none);}
     hits.forEach(function(hit){
       var link=document.createElement("a"),title=document.createElement("b"),line=document.createElement("span");
-      link.href=hit.entry.u;
+      link.href=hit.entry.u;link.addEventListener("click",function(){remember(link);});
       title.textContent=hit.entry.h?hit.entry.c+" > "+hit.entry.h:hit.entry.c;
       guideSnippet(hit).forEach(function(part){if(part.mark){var mark=document.createElement("mark");mark.textContent=part.text;line.appendChild(mark);}else line.appendChild(document.createTextNode(part.text));});
       link.appendChild(title);link.appendChild(line);box.appendChild(link);
@@ -676,7 +715,7 @@ function guideSnippet(hit){
     if(e.key==="ArrowDown"){var first=box.querySelector("a");if(first){e.preventDefault();first.focus();}}
     else if(e.key==="Escape"){input.value="";close();}
   });
-  form.addEventListener("submit",function(e){e.preventDefault();var first=box.querySelector("a");if(first)window.location.href=first.href;});
+  form.addEventListener("submit",function(e){e.preventDefault();var first=box.querySelector("a");if(first){remember(first);window.location.href=first.href;}});
   box.addEventListener("keydown",function(e){
     var current=document.activeElement;
     if(e.key==="ArrowDown"&&current.nextElementSibling){e.preventDefault();current.nextElementSibling.focus();}

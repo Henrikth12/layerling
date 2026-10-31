@@ -1,6 +1,16 @@
 [
   {
     "title": {
+      "de": "Suchwörter auf der Anleitungsseite markiert",
+      "en": "Search words marked on the guide page"
+    },
+    "body": {
+      "de": "Öffnest du einen Treffer der Anleitungssuche, markiert die Seite jede Stelle, an der deine Wörter stehen, und springt zur ersten im gewählten Abschnitt. Esc oder ein Klick auf eine Markierung nimmt sie wieder weg.",
+      "en": "When you open a result of the guide search, the page marks every place your words appear and jumps to the first one in that section. Esc or a click on a mark clears them."
+    }
+  },
+  {
+    "title": {
       "de": "Versetzen nur zur Seite",
       "en": "Offset sideways only"
     },

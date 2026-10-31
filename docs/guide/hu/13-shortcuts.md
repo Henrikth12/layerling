@@ -19,7 +19,7 @@ Nem találsz egy eszközt? Nyomd meg a [[Ctrl]]+[[K]] billentyűt, vagy kattints
 - Minden bejegyzés mutatja az ugyanezt végző billentyűket és az eszköztárnak azt a területét, ahol található, így megtanulod, hol van.
 - A szürkén megjelenő bejegyzések éppen nem futtathatók, többnyire azért, mert semmi sincs kijelölve. A listában maradnak, így a kereső akkor is megmondja, hol van az eszköz.
 
-Az útmutatónak, amelyet olvasol, szintén van keresőmezője, minden oldal tetején: gépelj be egy-két szót, és felsorolja azokat a részeket, amelyek mindegyiket tartalmazzák, kiemelve az egyező szavakat. Kattints egyre, vagy nyomj [[Enter]] billentyűt az elsőhöz, és egyenesen oda ugrasz.
+Az útmutatónak, amelyet olvasol, szintén van keresőmezője, minden oldal tetején: gépelj be egy-két szót, és felsorolja azokat a részeket, amelyek mindegyiket tartalmazzák, kiemelve az egyező szavakat. Kattints egyre, vagy nyomj [[Enter]] billentyűt az elsőhöz, és egyenesen oda ugrasz. A megnyíló oldal kiemeli a szavaid minden előfordulását, és a kiválasztott rész első találatához görget; az [[Esc]] vagy egy kattintás a kiemelésre eltünteti őket.
 - Egy alakzat nevével hozzáadod azt az alakzatot a munkasíkhoz, pont mintha az alakzatmenüben kattintanál rá.
 - Üres mezőnél a kereső felül az utoljára használt parancsokat sorolja fel.
 - A tervedben lévő test neve megtalálja és kijelöli azt a testet, ami sok részből álló tervben segít. A testek csak akkor jelennek meg, amikor gépelsz.

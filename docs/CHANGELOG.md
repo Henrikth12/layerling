@@ -6,6 +6,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **Search words marked on the guide page (Discussion #1059):** The guide search marked the words only in its list of results; the page a result opened showed them nowhere, and on a long page they were hard to find. Now the page marks every place the words appear, in the same way the search matches them (capital letters, accents, "ss" and "ß" and parts of words alike; single letters are left out when longer words are typed), and scrolls to the first one in the section that was picked, also when the result is on the page already open. Esc or a click on a mark clears them, and a printout leaves them out. Suggested by @boatingman44.
+
 - **The right-click menu scrolls with the wheel (Discussion #1058):** A menu taller than the window could only be scrolled by dragging its scroll bar; turning the wheel over it closed it, because every turn of the wheel anywhere closed the menu. The wheel over the menu now scrolls it, and only the wheel elsewhere closes it. Reported by @dlguess in Discussion #1058.
 
 - **Offset sideways only (Discussion #1057):** The Offset tool moved every face, so growing a sign or a base by a border all round also made it taller by twice the distance. A new tick, Sides only, moves just the sides: every flat top and bottom stays at its height, and on a stepped body each step keeps its own. It works for grow and shrink, with round or sharp corners and as a hole copy; Edit opens it ticked again. The MCP bridge takes `sideways` on layerling_offset_object. Asked for by @MethylBromide in Discussion #1057.
