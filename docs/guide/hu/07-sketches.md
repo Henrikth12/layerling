@@ -94,6 +94,18 @@ A forgatott test pontos test, mint a kihúzott: fogadja az élletörést és a l
 
 **Egyetlen folytonos szál: {{ui:prop.pitch}}.** A forgatás a körvonalból zárt gyűrűket készít. Jelöld ki a forgatott testet, és a Tulajdonságok panelen adj neki 0-nál nagyobb {{ui:prop.pitch}} értéket, vagyis hogy fordulatonként mennyit emelkedik, és a körvonal csavarvonalba tekeredik: egyetlen folytonos szál, mint a filament az orsón vagy egy rugó. A {{ui:prop.sweep}} helyén ekkor {{ui:prop.turns}} áll, legfeljebb 200; a negatív szám balos tekercselést ad. A körvonal magasságánál sűrűbb menetek egyetlen testté olvadnak össze, így egy tömör mag finom menetemelkedéssel is működik. A csavarvonal hálóként épül, így lekerekítés, élletörés és kiüregelés nem működik rajta; sok menetnél tartsd alacsonyan a {{ui:prop.sides}} értékét. A 0 menetemelkedés ismét gyűrűket ad.
 
+## Végighúzás egy pályán
+
+A {{ui:sketch.sweep}} egy körvonalat húz végig egy pályán: egy sarkon befordulő kábelcsatornát, egy védőcsövet, egy szíjvédőt, egy gyűrűt egy hatszög körül. A {{ui:sketch.group.create}} csoportban a {{ui:sketch.extrude}} és a {{ui:sketch.revolve}} mellett található.
+
+Ugyanarra a lapra két dolgot rajzolsz:
+
+- **A keresztmetszetet** zárt körvonalként, a szokásos módon. Úgy rajzold, ahogy a pálya mentén a kezdetétől nézve látnád: a pályán keresztül a vázlat bal és jobb oldala, a fent a kész testen is fent van. Egy üreges keresztmetszet, egy csatorna vagy cső, egy körvonal egy másikkal a belsejében. Alapból a keresztmetszet a pályára van középre igazítva. A fenti módjelvény melletti menüben inkább a bal vagy a jobb szélét teheted a pályára ({{ui:sketch.sweepAnchorLeft}}, {{ui:sketch.sweepAnchorRight}}, a pálya mentén nézve), így egy sín a vonal egyik oldalán ülhet, vagy egy alkatrész szélét követheti. A test a keresztmetszet legalsó pontjával áll a vázlatsíkon.
+
+- **A pályát** {{ui:sketch.construction}} segítségével: kapcsold be, és rajzolj vonalakat vagy görbéket, egyetlen láncot, nyitottat vagy zártat (a zárt lánc gyűrűt ad). A pálya laposan fekszik a vázlatsíkban.
+
+A keresztmetszetet a pályának annál a végénél rajzold, ahol kezdődnie kell; a pálya a hozzá legközelebbi végén kezdődik. Ezután kattints a {{ui:sketch.finishSweep}} gombra. Az egyenes darabokból álló sarok gérbe vágódik, egy görbe sima marad, és a keresztmetszet végig függőleges marad. A test pontos, mint egy kihúzott test: a lekerekítés, a letörés és a STEP-export működik rajta. Ha hiányzik egy zárt körvonal vagy egy pálya, vagy több különálló pálya van, a layerling jelzi. Az {{ui:inspector.editSketch}} gombbal visszatérhetsz a vázlathoz, és módosíthatod a keresztmetszetet vagy a pályát.
+
 ## Vonalként építés
 
 Általában a zárt körvonal belseje lesz a test. A {{ui:sketch.group.finish}} rész {{ui:sketch.stroke}} gombjával ehelyett magát a vonalat építed meg, általad megadott vastagsággal. Pipáld be a panelen a {{ui:sketch.strokeOn}} lehetőséget; a vázlat azonnal mutatja, mi lesz belőle.
