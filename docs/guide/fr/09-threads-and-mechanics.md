@@ -100,6 +100,8 @@ Le {{ui:shape.spring}} a {{ui:prop.turns}} et un {{ui:prop.wire}}. En fonction d
 
 L'outil Edge et l'export STEP prennent un ressort comme corps exact : un fil rond le long d'une hélice, coupé en carré aux deux extrémités. Vous pouvez par exemple arrondir ou chanfreiner ces deux extrémités de fil.
 
+Sous {{ui:prop.springForm}}, le ressort devient plat ({{ui:spring.flat}}) : une bande qui ondule sur le plateau et fléchit dans son propre plan, imprimée à plat. {{ui:prop.springPattern}} donne des {{ui:spring.round}}, un {{ui:spring.zigzag}} ou des courbes à angle droit ({{ui:spring.square}}), {{ui:prop.springEnds}} un {{ui:spring.eye}} percé, une {{ui:spring.tab}} en travers de la bande ou rien ({{ui:spring.none}}). {{ui:prop.bends}} et {{ui:prop.band}} règlent sa souplesse ; la longueur est celle du ressort, la largeur jusqu'où vont les ondes et la hauteur son épaisseur à l'impression. Le ressort plat est lui aussi un corps exact.
+
 ## Tubes courbés
 
 Un {{ui:shape.bentTube}} comprend jusqu'à douze sections : une pièce droite suivie d'un pli. Pour chacun, vous définissez le {{ui:prop.bentTubeSegmentLength}}, le {{ui:prop.bentTubeBendAngle}}, le {{ui:prop.bentTubeBendRadius}} et le {{ui:prop.bentTubeRoll}}. La section que vous éditez est éclairée en orange sur le tube, vous pouvez donc suivre l'ordre. Un angle de roulis de 0° se courbe dans le plan du plan de travail, à 90° le tube se courbe vers le haut. Le profil peut être rond, carré, hexagonal ou octogonal, l'intérieur également, ou entièrement plein. Si le tube se heurte à lui-même, Layerling vous avertit.

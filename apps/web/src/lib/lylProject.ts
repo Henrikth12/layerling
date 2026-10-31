@@ -1538,6 +1538,15 @@ function validateShapeDefinition(definition: Record<string, unknown>, label: str
     if (definition.springHand !== undefined && definition.springHand !== "right" && definition.springHand !== "left") {
       throw new Error(`${label}.springHand is invalid`);
     }
+    if (definition.springForm !== undefined && definition.springForm !== "coil" && definition.springForm !== "flat") {
+      throw new Error(`${label}.springForm is invalid`);
+    }
+    if (definition.springPattern !== undefined && !["round", "zigzag", "square"].includes(definition.springPattern as string)) {
+      throw new Error(`${label}.springPattern is invalid`);
+    }
+    if (definition.springEnds !== undefined && !["eye", "tab", "none"].includes(definition.springEnds as string)) {
+      throw new Error(`${label}.springEnds is invalid`);
+    }
     if (definition.springQuality !== undefined) {
       const springQuality = finiteNumber(definition.springQuality, `${label}.springQuality`);
       if (!Number.isInteger(springQuality) || springQuality < 12 || springQuality > 96) {

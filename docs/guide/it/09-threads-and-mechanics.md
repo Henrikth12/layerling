@@ -101,6 +101,8 @@ Lo strumento per gli spigoli e l’esportazione STEP trattano ogni ingranaggio c
 
 Lo strumento per gli spigoli e l’esportazione STEP usano la geometria esatta della molla: un filo rotondo disposto a elica e tagliato perpendicolarmente alle due estremità. Puoi arrotondare o smussare, per esempio, le estremità del filo.
 
+In {{ui:prop.springForm}} la molla diventa piatta ({{ui:spring.flat}}): un nastro che corre a onde sul piano e flette nel proprio piano, stampato disteso. {{ui:prop.springPattern}} dà {{ui:spring.round}}, uno {{ui:spring.zigzag}} o curve ad angolo ({{ui:spring.square}}), {{ui:prop.springEnds}} un {{ui:spring.eye}} con foro, una {{ui:spring.tab}} di traverso o niente ({{ui:spring.none}}). {{ui:prop.bends}} e {{ui:prop.band}} decidono quanto è morbida; la lunghezza è quella della molla, la larghezza fin dove arrivano le onde e l'altezza lo spessore di stampa. Anche la molla piatta è un corpo esatto.
+
 ## Tubi curvi
 
 Un {{ui:shape.bentTube}} è composto da un massimo di dodici tratti: un segmento rettilineo seguito da una curva. Per ogni tratto imposta {{ui:prop.bentTubeSegmentLength}}, {{ui:prop.bentTubeBendAngle}}, {{ui:prop.bentTubeBendRadius}} e {{ui:prop.bentTubeRoll}}. Il tratto che stai modificando si illumina in arancione sul tubo, così puoi seguirne l’ordine. Con un angolo di rotazione del profilo pari a 0°, la curva resta sul piano di lavoro; a 90° il tubo piega verso l’alto. Il profilo può essere rotondo, quadrato, esagonale o ottagonale, cavo con la stessa forma interna oppure completamente pieno. Se il tubo si interseca con se stesso, layerling ti avvisa.

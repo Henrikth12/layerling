@@ -100,6 +100,8 @@ De {{ui:shape.spring}} heeft {{ui:prop.turns}} en een {{ui:prop.wire}}. Samen me
 
 Het randgereedschap en de STEP-export nemen een veer als zijn exacte lichaam: een ronde draad langs een schroeflijn, aan beide uiteinden recht afgesneden. Die twee draaduiteinden kun je bijvoorbeeld afronden of afschuinen.
 
+Onder {{ui:prop.springForm}} wordt de veer een {{ui:spring.flat}}: een band die in golven over de plaat loopt en in zijn eigen vlak veert, liggend geprint. {{ui:prop.springPattern}} geeft {{ui:spring.round}}, een {{ui:spring.zigzag}} of hoekige bochten ({{ui:spring.square}}), {{ui:prop.springEnds}} een {{ui:spring.eye}} met gat, een {{ui:spring.tab}} dwars op de band of niets ({{ui:spring.none}}). {{ui:prop.bends}} en {{ui:prop.band}} bepalen hoe zacht hij is; de lengte is de lengte van de veer, de breedte hoe ver de golven reiken en de hoogte hoe dik hij geprint wordt. Ook de vlakke veer is een exact lichaam.
+
 ## Gebogen buizen
 
 Een {{ui:shape.bentTube}} bestaat uit maximaal twaalf secties: een recht stuk gevolgd door een bocht. Voor elke sectie stel je de {{ui:prop.bentTubeSegmentLength}}, de {{ui:prop.bentTubeBendAngle}}, de {{ui:prop.bentTubeBendRadius}} en de {{ui:prop.bentTubeRoll}} in. De sectie die je bewerkt, licht oranje op op de buis, zodat je de volgorde kunt volgen. Een rolhoek van 0° buigt binnen het vlak van het werkvlak, bij 90° buigt de buis omhoog. Het profiel kan rond, vierkant, zeshoekig of achthoekig zijn, de binnenkant net zo, of helemaal massief. Loopt de buis door zichzelf heen, dan waarschuwt layerling je.

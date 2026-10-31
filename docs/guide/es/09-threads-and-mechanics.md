@@ -100,6 +100,8 @@ El {{ui:shape.spring}} tiene los ajustes {{ui:prop.turns}} y {{ui:prop.wire}}. J
 
 La herramienta de aristas y la exportación STEP tratan un muelle como un cuerpo exacto: un alambre redondo a lo largo de una hélice, cortado en recto por los dos extremos. Puedes, por ejemplo, redondear o achaflanar esos dos extremos del alambre.
 
+En {{ui:prop.springForm}} el muelle pasa a ser plano ({{ui:spring.flat}}): una banda que avanza en ondas sobre la placa y se flexiona en su propio plano, impresa tumbada. {{ui:prop.springPattern}} da {{ui:spring.round}}, un {{ui:spring.zigzag}} o curvas en ángulo ({{ui:spring.square}}), {{ui:prop.springEnds}} un {{ui:spring.eye}} con agujero, una {{ui:spring.tab}} transversal o ninguno ({{ui:spring.none}}). {{ui:prop.bends}} y {{ui:prop.band}} deciden lo blando que es; el largo es la longitud del muelle, el ancho hasta dónde llegan las ondas y el alto el grosor con que se imprime. El muelle plano también es un cuerpo exacto.
+
 ## Tubos curvados
 
 Un {{ui:shape.bentTube}} consta de hasta doce tramos: un trozo recto seguido de una curva. En cada uno ajustas {{ui:prop.bentTubeSegmentLength}}, {{ui:prop.bentTubeBendAngle}}, {{ui:prop.bentTubeBendRadius}} y {{ui:prop.bentTubeRoll}}. El tramo que estás editando se ilumina en naranja sobre el tubo, para que puedas seguir el orden. Con un ángulo de giro de 0°, la curva queda en el plano de trabajo; con 90°, el tubo se curva hacia arriba. El perfil puede ser redondo, cuadrado, hexagonal u octogonal, y el interior también, o ser completamente macizo. Si el tubo se cruza consigo mismo, layerling te avisa.

@@ -100,6 +100,8 @@ G 規格是符合 ISO 228-1 的平行惠氏管螺紋，常見於水、瓦斯、�
 
 邊緣工具與 STEP 匯出會把彈簧當作精確實體：沿螺旋線的圓線材，兩端切平。例如你可以對這兩個線材端頭倒圓或倒角。
 
+在{{ui:prop.springForm}}中可把彈簧改為{{ui:spring.flat}}：一條在底板上呈波浪延伸、在自身平面內彈性變形的帶子，平放列印。{{ui:prop.springPattern}}可選{{ui:spring.round}}、{{ui:spring.zigzag}}或{{ui:spring.square}}，{{ui:prop.springEnds}}可選帶孔的{{ui:spring.eye}}、橫跨帶子的{{ui:spring.tab}}或{{ui:spring.none}}。{{ui:prop.bends}}和{{ui:prop.band}}決定它有多軟；長度是彈簧的長度，寬度是波浪的幅度，高度是列印厚度。扁平彈簧同樣是精確實體。
+
 ## 彎管
 
 一個 {{ui:shape.bentTube}} 最多由十二段組成：一段直管，接著一個彎。每一段你設定 {{ui:prop.bentTubeSegmentLength}}、{{ui:prop.bentTubeBendAngle}}、{{ui:prop.bentTubeBendRadius}} 與 {{ui:prop.bentTubeRoll}}。正在編輯的那一段會以橘色亮起，方便你掌握順序。滾轉角為 0° 時在工作平面內彎曲，90° 時管子向上彎。輪廓可以是圓形、方形、六邊形或八邊形，內部同樣如此，也可以完全實心。如果管子撞到自己，layerling 會警告你。

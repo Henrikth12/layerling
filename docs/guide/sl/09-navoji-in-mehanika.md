@@ -100,6 +100,8 @@ Robno orodje in izvoz STEP vzameta vsak zobnik kot natančno telo, evolventne bo
 
 Robno orodje in izvoz STEP vzameta vzmet kot natančno telo: okrogla žica vzdolž vijačnice, na obeh koncih ravno odrezana. Ta dva konca žice lahko na primer zaobliš ali posnameš.
 
+Pod {{ui:prop.springForm}} postane vzmet ploščata ({{ui:spring.flat}}): trak, ki v valovih teče čez ploščo in se upogiba v svoji ravnini, natisnjen leže. {{ui:prop.springPattern}} da {{ui:spring.round}}, {{ui:spring.zigzag}} ali oglate zavoje ({{ui:spring.square}}), {{ui:prop.springEnds}} {{ui:spring.eye}} z luknjo, {{ui:spring.tab}} prečno na trak ali nič ({{ui:spring.none}}). {{ui:prop.bends}} in {{ui:prop.band}} določata, kako mehka je; dolžina je dolžina vzmeti, širina, kako daleč segajo valovi, višina pa, kako debelo se natisne. Tudi ploščata vzmet je natančno telo.
+
 ## Ukrivljene cevi
 
 {{ui:shape.bentTube}} sestoji iz do dvanajst odsekov: raven kos, ki mu sledi ovinek. Za vsakega nastaviš {{ui:prop.bentTubeSegmentLength}}, {{ui:prop.bentTubeBendAngle}}, {{ui:prop.bentTubeBendRadius}} in {{ui:prop.bentTubeRoll}}. Odsek, ki ga ravno urejaš, se na cevi oranžno posveti, tako imaš zaporedje pod nadzorom. Kot kotaljenja 0° ukrivi v ravnini delovne površine, pri 90° se cev ukrivi navzgor. Profil je lahko okrogel, kvadraten, šest- ali osemkoten, notranji prav tako, ali povsem poln. Če cev teče sama vase, te layerling opozori.

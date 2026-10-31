@@ -102,6 +102,8 @@ Die {{ui:shape.spring}} hat {{ui:prop.turns}} und eine {{ui:prop.wire}}. Zusamme
 
 Das Kantenwerkzeug und der STEP-Export nehmen eine Feder als exakten Körper: ein runder Draht entlang einer Schraubenlinie, an beiden Enden gerade abgeschnitten. Diese beiden Drahtenden kannst du zum Beispiel verrunden oder fasen.
 
+Unter {{ui:prop.springForm}} wird die Feder zur {{ui:spring.flat}}: ein Band, das in Wellen über die Platte läuft und in seiner eigenen Ebene federt, liegend gedruckt. {{ui:prop.springPattern}} gibt {{ui:spring.round}}, einen {{ui:spring.zigzag}} oder eckige Bögen ({{ui:spring.square}}), {{ui:prop.springEnds}} eine {{ui:spring.eye}} mit Loch, eine {{ui:spring.tab}} quer zum Band oder keine ({{ui:spring.none}}). {{ui:prop.bends}} und {{ui:prop.band}} bestimmen, wie weich sie wird; die Länge ist die Länge der Feder, die Breite, wie weit die Wellen reichen, und die Höhe, wie dick sie gedruckt wird. Auch die Flachfeder ist ein exakter Körper.
+
 ## Gebogene Rohre
 
 Ein {{ui:shape.bentTube}} besteht aus bis zu zwölf Abschnitten: ein gerades Stück, gefolgt von einer Biegung. Für jedes stellst du die {{ui:prop.bentTubeSegmentLength}}, den {{ui:prop.bentTubeBendAngle}}, den {{ui:prop.bentTubeBendRadius}} und den {{ui:prop.bentTubeRoll}} ein. Der Abschnitt, den du gerade bearbeitest, leuchtet auf dem Rohr orange auf, so behältst du die Reihenfolge im Blick. Ein Rollwinkel von 0° biegt in der Ebene der Arbeitsfläche, bei 90° biegt das Rohr nach oben. Das Profil kann rund, quadratisch, sechs- oder achteckig sein, innen ebenso, oder ganz massiv. Läuft das Rohr in sich selbst, warnt dich layerling.

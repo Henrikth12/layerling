@@ -102,6 +102,8 @@ Narzędzie krawędzi i eksport STEP biorą każde koło jako jego dokładną bry
 
 Narzędzie krawędzi i eksport STEP biorą sprężynę jako jej dokładną bryłę: okrągły drut wzdłuż linii śrubowej, ucięty prostopadle na obu końcach. Możesz na przykład zaokrąglić albo sfazować te dwa końce drutu.
 
+W polu {{ui:prop.springForm}} sprężyna staje się płaska ({{ui:spring.flat}}): to taśma, która biegnie falami po płycie i ugina się we własnej płaszczyźnie, drukowana na leżąco. {{ui:prop.springPattern}} daje {{ui:spring.round}}, {{ui:spring.zigzag}} albo prostokątne zgięcia ({{ui:spring.square}}), {{ui:prop.springEnds}} {{ui:spring.eye}} z otworem, {{ui:spring.tab}} w poprzek taśmy albo nic ({{ui:spring.none}}). {{ui:prop.bends}} i {{ui:prop.band}} decydują, jak jest miękka; długość to długość sprężyny, szerokość to zasięg fal, a wysokość to grubość wydruku. Sprężyna płaska też jest dokładną bryłą.
+
 ## Wygięte rury
 
 {{ui:shape.bentTube}} składa się z maksymalnie dwunastu odcinków: prostego kawałka, po którym następuje łuk. Dla każdego ustawiasz {{ui:prop.bentTubeSegmentLength}}, {{ui:prop.bentTubeBendAngle}}, {{ui:prop.bentTubeBendRadius}} i {{ui:prop.bentTubeRoll}}. Edytowany odcinek jest podświetlony na rurze na pomarańczowo, więc łatwo śledzić kolejność. Kąt obrotu 0° gnie w płaszczyźnie roboczej, przy 90° rura gnie się w górę. Profil może być okrągły, kwadratowy, sześciokątny albo ośmiokątny, wnętrze tak samo, albo całkiem pełny. Jeśli rura wchodzi sama w siebie, layerling ostrzega.
