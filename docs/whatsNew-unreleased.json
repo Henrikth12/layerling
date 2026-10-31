@@ -8,5 +8,15 @@
       "de": "Dupliziere eine Form, vergrößere die Kopie und schiebe sie weiter: Jedes weitere Strg+D macht die nächste Kopie um denselben Faktor größer und rückt sie um denselben Schritt weiter, wie in Tinkercad.",
       "en": "Duplicate a shape, make the copy larger and move it: every further Ctrl+D makes the next copy larger by the same factor and moves it by the same step, as in Tinkercad."
     }
+  },
+  {
+    "title": {
+      "de": "Größengriffe in Achsenfarben",
+      "en": "Size handles in axis colours"
+    },
+    "body": {
+      "de": "Die Griffe, die ein einzelnes Maß ändern, haben jetzt die Farbe ihrer Achse: Seitenmitte rot für die Breite und grün für die Tiefe, die Oberseite blau für die Höhe. So siehst du gleich, was du gerade ziehst.",
+      "en": "The handles that change a single measure now have the colour of their axis: the middle of a side is red for the width and green for the depth, the top is blue for the height. So you see at once what you are pulling."
+    }
   }
 ]
