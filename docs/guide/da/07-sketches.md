@@ -154,6 +154,8 @@ Under {{ui:sketch.imageAlign}} justerer du et foto der ikke blev taget lige:
 
 Alle fire rører kun referencen, aldrig skitsen.
 
+**{{ui:sketch.traceImage}}** sparer dig for at tegne efter i hånden: vælg {{ui:iconTag.part.dark}} eller {{ui:iconTag.part.light}}, sæt {{ui:sketch.traceThreshold}} hvor mørkt bliver lyst, og klik {{ui:sketch.traceImageButton}}. Den del af billedet bliver lukkede skitselinjer præcis hvor billedet ligger, drejet og beskåret med det, og du redigerer dem som alle andre linjer. De kommer markeret, så [[Delete]] fjerner dem igen, hvis du vil prøve en anden tærskel. Til en kant uden for eller inden for omridset giver du skitselegemet en kontur uden for eller inden for linjerne, eller du forskyder det færdige legeme.
+
 ## Taster i skitsetilstand
 
 | Taste | Virkning |

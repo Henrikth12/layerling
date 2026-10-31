@@ -151,6 +151,8 @@ Sous {{ui:sketch.imageAlign}} vous alignez une photo qui n'a pas été prise dir
 
 Tous les quatre touchent uniquement à la référence, jamais au croquis.
 
+**{{ui:sketch.traceImage}}** vous évite de redessiner à la main : choisissez {{ui:iconTag.part.dark}} ou {{ui:iconTag.part.light}}, réglez le {{ui:sketch.traceThreshold}} où le sombre devient clair et cliquez sur {{ui:sketch.traceImageButton}}. Cette partie de l'image devient des lignes d'esquisse fermées exactement là où elle se trouve, tournée et recadrée avec elle, que vous modifiez ensuite comme toutes les autres. Elles arrivent sélectionnées : [[Delete]] les enlève pour essayer un autre seuil. Pour une bordure à l'extérieur ou à l'intérieur du contour, donnez au corps d'esquisse un trait à l'extérieur ou à l'intérieur de ses lignes, ou décalez le corps terminé.
+
 ## Touches en mode esquisse
 
 | Clé | Effet |

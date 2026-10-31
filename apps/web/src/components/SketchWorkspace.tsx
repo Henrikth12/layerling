@@ -1,6 +1,6 @@
 "use client";
 
-import { AlignCenterHorizontal, AlignCenterVertical, AlignEndHorizontal, AlignEndVertical, AlignStartHorizontal, AlignStartVertical, Check, ChevronUp, CornerDownRight, Crop, Crosshair, FlipHorizontal2, FlipVertical2, Home, Layers, Link, Link2Off, LockKeyhole, LockKeyholeOpen, Minus, Plus, Ruler, RulerDimensionLine, Slash, Spline, Split, Trash2, Waves, X } from "lucide-react";
+import { AlignCenterHorizontal, AlignCenterVertical, ScanLine, AlignEndHorizontal, AlignEndVertical, AlignStartHorizontal, AlignStartVertical, Check, ChevronUp, CornerDownRight, Crop, Crosshair, FlipHorizontal2, FlipVertical2, Home, Layers, Link, Link2Off, LockKeyhole, LockKeyholeOpen, Minus, Plus, Ruler, RulerDimensionLine, Slash, Spline, Split, Trash2, Waves, X } from "lucide-react";
 import { displayedHandle } from "@/lib/sketchBezierHandles";
 import { curveStretches } from "@/lib/sketchCurveThroughPoints";
 import { markEscapeHandled } from "@/lib/escapeHandled";
@@ -39,6 +39,8 @@ import { alignSketchSelection, canAlignSketchSelection, type SketchAlignMode } f
 import { changesLockedOutline, sketchLockState } from "@/lib/sketchLock";
 import { dragRotationDegrees, rotateSketchPointsAbout, sketchPointsPivot, sketchTurnRing, sketchTurnStep, SKETCH_TURN_RING_STEP } from "@/lib/sketchRotation";
 import { calibrateImage, centreImage, cropImage, imageAngleTo, imageCorners, imageCropViewBox, imageHandlePositions, normalizeImageRotation, resizeImage, rotateImage, uncropImage } from "@/lib/sketchImageTransform";
+import type { ImageTraceOptions } from "@/lib/sketchImageTrace";
+import type { RasterPart } from "@/lib/rasterTrace";
 import { DEFAULT_SKETCH_STROKE, SKETCH_STROKE_ALIGNS, SKETCH_STROKE_CAPS, SKETCH_STROKE_JOINS } from "@/lib/sketchStroke";
 import { selectWholeValue } from "@/lib/numberField";
 import { GuideHelpLink } from "@/components/GuideHelpLink";
@@ -98,6 +100,8 @@ type SketchWorkspaceProps = {
   onToggleSelect: (entity: SketchSelectableEntity) => void;
   onSelectImage: (id: string) => void;
   onUpdateImage: (id: string, patch: Partial<SketchImage>, message?: string, keyRunKey?: string) => void;
+  /** Traces the dark or light part of the picture into sketch lines where it lies (#1060). */
+  onTraceImage?: (id: string, options: ImageTraceOptions) => void;
   onDeleteImage: (id: string) => void;
   onDeletePoint: (id: string) => void;
   onDeleteSegment: (id: string) => void;
@@ -721,6 +725,7 @@ export function SketchWorkspace({
   onToggleSelect,
   onSelectImage,
   onUpdateImage,
+  onTraceImage,
   onDeleteImage,
   onDeletePoint,
   onDeleteSegment,
@@ -3118,6 +3123,7 @@ export function SketchWorkspace({
           }}
           onClose={() => onSelectMany([], [], [])}
           onUpdate={(patch, message) => onUpdateImage(selectedImage.id, patch, message)}
+          onTrace={onTraceImage ? (options) => onTraceImage(selectedImage.id, options) : undefined}
           onDelete={() => onDeleteImage(selectedImage.id)}
         />
       ) : null}
@@ -3313,6 +3319,7 @@ function SketchImageInspector({
   onCalibrate,
   onClose,
   onUpdate,
+  onTrace,
   onDelete,
 }: {
   image: SketchImage;
@@ -3325,9 +3332,12 @@ function SketchImageInspector({
   onCalibrate: (step: ImageCalibrationStep) => void;
   onClose: () => void;
   onUpdate: (patch: Partial<SketchImage>, message?: string) => void;
+  onTrace?: (options: ImageTraceOptions) => void;
   onDelete: () => void;
 }) {
   useLanguage();
+  const [tracePart, setTracePart] = useState<RasterPart>("dark");
+  const [traceThreshold, setTraceThreshold] = useState(50);
   const measured = calibration?.points.length === 2 ? Math.hypot(calibration.points[1].x - calibration.points[0].x, calibration.points[1].z - calibration.points[0].z) : 0;
   const [calibrateDraft, setCalibrateDraft] = useState("");
   useEffect(() => setCalibrateDraft(measured > 0 ? formatDimension(measured, accuracy) : ""), [accuracy, measured]);
@@ -3456,6 +3466,26 @@ function SketchImageInspector({
           ) : null}
         </div>
       </div>
+      {onTrace ? (
+        <div className="property-card">
+          <div className="property-card-header static"><span>{t("sketch.traceImage")}</span></div>
+          <div className="property-list">
+            <div className="sketch-image-action-row" role="radiogroup" aria-label={t("iconTag.part")}>
+              {(["dark", "light"] as const).map((part) => (
+                <button key={part} className={`sketch-image-aspect-toggle ${tracePart === part ? "active" : ""}`} type="button" role="radio" aria-checked={tracePart === part} onClick={() => setTracePart(part)}>
+                  <span>{t(`iconTag.part.${part}`)}</span>
+                </button>
+              ))}
+            </div>
+            <SketchImageRange label={t("sketch.traceThreshold")} value={traceThreshold} min={5} max={95} accuracy={1} suffix="%" onChange={(value) => setTraceThreshold(Math.round(value))} />
+            <button className="sketch-image-aspect-toggle" type="button" onClick={() => onTrace({ part: tracePart, threshold: traceThreshold / 100 })}>
+              <ScanLine size={17} />
+              <span>{t("sketch.traceImageButton")}</span>
+            </button>
+            <p className="sketch-image-hint">{t("sketch.traceImageHint")}</p>
+          </div>
+        </div>
+      ) : null}
     </aside>
   );
 }

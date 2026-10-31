@@ -6,6 +6,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **Trace the template picture in a sketch (Discussion #1060):** Tracing a drawing laid under a sketch meant clicking along every edge by hand. The reference image's settings in sketch mode now have a Trace section: choose the dark or the light part and a threshold, and Trace outline turns that part of the picture into closed sketch lines right where it lies, turned and cropped with it, ready to edit. They come selected, so Delete takes them away to try another threshold. It is the same tracing a PNG or JPG gets in the import (#359), laid onto the picture (`sketchImageTrace.ts`, `traceRasterRings` split out of `rasterTrace.ts`). For an AI, `layerling_reference_image` takes `trace` and turns a reference image lying flat into a sketch body standing on it. Guide (sketches, reference images, AI) in every language, README and start page. Unit test in `sketchImageTrace.test.ts`. Suggested by @boatingman44, seconded by @BenedictJason.
+
 ## 1.126.0
 
 - **Alignment handles stay next to a tiny part when you zoom in (Discussion #989):** The line of alignment handles stood a fixed 3 mm beside the selection, so on a part below a millimetre zoomed in to fill the view the handles landed far off it or off the screen. On the screen the line now stands at most 40 pixels beside the selection, in the same direction; normal views are unchanged. Asked for by @rickmb66 in Discussion #989, after the same change for the size marks.

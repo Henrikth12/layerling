@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "title": {
+      "de": "Vorlagenbild nachzeichnen",
+      "en": "Trace the template picture"
+    },
+    "body": {
+      "de": "Ein Bild unter der Skizze wird mit „Umriss nachzeichnen“ zu Skizzenlinien, genau dort, wo es liegt: der dunkle oder der helle Teil, bei einer Schwelle, die du einstellst. Die Linien bearbeitest du danach wie alle anderen.",
+      "en": "A picture under the sketch becomes sketch lines with \"Trace outline\", right where it lies: its dark or its light part, at a threshold you set. You then edit the lines like any others."
+    }
+  }
+]

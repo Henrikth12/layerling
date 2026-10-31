@@ -30,7 +30,7 @@ import { IconTagPanel } from "@/components/workplane/IconTagPanel";
 import { QrCodePanel } from "@/components/workplane/QrCodePanel";
 import { qrCodeOf, qrCodeShape, regeneratedQrCodeShape } from "@/lib/editorQrCode";
 import { DEFAULT_QR_WIDTH, MAX_QR_HEIGHT, MAX_QR_WIDTH, MIN_QR_HEIGHT, MIN_QR_WIDTH, QR_BYTE_CAPACITY, QR_ERROR_CORRECTIONS, QR_STYLES, normalizeQrSettings, qrByteLength, qrMatrix, qrModuleSize, qrModuleTooSmall, qrTextFits, type QrCodeSettings, type QrErrorCorrection, type QrStyle } from "@/lib/qrCode";
-import { iconSourceFromFile, PICTURE_FILE_ACCEPT, type IconSource } from "@/lib/pictureIcon";
+import { iconSourceFromFile, PICTURE_FILE_ACCEPT, picturePixels, type IconSource } from "@/lib/pictureIcon";
 import { loadedManifoldRuntime, onManifoldReady } from "@/lib/manifoldHandle";
 import { canApplySketchCornerTreatment } from "@/lib/sketchFilletChamfer";
 import { SKETCH_POLYGON_DEFAULT_SIDES, SKETCH_STAR_DEFAULT_INNER_PERCENT, sketchPrimitiveGeometry, sketchPrimitiveStartSize } from "@/lib/sketchPrimitives";
@@ -165,6 +165,8 @@ import { cylinderToEllipsePatch } from "@/lib/cylinderToEllipse";
 import { sketchBodyStretch, stretchedSketchProfile } from "@/lib/sketchResize";
 import { silhouetteSketchProfile } from "@/lib/sketchCadProfile";
 import { svgSketchMatchesMesh } from "@/lib/svgSketch";
+import { imageTraceProfile, sketchTraceOfImage, type ImageTraceOptions } from "@/lib/sketchImageTrace";
+import type { RasterPart } from "@/lib/rasterTrace";
 import { DEFAULT_SKETCH_STROKE, normalizeSketchStroke, strokedSketchProfile } from "@/lib/sketchStroke";
 import { bottomCadModifierEdgeIds, horizontalCadModifierEdgeIds, topCadModifierEdgeIds, verticalCadModifierEdgeIds } from "@/lib/topEdges";
 import { tangentCadEdgeChain } from "@/lib/cadEdgeChain";
@@ -5240,6 +5242,26 @@ export function LayerlingEditor({
       images: (sketchProfile.images ?? []).filter((image) => image.id !== id),
     }, t("status.sketchImageRemoved"));
     setSketchSelection(null);
+  }, [commitSketchProfile, sketchProfile]);
+
+  // Tracing the reference image (#1060): its dark or light part becomes sketch lines on the picture, selected,
+  // so Delete takes them away again to try another threshold.
+  const traceSketchImage = useCallback(async (id: string, options: ImageTraceOptions) => {
+    const image = (sketchProfile.images ?? []).find((entry) => entry.id === id);
+    if (!image) return;
+    try {
+      const pixels = await picturePixels(image.dataUrl);
+      const { points, segments, outlines } = sketchTraceOfImage(image, pixels, options, createLocalId("trace"));
+      commitSketchProfile({
+        ...sketchProfile,
+        points: [...sketchProfile.points, ...points],
+        segments: [...sketchProfile.segments, ...segments],
+      }, t("status.sketchImageTraced", { outlines, lines: segments.length }));
+      setSketchSelection({ kind: "multiple", pointIds: points.map((point) => point.id), segmentIds: segments.map((segment) => segment.id), imageIds: [] });
+      setSketchActivePointId(null);
+    } catch (error) {
+      setNotice(localizedError(error instanceof Error ? error.message : String(error)), true);
+    }
   }, [commitSketchProfile, sketchProfile]);
 
   const addSketchImageFile = useCallback(async (file: File) => {
@@ -11229,7 +11251,36 @@ export function LayerlingEditor({
         if (typeof params.locked === "boolean") image = { ...image, locked: params.locked };
         image = canonicalizeShape(image);
         const others = currentShapes().filter((shape) => shape.id !== image.id);
-        commitShapes(id ? currentShapes().map((shape) => (shape.id === image.id ? image : shape)) : [...others, image], image.id, status);
+        const withImage = id ? currentShapes().map((shape) => (shape.id === image.id ? image : shape)) : [...others, image];
+        if (params.trace !== undefined) {
+          // Tracing the picture (#1060), as the sketch's Trace does: its dark or light part becomes a sketch body standing on it.
+          const trace = (params.trace === true ? {} : params.trace) as { part?: unknown; threshold?: unknown; height?: unknown } | null;
+          if (!trace || typeof trace !== "object") throw new Error("trace must be true or { part, threshold, height }");
+          if (trace.part !== undefined && trace.part !== "dark" && trace.part !== "light") throw new Error("trace.part must be dark or light");
+          if (trace.threshold !== undefined && !(finite(trace.threshold) && trace.threshold >= 0.05 && trace.threshold <= 0.95)) throw new Error("trace.threshold must be 0.05 to 0.95");
+          if (trace.height !== undefined && !(finite(trace.height) && trace.height >= 0.2 && trace.height <= 500)) throw new Error("trace.height must be 0.2 to 500 mm");
+          if (Math.abs(image.rotationX ?? 0) > 1e-6 || Math.abs(image.rotationZ ?? 0) > 1e-6) throw new Error("Only a reference image lying flat can be traced; this one stands on a side face");
+          const plate = image.imagePlate!;
+          const pixels = await picturePixels(plate.dataUrl);
+          const traced = imageTraceProfile(
+            { width: shapeWidth(image), depth: shapeDepth(image), pixelWidth: plate.pixelWidth, pixelHeight: plate.pixelHeight },
+            pixels,
+            { part: trace.part as RasterPart | undefined, threshold: trace.threshold as number | undefined },
+            createLocalId("trace"),
+          );
+          const built = await cadShapeFromSketchProfile({ points: traced.points, segments: traced.segments }, finite(trace.height) ? trace.height : 2);
+          const body = canonicalizeShape({
+            ...built,
+            name: `${image.name} (traced)`.slice(0, 60),
+            x: image.x,
+            z: image.z,
+            elevation: (image.elevation ?? 0) + image.height,
+            rotation: image.rotation ?? 0,
+          });
+          commitShapes([...withImage, body], body.id, t("status.mcpReferenceImageTraced", { outlines: traced.outlines, lines: traced.segments.length }));
+          return { object: mcpShapeSummary(image), traced: mcpShapeSummary(body), outlines: traced.outlines, lines: traced.segments.length };
+        }
+        commitShapes(withImage, image.id, status);
         return { object: mcpShapeSummary(image) };
       }
 
@@ -14614,6 +14665,7 @@ export function LayerlingEditor({
               setNotice(t("status.sketchImageSelected"));
             }}
             onUpdateImage={updateSketchImage}
+            onTraceImage={traceSketchImage}
             onDeleteImage={deleteSketchImage}
             onDeletePoint={deleteSketchPoint}
             onDeleteSegment={deleteSketchSegment}

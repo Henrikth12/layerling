@@ -153,6 +153,8 @@ Onder {{ui:sketch.imageAlign}} lijn je een foto uit die niet recht genomen is:
 
 Alle vier raken alleen de referentie, nooit de schets.
 
+**{{ui:sketch.traceImage}}** bespaart je het overtrekken met de hand: kies {{ui:iconTag.part.dark}} of {{ui:iconTag.part.light}}, stel de {{ui:sketch.traceThreshold}} in waar donker licht wordt en klik op {{ui:sketch.traceImageButton}}. Dat deel van de afbeelding wordt gesloten schetslijnen, precies waar de afbeelding ligt, gedraaid en bijgesneden zoals zij, en die bewerk je daarna als alle andere lijnen. Ze komen geselecteerd, dus [[Delete]] haalt ze weer weg om een andere drempel te proberen. Voor een rand buiten of binnen de omtrek geef je het schetslichaam een contour buiten of binnen de lijnen, of je verschuift het afgemaakte lichaam.
+
 ## Toetsen in de schetsmodus
 
 | Toets | Werking |

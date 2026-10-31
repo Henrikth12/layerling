@@ -155,6 +155,8 @@ Unter {{ui:sketch.imageAlign}} richtest du ein Foto aus, das nicht gerade aufgen
 
 Alle vier wirken nur auf die Vorlage, nie auf die Skizze.
 
+**{{ui:sketch.traceImage}}** erspart das Nachfahren von Hand: Wähle {{ui:iconTag.part.dark}} oder {{ui:iconTag.part.light}}, stelle die {{ui:sketch.traceThreshold}} ein, an der Dunkel in Hell übergeht, und klicke {{ui:sketch.traceImageButton}}. Dieser Teil des Bildes wird zu geschlossenen Skizzenlinien, genau dort, wo das Bild liegt, gedreht und zugeschnitten wie das Bild, und du bearbeitest sie wie alle anderen Linien. Sie kommen ausgewählt, also nimmt [[Entf]] sie wieder weg, um eine andere Schwelle zu versuchen. Für einen Rand außen oder innen um den Umriss gibst du dem Skizzenkörper eine Kontur außen oder innen an seinen Linien oder versetzt den fertigen Körper.
+
 ## Tasten im Skizzenmodus
 
 | Taste | Wirkung |

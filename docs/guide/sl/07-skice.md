@@ -153,6 +153,8 @@ Pod {{ui:sketch.imageAlign}} poravnaš fotografijo, ki ni bila posneta naravnost
 
 Vsa štiri delujejo samo na predlogo, nikoli na skico.
 
+**{{ui:sketch.traceImage}}** ti prihrani risanje na roko: izberi {{ui:iconTag.part.dark}} ali {{ui:iconTag.part.light}}, nastavi {{ui:sketch.traceThreshold}}, kjer temno preide v svetlo, in klikni {{ui:sketch.traceImageButton}}. Ta del slike postane sklenjene črte skice natanko tam, kjer slika leži, zasukane in obrezane z njo, nato pa jih urejaš kot vse druge črte. Pridejo izbrane, zato jih [[Delete]] spet odstrani, da poskusiš drug prag. Za rob zunaj ali znotraj obrisa daj telesu skice obrobo zunaj ali znotraj njegovih črt ali pa zamakni končano telo.
+
 ## Tipke v skicirnem načinu
 
 | Tipka | Učinek |

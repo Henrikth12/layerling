@@ -151,6 +151,8 @@ Stěny nyní mají sklon zvenku i zevnitř. Zúžení škáluje celý obrys, pro
 
 Tyto volby mění pouze podklad, nikoli náčrt.
 
+**{{ui:sketch.traceImage}}** ušetří obkreslování ručně: zvolte {{ui:iconTag.part.dark}} nebo {{ui:iconTag.part.light}}, nastavte {{ui:sketch.traceThreshold}}, kde tmavá přechází ve světlou, a klikněte na {{ui:sketch.traceImageButton}}. Tato část obrázku se změní na uzavřené čáry náčrtu přesně tam, kde obrázek leží, otočené a oříznuté s ním, a dál je upravujete jako jiné čáry. Jsou rovnou vybrané, takže je [[Delete]] zase odstraní a můžete zkusit jiný práh. Pro okraj vně nebo uvnitř obrysu dejte tělesu náčrtu obrys vně nebo uvnitř jeho čar, nebo hotové těleso odsaďte.
+
 ## Klávesy v náčrtu
 
 | Klávesa | Význam |

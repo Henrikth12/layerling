@@ -155,6 +155,8 @@ Under {{ui:sketch.imageAlign}} you line up a photo that was not taken straight:
 
 All four touch the reference only, never the sketch.
 
+**{{ui:sketch.traceImage}}** saves you drawing by hand: choose {{ui:iconTag.part.dark}} or {{ui:iconTag.part.light}}, set the {{ui:sketch.traceThreshold}} where dark turns light, and click {{ui:sketch.traceImageButton}}. That part of the picture becomes closed sketch lines right where it lies, turned and cropped with it, which you then edit like any other lines. They come selected, so [[Delete]] takes them away again to try another threshold. For a border outside or inside the outline, give the sketch body a stroke outside or inside its lines, or offset the finished body.
+
 ## Keys in sketch mode
 
 | Key | Effect |
