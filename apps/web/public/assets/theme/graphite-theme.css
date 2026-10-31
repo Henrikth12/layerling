@@ -8549,7 +8549,8 @@ html[data-theme="dark"]:where([data-palette="graphite"]) .sketch-rotate-handle {
 }
 
 :where(html[data-theme="dark"][data-palette="graphite"]) .sketch-rotate-handle-hit {
-  fill: transparent;
+  fill: none;
+  stroke: transparent;
 }
 
 :where(html[data-theme="dark"][data-palette="graphite"]) .sketch-rotate-handle svg {
