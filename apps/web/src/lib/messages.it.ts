@@ -86,7 +86,6 @@ export const MESSAGES_IT: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "Nascondi l'avviso di aggiornamento",
   "dashboard.importGeometry": "Apri un progetto o importa una geometria",
   "dashboard.continueWorkplane": "Continua sul piano di lavoro",
-  "dashboard.sharedProjects": "Sul server",
   "dashboard.projects": "Progetti",
   "dashboard.sortLabel": "Ordina i progetti",
   "dashboard.backupAll": "Crea un backup di sicurezza di tutti",

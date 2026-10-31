@@ -90,7 +90,6 @@ export const MESSAGES_ZH_TW: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "關閉更新通知",
   "dashboard.importGeometry": "開啟設計或匯入幾何",
   "dashboard.continueWorkplane": "繼續工作平面",
-  "dashboard.sharedProjects": "伺服器上",
   "dashboard.projects": "設計",
   "dashboard.newFolderTitle": "為這個瀏覽器的設計建立資料夾",
   "dashboard.newFolderOnServerTitle": "在伺服器資料夾中新增資料夾",

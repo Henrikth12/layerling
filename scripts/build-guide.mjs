@@ -222,24 +222,59 @@ function renderTable(rows, context) {
  */
 /** The ids the headings of a chapter get, in order: what slugify makes of each, outside code blocks. */
 export function headingIds(markdown) {
-  const ids = [];
+  return headingEntries(markdown).map((entry) => entry.id);
+}
+
+/** The headings of a chapter in order, each with its id and level. */
+function headingEntries(markdown) {
+  const entries = [];
   let inCode = false;
   for (const line of markdown.replace(/\r\n/g, "\n").split("\n")) {
     if (/^```/.test(line)) inCode = !inCode;
     const heading = !inCode && /^(#{1,3}) (.+)$/.exec(line);
-    if (heading) ids.push(slugify(heading[2]));
+    if (heading) entries.push({ id: slugify(heading[2]), level: heading[1].length });
   }
-  return ids;
+  return entries;
+}
+
+/**
+ * For each heading of a translated chapter, the ids of the English headings it stands for (often none): titles
+ * and sections are paired in order when the chapter has as many of them as the English one, and the sub-headings
+ * of a paired section likewise. Where a translated section has fewer or more sub-headings, the English ones point
+ * at the section itself, so a help link lands at least there instead of at the top of the chapter.
+ */
+export function englishHeadingPairs(translated, english) {
+  const own = headingEntries(translated);
+  const theirs = headingEntries(english);
+  const pairs = own.map(() => []);
+  const positions = (entries, level) => entries.flatMap((entry, position) => (entry.level === level ? [position] : []));
+  const children = (entries, position) => {
+    const found = [];
+    for (let next = position + 1; next < entries.length && entries[next].level > 2; next += 1) if (entries[next].level === 3) found.push(next);
+    return found;
+  };
+  const titles = [positions(own, 1), positions(theirs, 1)];
+  if (titles[0].length === titles[1].length) titles[0].forEach((position, index) => pairs[position].push(theirs[titles[1][index]].id));
+  const sections = [positions(own, 2), positions(theirs, 2)];
+  if (sections[0].length !== sections[1].length) return pairs;
+  sections[0].forEach((position, index) => {
+    const englishSection = sections[1][index];
+    pairs[position].push(theirs[englishSection].id);
+    const mine = children(own, position);
+    const matching = children(theirs, englishSection);
+    if (mine.length === matching.length) mine.forEach((child, childIndex) => pairs[child].push(theirs[matching[childIndex]].id));
+    else matching.forEach((child) => pairs[position].push(theirs[child].id));
+  });
+  return pairs;
 }
 
 /**
  * The id of a heading whose own text gives none - an Arabic heading loses every letter in slugify.
- * It takes the id of the English heading at the same place when the chapter has as many headings
- * as the English one, so links that use the English anchor still land; otherwise a numbered one.
+ * It takes the id of the English heading it stands for (englishHeadingPairs), so links that use the
+ * English anchor still land; otherwise a numbered one.
  */
 function fallbackHeadingId(context, position) {
-  const english = context.englishHeadingIds;
-  return (english && english[position]) || `section-${position + 1}`;
+  return context.englishHeadingIds?.[position]?.[0] || `section-${position + 1}`;
 }
 
 export function renderBlocks(markdown, context) {
@@ -261,7 +296,12 @@ export function renderBlocks(markdown, context) {
       const position = context.headingCount.value++;
       const id = slugify(heading[2]) || fallbackHeadingId(context, position);
       if (level === 2) headings.push({ id, text: renderInline(heading[2], { ...context, references: undefined }).replace(/<[^>]+>/g, "") });
-      html.push(`<h${level} id="${id}">${renderInline(heading[2], context)}</h${level}>`);
+      // The English id as a second anchor, so a help link that knows only the English name of a section still lands on it.
+      const alias = (context.englishHeadingIds?.[position] ?? [])
+        .filter((englishId) => englishId !== id && !context.ownHeadingIds?.has(englishId))
+        .map((englishId) => `<span class="heading-alias" id="${englishId}"></span>`)
+        .join("");
+      html.push(`<h${level} id="${id}">${alias}${renderInline(heading[2], context)}</h${level}>`);
       index += 1;
       continue;
     }
@@ -840,13 +880,11 @@ export async function buildGuide({ log = console.log } = {}) {
       return { code, name: LANGUAGE_INFO[code].name, htmlLang: target.htmlLang, href: `/${target.dir}/${slug ?? "index"}.html` };
     });
 
-    /** The English chapter's heading ids, when this language's own chapter has just as many headings. */
+    /** For each heading of this language's own chapter, the id of the English heading it stands for (see englishHeadingPairs). */
     const englishHeadingIdsFor = (chapter) => {
       if (language === "en" || chapter.fallback) return null;
       const source = effective.en.find((entry) => entry.number === chapter.number);
-      if (!source) return null;
-      const englishIds = headingIds(source.body);
-      return englishIds.length === headingIds(chapter.body).length ? englishIds : null;
+      return source ? englishHeadingPairs(chapter.body, source.body) : null;
     };
 
     const searchIndex = [];
@@ -861,6 +899,7 @@ export async function buildGuide({ log = console.log } = {}) {
         imageSrc: (name) => (ownPictures.has(name) ? `/${strings.dir}/img/${name}.webp` : `/${GUIDE_LANGUAGES.en.dir}/img/${name}.webp`),
         references: { uiKeys: new Set(), shots: new Set(), chapters: new Set() },
         englishHeadingIds: englishHeadingIdsFor(chapter),
+        ownHeadingIds: new Set(headingIds(chapter.body)),
       };
       let rendered;
       try {

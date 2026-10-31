@@ -98,7 +98,6 @@ export const MESSAGES_AR: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "تجاهل إشعار التحديث",
   "dashboard.importGeometry": "فتح تصميم أو استيراد أشكال هندسية",
   "dashboard.continueWorkplane": "متابعة سطح العمل",
-  "dashboard.sharedProjects": "على الخادم",
   "dashboard.projects": "التصاميم",
   "dashboard.newFolderTitle": "إنشاء مجلد لتصاميم هذا المتصفح",
   "dashboard.newFolderOnServerTitle": "إنشاء مجلد في مجلد الخادم",

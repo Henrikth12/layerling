@@ -90,7 +90,6 @@ export const MESSAGES_ZH_CN: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "关闭更新提示",
   "dashboard.importGeometry": "打开设计或导入几何体",
   "dashboard.continueWorkplane": "继续工作平面",
-  "dashboard.sharedProjects": "服务器上",
   "dashboard.projects": "设计",
   "dashboard.newFolderTitle": "为此浏览器的设计创建一个文件夹",
   "dashboard.newFolderOnServerTitle": "在服务器文件夹中新建文件夹",

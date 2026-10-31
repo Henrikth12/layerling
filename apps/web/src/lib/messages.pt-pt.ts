@@ -78,7 +78,6 @@ export const MESSAGES_PT_PT: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "Dispensar aviso de atualização",
   "dashboard.importGeometry": "Abrir um projeto ou importar geometria",
   "dashboard.continueWorkplane": "Continuar plano de trabalho",
-  "dashboard.sharedProjects": "No servidor",
   "dashboard.projects": "Projetos",
   "dashboard.newFolderTitle": "Criar uma pasta para os projetos deste navegador",
   "dashboard.folderTrailLabel": "Caminho para esta pasta",

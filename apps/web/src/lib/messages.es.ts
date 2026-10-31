@@ -92,7 +92,6 @@ export const MESSAGES_ES: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "Cerrar el aviso de actualización",
   "dashboard.importGeometry": "Abrir un diseño o importar geometría",
   "dashboard.continueWorkplane": "Seguir con el último diseño",
-  "dashboard.sharedProjects": "En el servidor",
   "dashboard.projects": "Diseños",
   "dashboard.newFolderTitle": "Crear una carpeta para los diseños de este navegador",
   "dashboard.newFolderOnServerTitle": "Crear una carpeta en la carpeta del servidor",

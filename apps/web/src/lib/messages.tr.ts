@@ -82,7 +82,6 @@ export const MESSAGES_TR: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "Güncelleme bildirimini kapat",
   "dashboard.importGeometry": "Tasarım aç veya geometri içe aktar",
   "dashboard.continueWorkplane": "Son düzenlenen tasarım",
-  "dashboard.sharedProjects": "Sunucuda",
   "dashboard.projects": "Tasarımlar",
   "dashboard.sortLabel": "Tasarımları sırala",
   "dashboard.backupAll": "Tümünü yedekle",

@@ -88,7 +88,6 @@ export const MESSAGES_HU: Partial<Record<MessageKey, string>> = {
   "dashboard.updateDismiss": "A frissítési értesítés elrejtése",
   "dashboard.importGeometry": "Terv megnyitása vagy geometria importálása",
   "dashboard.continueWorkplane": "Munkasík folytatása",
-  "dashboard.sharedProjects": "A szerveren",
   "dashboard.projects": "Tervek",
   "dashboard.sortLabel": "Tervek rendezése",
   "dashboard.backupAll": "Minden mentése",
