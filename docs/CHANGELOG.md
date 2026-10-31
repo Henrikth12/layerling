@@ -6,6 +6,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+## 1.127.0
+
 - **A thread in an enlarged group keeps its shape (Discussion #1066):** A group stretched all the points of its parts, so a thread in a group that was pulled larger in one direction came out squeezed or stretched, while opening the group built it right again. The group now builds a thread again at the size the stretch gives it, as Ungroup does (`editorMeshCore.ts`). Unit test in `groupedThreadStretch.test.ts`. Reported by @willi1955 in #1066.
 - **Settings in the title row, notes in the camera bar, "Manage" is now "File":** The cogwheel for the settings sits in the title row after the theme and language switches. The buttons to add and to show notes moved to the camera bar, in 3D and in a sketch. The ribbon group that holds import, export and attachments is called File. The camera bar is two buttons longer, so it shrinks below 900 px and goes two-column earlier.
 - **Camera bar in framed groups, moved by its first button:** Buttons that belong together sit in a frame, in one and in two columns. The first button folds the bar on a click and moves it when dragged, in 3D and in a sketch; a double click puts it back (`CameraBarHandle.tsx`). The 3D preview of a revolved sketch moves by its title. The buttons are 40 px high, and the sketch bar's icons now match the 3D bar's.
