@@ -18,5 +18,15 @@
       "de": "Das Werkzeug „Deckel“ kennt eine vierte Art: „Beidseitig“. Unter der Platte sitzen eine Lippe, die in die Öffnung greift, und ein Rand, der außen herum greift. Die Wand deiner Dose sitzt dazwischen in einer Nut, wie bei einer Frischhaltedose.",
       "en": "The Lid tool has a fourth kind: \"Both sides\". Below the plate sit a lip that goes into the opening and a rim that goes over the outside. The wall of your box sits in a groove between them, like on a food container."
     }
+  },
+  {
+    "title": {
+      "de": "Lage in der Skizze eintippen",
+      "en": "Type the position in a sketch"
+    },
+    "body": {
+      "de": "Wähle in einer Skizze eine Form aus: In der Leiste darüber stehen jetzt X und Y für ihre Mitte, in mm vom Ursprung. Tippe einen Wert ein, und die Form rückt genau dorthin, etwa ein Loch 12 mm neben die Mitte einer Platte.",
+      "en": "Select a shape in a sketch: the bar above it now shows X and Y for its middle, in mm from the origin. Type a value and the shape moves exactly there, such as a hole 12 mm from the middle of a plate."
+    }
   }
 ]

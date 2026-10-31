@@ -44,6 +44,7 @@ import type { RasterPart } from "@/lib/rasterTrace";
 import { DEFAULT_SKETCH_STROKE, SKETCH_STROKE_ALIGNS, SKETCH_STROKE_CAPS, SKETCH_STROKE_JOINS } from "@/lib/sketchStroke";
 import { selectWholeValue } from "@/lib/numberField";
 import { GuideHelpLink } from "@/components/GuideHelpLink";
+import { displayY, insideZ } from "@/lib/displayAxes";
 import { clampNudge, constrainToAxis, sketchSegmentDragPointIds, sketchSelectedPointIds, sketchSelectedSegmentIds, sketchSelectionMovePointIds, type SketchSelectableEntity, type SketchSelection } from "@/lib/sketchSelection";
 import { closedPathAt, closedPathRegions, cubicPoint, curveControls, isInsideEdges, orderedPaths, pathEdges, type DisplayPath, type PlaneEdge } from "@/lib/sketchPaths";
 import { capturePointer } from "@/lib/pointerCapture";
@@ -1025,6 +1026,17 @@ export function SketchWorkspace({
     if (moved) onTransformPoints(moved, t("sketch.aligned"));
   };
   const selectionLocked = selectionLock !== "none";
+  // A typed X or Y moves the selection so its middle lies there, in mm from the sketch's origin (#1064); Y counts up the
+  // screen, as the Y of the 3D editor counts towards the back.
+  const moveSelectionBy = (dx: number, dz: number) => {
+    if (selected?.kind !== "multiple" || selectionLocked) return;
+    const moving = new Set(sketchSelectionMovePointIds(profile, selected));
+    const startPoints = profile.points.filter((point) => moving.has(point.id));
+    if (!startPoints.length) return;
+    const allowed = clampNudge(startPoints, dx, dz, workspace.width / 2, workspace.depth / 2);
+    if (Math.abs(allowed.dx) < 1e-9 && Math.abs(allowed.dz) < 1e-9) return;
+    onTransformPoints(translateSketchPoints(startPoints, allowed.dx, allowed.dz), t("sketch.shapeMoved"));
+  };
   const isPointSelected = (id: string) => selected?.kind === "point" ? selected.id === id : selected?.kind === "multiple" ? selected.pointIds.includes(id) : false;
   const isSegmentSelected = (id: string) => selected?.kind === "segment" ? selected.id === id : selected?.kind === "multiple" ? selected.segmentIds.includes(id) : false;
   const [localCornerDialog, setLocalCornerDialog] = useState<"fillet" | "chamfer" | null>(null);
@@ -3241,6 +3253,29 @@ export function SketchWorkspace({
                       <span>{t(selectionLock === "all" ? "sketch.unlockOutline" : "sketch.lockOutline")}</span>
                     </button>
                   ) : null}
+                  {selectedGeometryBounds ? (
+                    <>
+                      <span className="sketch-point-divider" />
+                      <SketchImagePositionField
+                        className="sketch-selection-position"
+                        label={t("sketch.selectionX")}
+                        title={t("sketch.selectionPositionHint")}
+                        value={selectedGeometryBounds.cx}
+                        accuracy={workspace.accuracy}
+                        disabled={selectionLocked}
+                        onChange={(x) => moveSelectionBy(x - selectedGeometryBounds.cx, 0)}
+                      />
+                      <SketchImagePositionField
+                        className="sketch-selection-position"
+                        label={t("sketch.selectionY")}
+                        title={t("sketch.selectionPositionHint")}
+                        value={displayY(selectedGeometryBounds.cz)}
+                        accuracy={workspace.accuracy}
+                        disabled={selectionLocked}
+                        onChange={(y) => moveSelectionBy(0, insideZ(y) - selectedGeometryBounds.cz)}
+                      />
+                    </>
+                  ) : null}
                   {canAlignOutlines ? (
                     <>
                       <span className="sketch-point-divider" />
@@ -3639,12 +3674,16 @@ function SketchImagePositionField({
   value,
   accuracy,
   disabled = false,
+  className = "sketch-image-position-field",
+  title,
   onChange,
 }: {
   label: string;
   value: number;
   accuracy: 1 | 2 | 3;
   disabled?: boolean;
+  className?: string;
+  title?: string;
   onChange: (value: number) => void;
 }) {
   const formatted = formatDimension(value, accuracy);
@@ -3658,7 +3697,7 @@ function SketchImagePositionField({
   };
 
   return (
-    <label className="sketch-image-position-field">
+    <label className={className} title={title}>
       <span>{label}</span>
       <input
         type="text"
