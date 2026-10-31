@@ -3328,7 +3328,7 @@ export const MESSAGES_CS: Record<MessageKey, string> = {
   "camera.showShort": "Zobrazit ovládání",
   "camera.hideShort": "Skrýt ovládání",
   "camera.moveHint": "Táhnutím lištu přesunete, dvojklik ji vrátí zpět",
-  "camera.home": "Domů",
+  "camera.home": "Výchozí pohled",
   "camera.focusSelection": "Vystředit pohled na výběr",
   "camera.zoomIn": "Přiblížit",
   "camera.zoomOut": "Oddálit",

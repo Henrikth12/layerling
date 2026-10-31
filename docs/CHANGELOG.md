@@ -6,6 +6,8 @@ code still carries it - so a lower number further down is older, not newer.
 
 ## Unreleased
 
+- **The camera bar's house says "Home view" (Issue #1071):** Two buttons carry a house, the camera bar's that resets the view and the title row's that goes back to the projects, and the first was simply called "Home" - so a click meant to leave the project only turned the work plane. Its name and tooltip now say "Home view" (in Czech, Danish, French, Japanese, Brazilian Portuguese, Russian, Slovenian, Turkish and Simplified Chinese likewise a view; the other languages already said so). Reported by @mscho1 in #1071.
+
 ## 1.127.0
 
 - **A thread in an enlarged group keeps its shape (Discussion #1066):** A group stretched all the points of its parts, so a thread in a group that was pulled larger in one direction came out squeezed or stretched, while opening the group built it right again. The group now builds a thread again at the size the stretch gives it, as Ungroup does (`editorMeshCore.ts`). Unit test in `groupedThreadStretch.test.ts`. Reported by @willi1955 in #1066.

@@ -3311,7 +3311,7 @@ export const MESSAGES_FR: Partial<Record<MessageKey, string>> = {
   "camera.showShort": "Afficher les contrôles",
   "camera.hideShort": "Masquer les contrôles",
   "camera.moveHint": "Faites glisser pour déplacer la barre ; un double clic la remet en place",
-  "camera.home": "Accueil",
+  "camera.home": "Vue initiale",
   "camera.focusSelection": "Vue centrale sur la sélection",
   "camera.zoomIn": "Zoomer",
   "camera.zoomOut": "Zoom arrière",

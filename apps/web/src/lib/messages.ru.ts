@@ -3318,7 +3318,7 @@ export const MESSAGES_RU: Partial<Record<MessageKey, string>> = {
   "camera.showShort": "Показать управление",
   "camera.hideShort": "Скрыть управление",
   "camera.moveHint": "Перетащите, чтобы переместить панель; двойной щелчок возвращает её на место",
-  "camera.home": "Домой",
+  "camera.home": "Исходный вид",
   "camera.focusSelection": "Центрировать вид на выделении",
   "camera.zoomIn": "Приблизить",
   "camera.zoomOut": "Отдалить",

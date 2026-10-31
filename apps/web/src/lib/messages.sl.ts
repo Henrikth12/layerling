@@ -2686,7 +2686,7 @@ export const MESSAGES_SL: Partial<Record<MessageKey, string>> = {
   "camera.showShort": "Prikaži upravljanje",
   "camera.hideShort": "Skrij upravljanje",
   "camera.moveHint": "Povleci za premik vrstice; dvoklik jo vrne nazaj",
-  "camera.home": "Domov",
+  "camera.home": "Začetni pogled",
   "camera.focusSelection": "Osredini pogled na izbor",
   "camera.zoomIn": "Povečaj",
   "camera.zoomOut": "Pomanjšaj",
